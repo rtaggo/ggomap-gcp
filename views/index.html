@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Galigeo POC on Engine App</title>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+  
+		<link rel="stylesheet" type="text/css" href="/styles/galigeo.css" />
+
+		<!-- Compiled and minified CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	</head>
+	<body>
+		<nav>
+			<div class="nav-wrapper">
+				<a href="" class="brand-logo" style="margin-left: 15px;"> <i class="material-icons">cloud</i> Galigeo GCP Demos</a>
+			</div>
+		</nav>
+		<div class="container">
+			<div class="row">
+				<div class="col s6">
+					<div class="card">
+						<div class="card-image waves-effect waves-block waves-light sticky-action">
+							<img class="activator" src="images/demos/bikes.png">
+						</div>
+						<div class="card-content">
+							<span class="card-title activator grey-text text-darken-4">Bikes<i class="material-icons right">more_vert</i></span>
+						</div>
+						<div class="card-action">
+							<a href="/bikes">Demo</a>
+						</div>
+						<div class="card-reveal">
+							<span class="card-title grey-text text-darken-4">Bikes<i class="material-icons right">close</i></span>
+							Quick demo based on the London Bicycles dataset on Google Cloud Plateform containing 2 tables:
+							<ul>
+								<li>cycle_stations: 783 bikes stations</li>
+								<li>cycle_hire: 24 369 201 hires</li>
+							</ul>
+							By clicking on a bike station, it fetchs all outgoing and incoming bike trips from and to the current station.
+						</div>
+					</div>
+				</div>
+				<div class="col s6">
+					<div class="card">
+						<div class="card-image waves-effect waves-block waves-light sticky-action">
+							<img class="activator" src="images/demos/ny_yellow_cab.png">
+						</div>
+						<div class="card-content">
+							<span class="card-title activator grey-text text-darken-4">NY Yellow Cab<i class="material-icons right">more_vert</i></span>
+						</div>
+						<div class="card-action">
+							<a href="/ny_yellow_cab">Demo</a>
+						</div>
+						<div class="card-reveal">
+							<span class="card-title grey-text text-darken-4">NY Yellow Cab<i class="material-icons right">close</i></span>
+							Quick demo based on the New York Taxi tripdataset on Google Cloud Plateform containing 2 tables:
+							<ul>
+								<li>taxi_zone_geom: 263 zones</li>
+								<li>tlc_yellow_trips_2018: 63 356 111 trips</li>
+							</ul>
+							The map displays a 5-classes Jenks classification of the number of the pickups/dropoff in an area.
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Compiled and minified JavaScript -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	</body>
+</html>

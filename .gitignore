@@ -1,0 +1,8 @@
+# Node dependencies
+node_modules/
+
+# GCP
+.gcloudignore
+
+# misc
+.DS_Store

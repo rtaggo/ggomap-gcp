@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>New York Yellow Cab Bikes</title>
+		<link rel="stylesheet" type="text/css" href="/styles/galigeo.css" />
+	
+		<script src="/scripts/vendors/jquery/jquery-3.3.1.min.js"></script>
+		<script src="/scripts/vendors/d3js/d3.min.js"></script>
+
+		<script src='/scripts/vendors/mapbox/V3.1.1/mapbox.js'></script>
+		<link rel="stylesheet" type="text/css" href="/scripts/vendors/mapbox/V3.1.1/mapbox.css" />
+
+		<script src='/scripts/vendors/mapbox/plugins/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.min.js'></script>
+		<link rel="stylesheet" type="text/css" href="/scripts/vendors/mapbox/plugins/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.min.css" />
+
+		<script src='/scripts/vendors/turfjs/turf.min.js'></script>
+
+		<script type="module" src="/scripts/galigeo/ny_cab/yellow_cab.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="/styles/materializecss/materialize.css" />
+
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	</head>
+	<body>
+		<div class="mcss">
+			<nav>
+				<div class="nav-wrapper">
+					<a href="../" class="brand-logo" style="margin-left: 15px;"> <i class="material-icons">arrow_back</i> New York Yellow Cab Demo</a>
+				</div>				
+			</nav>
+		</div>
+		<div id="map"></div>
+		<!-- Compiled and minified JavaScript -->
+		<script src="/styles/materializecss/materialize.js"></script>
+
+	</body>
+	<script>
+		var self = this;
+		$(document).ready(function(e){
+			console.log(' >> document is ready');
+			self.galigeo = new GGO.GGOApp ();
+			GGO.EventBus.dispatch(GGO.EVENTS.APPISREADY);
+		});
+	</script>
+</html>
