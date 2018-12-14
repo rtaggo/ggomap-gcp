@@ -107,18 +107,15 @@
 				
 			var overlayMaps = {
 				"Pickup & DropOff": {
+					"Pickup - DropOff" : this._cabZones.pickup.diffLayer,
+					"DropOff - Pickup" : this._cabZones.dropoff.diffLayer,
 					"Pickup Areas" : this._cabZones.pickup.layer,
 					"DropOff Areas" : this._cabZones.dropoff.layer
-				},
-				"Pickup vs DropOff": {
-					"Pickup - DropOff" : this._cabZones.pickup.diffLayer,
-					"DropOff - Pickup" : this._cabZones.dropoff.diffLayer
 				}
-
 			};
 			var lgOptions = {
 				// Make the "Landmarks" group exclusive (use radio inputs)
-				exclusiveGroups: ["Pickup & DropOff","Pickup vs DropOff"],
+				exclusiveGroups: ["Pickup & DropOff"],
 				// Show a checkbox next to non-exclusive group labels for toggling all
 				groupCheckboxes: true
 			};
