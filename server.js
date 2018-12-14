@@ -242,7 +242,9 @@ async function nyYellowCabs(stationId) {
 	  z.zone_name, 
 	  z.borough,
 	  IFNULL(p.nb_pickup, 0)  nb_pickup,
-	  IFNULL(d.nb_dropoff, 0) nb_dropoff
+	  IFNULL(d.nb_dropoff, 0) nb_dropoff,
+	  IFNULL(d.nb_dropoff, 0) - IFNULL(p.nb_pickup, 0) diff_dropoff,
+	  IFNULL(p.nb_pickup, 0) - IFNULL(d.nb_dropoff, 0) diff_pickup
 	FROM \`bigquery-public-data.new_york_taxi_trips.taxi_zone_geom\` z
 	LEFT JOIN (
 	  SELECT 
@@ -284,7 +286,9 @@ async function nyYellowCabs(stationId) {
 				"id" : z_id,
 				"name" : z_name,
 				"nb_pickup" : r_nbpickup,
-				"nb_dropoff" : r_nbdropoff
+				"nb_dropoff" : r_nbdropoff,
+				"diff_dropoff" : row["diff_dropoff"],
+				"diff_pickup" : row["diff_pickup"]			
 			},
 			"geometry" : JSON.parse(z_geom)
 		});

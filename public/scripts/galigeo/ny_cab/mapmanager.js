@@ -11,15 +11,18 @@
 		
 		this._colors = {
 			pickup : ['#f1eef6', '#d7b5d8', '#df65b0', '#dd1c77', '#980043'],
-			dropoff : ['#ffffcc', '#a1dab4', '#41b6c4', '#2c7fb8','#253494']
+			dropoff : ['#ffffcc', '#a1dab4', '#41b6c4', '#2c7fb8','#253494'],
+			diff: ['#ca0020', '#f4a582', '#f7f7f7', '#92c5de', '#0571b0']
 		};
 		
 		this._cabZones = {
 			pickup : {
-				layer: L.mapbox.featureLayer()
+				layer: L.mapbox.featureLayer(),
+				diffLayer: L.mapbox.featureLayer()
 			},
 			dropoff : {
-				layer: L.mapbox.featureLayer()
+				layer: L.mapbox.featureLayer(),
+				diffLayer: L.mapbox.featureLayer()				
 			}
 		};
 		this.setupMap();
@@ -65,6 +68,18 @@
 						self._map.removeControl(self._cabZones.pickup.legendCtrl);
 					}
 				});
+			this._cabZones.pickup.diffLayer
+				.on('add', function(l){
+					if (typeof(self._cabZones.pickup.diffLegendCtrl) !== 'undefined') {
+						self._cabZones.pickup.diffLegendCtrl.addTo(self._map);
+					}
+				})
+				.on('remove', function(l){
+					if (typeof(self._cabZones.pickup.diffLegendCtrl) !== 'undefined') {
+						self._map.removeControl(self._cabZones.pickup.diffLegendCtrl);
+					}
+				});
+			
 			this._cabZones.dropoff.layer
 				.on('add', function(l){
 					console.log('dropoff layer added to map');
@@ -78,20 +93,36 @@
 						self._map.removeControl(self._cabZones.dropoff.legendCtrl);
 					}
 				});
+			this._cabZones.dropoff.diffLayer
+				.on('add', function(l){
+					if (typeof(self._cabZones.dropoff.diffLegendCtrl) !== 'undefined') {
+						self._cabZones.dropoff.diffLegendCtrl.addTo(self._map);
+					}
+				})
+				.on('remove', function(l){
+					if (typeof(self._cabZones.dropoff.diffLegendCtrl) !== 'undefined') {
+						self._map.removeControl(self._cabZones.dropoff.diffLegendCtrl);
+					}
+				});
 				
 			var overlayMaps = {
 				"Pickup & DropOff": {
 					"Pickup Areas" : this._cabZones.pickup.layer,
 					"DropOff Areas" : this._cabZones.dropoff.layer
+				},
+				"Pickup vs DropOff": {
+					"Pickup - DropOff" : this._cabZones.pickup.diffLayer,
+					"DropOff - Pickup" : this._cabZones.dropoff.diffLayer
 				}
+
 			};
 			var lgOptions = {
 				// Make the "Landmarks" group exclusive (use radio inputs)
-				exclusiveGroups: ["Pickup & DropOff"],
+				exclusiveGroups: ["Pickup & DropOff","Pickup vs DropOff"],
 				// Show a checkbox next to non-exclusive group labels for toggling all
 				groupCheckboxes: true
 			};
-			this._cabZones.pickup.layer.addTo(this._map);
+			//this._cabZones.pickup.layer.addTo(this._map);
 			//this._cabZones.dropoff.layer.addTo(this._map);
 			L.control.groupedLayers({}, overlayMaps,lgOptions).addTo(this._map);
 			new L.control.zoom({
@@ -129,7 +160,25 @@
 			var self = this;
 			self._cabZones.data = turf.featureCollection(data.features);
 			self._cabZones.pickup.classifier = this.getDataClassifier(self._cabZones.data, this._colors.pickup, 'nb_pickup');
+			self._cabZones.pickup.diffClassifier = this.getDataClassifier(self._cabZones.data, this._colors.diff, 'diff_pickup');
 			var pickupGeoJSON = JSON.parse(JSON.stringify(self._cabZones.data));
+			self.buildLayer(self._cabZones.pickup.layer, pickupGeoJSON, self._cabZones.pickup.classifier, 'nb_pickup');
+			self._cabZones.pickup.legendCtrl = self.getLegend(self._cabZones.pickup.classifier, 'Pick Up');
+			pickupGeoJSON = JSON.parse(JSON.stringify(self._cabZones.data));
+			self.buildLayer(self._cabZones.pickup.diffLayer, pickupGeoJSON, self._cabZones.pickup.diffClassifier, 'diff_pickup');
+			self._cabZones.pickup.diffLegendCtrl = self.getLegend(self._cabZones.pickup.diffClassifier, 'Pickup - DropOff');
+			
+			self._cabZones.dropoff.classifier = this.getDataClassifier(self._cabZones.data, this._colors.dropoff, 'nb_dropoff');
+			self._cabZones.dropoff.diffClassifier = this.getDataClassifier(self._cabZones.data, this._colors.diff, 'diff_dropoff');
+			var dropoffGeoJSON = JSON.parse(JSON.stringify(self._cabZones.data));
+			self.buildLayer(self._cabZones.dropoff.layer, dropoffGeoJSON, self._cabZones.pickup.classifier, 'nb_pickup');
+			self._cabZones.dropoff.legendCtrl = self.getLegend(self._cabZones.dropoff.classifier, 'Pick Up');
+			dropoffGeoJSON = JSON.parse(JSON.stringify(self._cabZones.data));
+			self.buildLayer(self._cabZones.dropoff.diffLayer, dropoffGeoJSON, self._cabZones.dropoff.diffClassifier, 'diff_dropoff');
+			self._cabZones.dropoff.diffLegendCtrl = self.getLegend(self._cabZones.dropoff.diffClassifier, 'DropOff - Pickup');
+			
+
+			/*
 			self.applyClassifier(pickupGeoJSON.features, self._cabZones.pickup.classifier, 'nb_pickup');
 			self._cabZones.pickup.layer.setGeoJSON(pickupGeoJSON);
 			self._cabZones.pickup.layer.eachLayer(function(l){
@@ -168,7 +217,29 @@
 			
 			self._cabZones.dropoff.legendCtrl = self.getLegend(self._cabZones.dropoff.classifier, 'Drop Off');
 			//self._cabZones.dropoff.legendCtrl.addTo(self._map);
-			self._map.fitBounds(self._cabZones.pickup.layer.getBounds());
+			*/
+			self._cabZones.pickup.diffLayer.addTo(self._map);
+			self._cabZones.pickup.diffLegendCtrl.addTo(self._map);
+			self._map.fitBounds(self._cabZones.pickup.diffLayer.getBounds());
+		},
+		buildLayer: function(layer, geojson, classifier, prop) {
+			var self = this;
+			this.applyClassifier(geojson.features, classifier, prop);
+			layer.setGeoJSON(geojson);
+			layer.eachLayer(function(l){
+				l
+					.on('mouseover', function(e){
+						console.log('mouse over', e);
+						self.highlightFeature(e.target, classifier, prop);
+						e.target.openTooltip();
+					})
+					.on('mouseout', function(e){
+						console.log('mouse over', e);
+						self.resetHighlightFeature(e.target, classifier, prop);
+						e.target.closeTooltip();
+					});
+				l.bindTooltip(self.getTooltip(l), {direction: 'top'});
+			});
 		},
 		buildLegendContent:function(classifier, title) {
 			var rangeColors = classifier.range(),
