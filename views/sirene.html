@@ -18,7 +18,7 @@
 
 		<script type="module" src="/scripts/galigeo/sirene/sirene.js"></script>
 		
-		<link rel="stylesheet" type="text/css" href="/styles/materializecss/materialize.css" />
+		<link rel="stylesheet" type="text/css" href="/styles/materializecss/css/materialize.css" media="screen,projection"/>
 
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	</head>
@@ -29,10 +29,10 @@
 					<a href="../" class="brand-logo" style="margin-left: 15px;"> <i class="material-icons">arrow_back</i> SIRENE</a>
 				</div>				
 			</nav>
-			<ul class="sidenav sirene-side-panel">
-				<li><a href="#!"><i class="material-icons">cloud</i>SIRENE search</a></li>
-				<li>
-					<div class="card-panel">
+			<span class="sidenav sirene-side-panel">
+				<div class="card-panel">
+					<div class="card-content">
+						<h6 class="card-title">SIRENE Explorer</h6>
 						<form class="col">
 							<div class="row hide">
 								<div class="col s12">
@@ -57,19 +57,25 @@
 								</div>
 							</div>
 						</form>
-
 					</div>
-				</li>
-			</ul>
-			<div class="sirene-data-panel" style=" ">
+				</div>
+			</span>
+			<div id="sirenedatapanel" class="sirene-data-panel sirene-data-panel-expanded hide" style=" ">
 				<div class="card-panel" style=" padding: 10px; margin: 0px; ">
-			        <span class="">Put result data table here</span>
+ 					<div class="data-panel-header teal">
+ 						<div class="data-panel-header-title white-text" >Search results</div>
+ 						<div class="collapser white-text">
+	 						<i class="Small material-icons">expand_more</i>
+	 					</div>
+ 					</div>
+					<div id="datapanelcontent" class="data-panel-content">
+					</div>
 				</div>
 			</div>
 		</div>
 		<div id="map"></div>
 		<!-- Compiled and minified JavaScript -->
-		<script src="/styles/materializecss/materialize.js"></script>
+		<script src="/styles/materializecss/js/materialize.js"></script>
 
 	</body>
 	<script>

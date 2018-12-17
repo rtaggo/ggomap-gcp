@@ -9,10 +9,31 @@
 		this.searched = {
 			layer: L.mapbox.featureLayer()
 		};
-		this.setupMap();
+		this.init();
 	};
 
 	GGO.MapManager.prototype = {
+		init:function(){
+			this.setupListeners();
+			this.setupMap();
+		},
+		setupListeners:function(){
+			var self = this;				
+			GGO.EventBus.addEventListener('sirenedatapaneheightchanged', function(e) {
+				var data = e.target;
+				console.log('Panel size changed', data);
+				//smallmap
+				self.changeMapSize(data.isExpanded);
+			});
+		},
+		changeMapSize(isExpanded) {
+			if (isExpanded) {
+				$('#'+this._options.mapDivId).addClass('smallmap');
+			} else {
+				$('#'+this._options.mapDivId).removeClass('smallmap');
+			}
+			this._map.invalidateSize();
+		},
 		setupMap: function() {
 			var self = this;
 			var stamen_tonerLite = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
@@ -44,6 +65,7 @@
 			var self = this;
 			self.searched.geojson = response;
 			$.each(self.searched.geojson.features, function(idx, val){
+				val.properties['isVisible'] = true;
 				val.properties['marker-size'] = 'small';
 				var desc = '<span class="ttip-title">' + val.properties.name + '</span><br />';
 				var tbl = '<table>';
@@ -65,6 +87,49 @@
 				self._map.addLayer(self.searched.layer);
 			}
 			self._map.fitBounds(self.searched.layer.getBounds());
+			self.buildDataTableContent(self.searched.layer.getLayers());
+		},
+		buildDataTableContent: function(layers){
+			var self = this;
+			var ctnr = $('#datapanelcontent').empty();
+			var globalOtherActionsIcon = $('<i class="more_action material-icons">arrow_drop_down</i>');
+			var tbl = $('<table></table>')
+				.append($('<thead></thead>')
+					.append($('<tr></tr>')
+						.append($('<th></th>'))
+						.append($('<th>SIRET</th>'))
+						.append($('<th>NOM</th>'))
+						.append($('<th>Adresse</th>'))
+						.append($('<th></th>').append(globalOtherActionsIcon))));
+
+			var tblBody = $('<tbody></tbody>');
+			$.each(layers, function(idxL, valL){
+				tblBody.append(self.buildLayerTableRow(valL));
+			});
+			ctnr.append(tbl.append(tblBody));
+
+			$('#sirenedatapanel').removeClass('hide');
+			self.changeMapSize(true);
+		},
+		buildLayerTableRow: function(layer){
+			var mkId = layer.feature.properties['siret'];
+				var chkMkId = 'chk-' + mkId;
+				var chk = $('<input type="checkbox"/>')
+					.attr('checked', layer.feature.properties['isVisible']);
+				
+				var chkElt = $('<label></label>').append(chk)
+					.append($('<span>&nbsp;</span>'));
+				
+				var addr = layer.feature.properties['adresse'] + ', ' + layer.feature.properties['codepostal'];
+				addr += layer.feature.properties['commune'] + ', ' + layer.feature.properties['departement']
+
+
+				return $('<tr><tr/>')
+						.append($('<td></td>').append(chkElt))
+						.append($('<td></td>').append(mkId))
+						.append($('<td></td>').append(layer.feature.properties['name']))
+						.append($('<td></td>').append(addr))
+						.append($('<td><i class="more_action material-icons">arrow_drop_down</i></td>'));
 		}
 	};
 })();

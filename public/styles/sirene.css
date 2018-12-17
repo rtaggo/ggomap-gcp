@@ -1,10 +1,21 @@
+.mcss {
+	line-height: 1.5;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    font-weight: normal;
+    color: rgba(0,0,0,0.87)
+}
+
 #map {
 	left: 300px;
 }
 
+.smallmap {
+	bottom:276px !important;
+}
+
 .sirene-side-panel {
 	transform: translateX(0%) !important;
-	top: 70px !important;
+	top: 64px !important;
 }
 
 .sirene-data-panel {
@@ -12,14 +23,76 @@
 	bottom: 0px; 
 	left: 300px; 
 	right: 0px; 
-    height: 300px;
+    height: 24px;
 	z-index: 2000;
 }
 
+.sirene-data-panel-expanded {
+    height: 300px !important;
+}
+
+.sirene-data-panel .card-panel {
+	padding: 10px;
+    margin: 0px;
+    height: inherit;
+}
+
+.sirene-data-panel.card-content {
+    padding: 0px !important;
+    font-size: smaller;
+}
+
+.data-panel-header {
+	position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 24px;
+}
+
+.data-panel-header-title {
+	line-height: 24px;
+    margin-left: 5px;
+}
+
+.collapser{
+	position: absolute;
+    right: 5px;
+    top: -5px;
+}
+
+.collapser i {
+	cursor : pointer;
+}
+
+.more_action {
+	cursor : pointer;
+}
+
+.data-panel-content {
+	position: absolute;
+    top: 24px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+	max-height: 264px;
+    overflow: auto;    
+}
+
+.data-panel-content table {
+	font-size: smaller !important;
+}
+.data-panel-content td, .data-panel-content th {
+	padding: 0px 5px !important;
+}
+
 .sidenav .card-panel {
-	padding: 10px !important;
+	padding: 0px !important;
+	margin: 0px !important;
 	line-height: 14px !important;
 }
+
+
 
 .infowindow-field {
 	font-weight: bold;
