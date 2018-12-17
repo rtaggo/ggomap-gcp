@@ -49,6 +49,7 @@
 	GGO.EVENTS = {
 		APPISREDAY: "appisready",
 		GETSTATIONDETAILS: "getstationdetails",
+		DOSIRENESEARCH: "dosirenesearch",
 	}
 })();
 /* end GGO: put code below in galigeo.js */

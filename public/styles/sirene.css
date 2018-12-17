@@ -1,5 +1,5 @@
 #map {
-	left: 305px;
+	left: 300px;
 }
 
 .sirene-side-panel {
@@ -7,7 +7,31 @@
 	top: 70px !important;
 }
 
+.sirene-data-panel {
+	position: fixed; 
+	bottom: 0px; 
+	left: 300px; 
+	right: 0px; 
+    height: 300px;
+	z-index: 2000;
+}
+
 .sidenav .card-panel {
 	padding: 10px !important;
 	line-height: 14px !important;
+}
+
+.infowindow-field {
+	font-weight: bold;
+	text-align: right;
+}
+
+/*
+	override some mapbox styles
+*/
+.leaflet-popup-content {
+	padding: 10px !important;
+    line-height: 1.3em !important;
+    font-size: inherit !important;
+    min-width: 250px !important;
 }

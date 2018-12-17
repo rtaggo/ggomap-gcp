@@ -296,6 +296,12 @@ async function nyYellowCabs(stationId) {
 	return res;
 };
 
+async function doSearchSirene(searchTerm) {
+	const sireneQuery = require('./api/sirene/sirene-sql.js');
+
+	return sireneQuery.search(searchTerm);
+};
+
 // [START enable_parser]
 app.use(bodyParser.urlencoded({ extended: true }));
 // [END enable_parser]
@@ -314,8 +320,11 @@ app.get('/sirene', (req, res) => {
 
 app.get('/sirene/search', (req, res) => {
 	console.log('/sirene/search ' + JSON.stringify(req.query));
-	res.header('Content-Type', 'application/json');    
-	res.json(JSON.stringify(req.paramy));
+	doSearchSirene(req.query.searchTerm).then(resSirene => {
+		res.header('Content-Type', 'application/json'); 
+		res.json(resSirene);
+	});
+	//res.json(JSON.stringify(req.paramy));
 });
 
 app.get('/bikes', (req, res) => {

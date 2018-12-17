@@ -34,13 +34,13 @@
 				<li>
 					<div class="card-panel">
 						<form class="col">
-							<div class="row">
+							<div class="row hide">
 								<div class="col s12">
 									<label>Classe</label>
 									<select id="sirene-class-select" class="">
-										<option value="47.11">Alimentaire</option>
-										<option value="47.41">Ordinateur, périphérique, logiciel</option>
-										<option value="47.54">Electroménager</option>
+										<option value="47.11,47.2">Alimentaire</option>
+										<option value="47.4">Ordinateur, périphérique, logiciel</option>
+										<option value="47.5">Electroménager</option>
 									</select>	
 								</div>
 							</div>
@@ -52,7 +52,7 @@
 							<div class="row">
 								<div class="col s12">
 									<div class="center-align">
-										<a class="waves-effect waves-light btn-small"><i class="material-icons right">search</i>Rechercher</a>
+										<a class="waves-effect waves-light btn-small" id="search_btn"><i class="material-icons right">search</i>Rechercher</a>
 									</div>
 								</div>
 							</div>
@@ -61,6 +61,11 @@
 					</div>
 				</li>
 			</ul>
+			<div class="sirene-data-panel" style=" ">
+				<div class="card-panel" style=" padding: 10px; margin: 0px; ">
+			        <span class="">Put result data table here</span>
+				</div>
+			</div>
 		</div>
 		<div id="map"></div>
 		<!-- Compiled and minified JavaScript -->
