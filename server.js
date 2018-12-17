@@ -308,6 +308,16 @@ app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, '/views/index.html'));
 });
 
+app.get('/sirene', (req, res) => {
+	res.sendFile(path.join(__dirname, '/views/sirene.html'));
+});
+
+app.get('/sirene/search', (req, res) => {
+	console.log('/sirene/search ' + JSON.stringify(req.query));
+	res.header('Content-Type', 'application/json');    
+	res.json(JSON.stringify(req.paramy));
+});
+
 app.get('/bikes', (req, res) => {
 	res.sendFile(path.join(__dirname, '/views/bikes.html'));
 });

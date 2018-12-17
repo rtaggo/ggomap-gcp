@@ -1,0 +1,13 @@
+#map {
+	left: 305px;
+}
+
+.sirene-side-panel {
+	transform: translateX(0%) !important;
+	top: 70px !important;
+}
+
+.sidenav .card-panel {
+	padding: 10px !important;
+	line-height: 14px !important;
+}
