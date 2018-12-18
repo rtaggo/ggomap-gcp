@@ -1,7 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<title>SIRENE</title>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
 		<link rel="stylesheet" type="text/css" href="/styles/galigeo.css" />
 		<link rel="stylesheet" type="text/css" href="/styles/sirene.css" />
 	
@@ -18,17 +22,90 @@
 
 		<script type="module" src="/scripts/galigeo/sirene/sirene.js"></script>
 		
-		<link rel="stylesheet" type="text/css" href="/styles/materializecss/css/materialize.css" media="screen,projection"/>
-
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="/styles/slds/assets/styles/salesforce-lightning-design-system-vf.css" />
 	</head>
 	<body>
-		<div class="mcss">
-			<nav>
-				<div class="nav-wrapper">
-					<a href="../" class="brand-logo" style="margin-left: 15px;"> <i class="material-icons">arrow_back</i> SIRENE</a>
-				</div>				
-			</nav>
+		<div class="ggoslds">
+			<header class="slds-global-header_container">
+				<div class="slds-global-header slds-grid slds-grid_align-spread">
+					<div class="slds-global-header__item">
+						<div class="slds-text-heading_large">
+						<span id="backToDemoIcon" class="slds-icon_container slds-icon-utility-back" title="Back to demo list" style="cursor: pointer;">
+							<svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true">
+								<use xlink:href="/styles/slds/assets/icons/utility-sprite/svg/symbols.svg#back"></use>
+							</svg>
+							<span class="slds-assistive-text">Retour</span>
+						</span>
+						</a> SIRENE</div>
+					</div>
+				
+				</div>
+			</header>
+			<div class="slds-panel slds-size_medium slds-panel_docked slds-panel_docked-left slds-is-open" aria-hidden="false" style="z-index:2000;">
+				<div class="slds-panel__header">
+					<h2 class="slds-panel__header-title slds-text-heading_small slds-truncate" title="Panel Header">SIRENE Explorer</h2>					
+				</div>
+				<div class="slds-panel__body">
+					<div class="slds-form slds-form_stacked">
+						<div class="slds-form-element">
+							<label class="slds-form-element__label" for="search_term"> <abbr class="slds-required" title="required">* </abbr> Rechercher des points de vente</label>
+							<div class="slds-form-element__control">
+								<input type="text" id="search_term" class="slds-input" required="" aria-describedby="search_term_form-error"/>
+							</div>
+							<div class="slds-form-element__help slds-hide" id="search_term_form-error">La recherche de chaîne vide est interdite.</div>
+						</div>
+						<div class="slds-form-element" style="text-align: center;">
+							<button id="search_btn" class="slds-button slds-button_neutral">Rechercher
+								<svg class="slds-button__icon slds-button__icon_right" aria-hidden="true">
+									<use xlink:href="/styles/slds/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
+								</svg>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="data-composer" class="slds-hide" style="position: absolute;bottom: 0; right: 0; left:300px;">
+				<div id="recordsDockerContainer" class="slds-docked_container " style="z-index: 1000;padding: 0px;z-index:2000;">
+					<div id="recordsDocker" class="slds-docked-composer slds-grid slds-grid--vertical slds-is-open" role="dialog" aria-labelledby="recordsDocker-heading-01" aria-describedby="recordsDocker-content-01">
+						<div class="slds-docked-composer__header slds-grid slds-shrink-none">
+							<div class="slds-media slds-media--center">
+								<div class="slds-media__figure slds-m-right_x-small">
+									<span class="slds-icon_container">
+										<svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/styles/slds/assets/icons/utility-sprite/svg/symbols.svg#database" />
+										</svg>
+									</span>
+								</div>
+								<div class="slds-media__body">
+									<h2 id="recordsDocker-heading-01">Data Table</h2>
+								</div>
+							</div>
+							<div class="slds-col--bump-left">
+								<div class="slds-col_bump-left slds-shrink-none">
+									<button  id="minimizeExpandRecordsDockerBtn" class="slds-button slds-button_icon slds-button_icon" title="Minimize window">
+										<svg class="slds-button__icon" aria-hidden="true">
+											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/styles/slds/assets/icons/utility-sprite/svg/symbols.svg#chevrondown" />
+										</svg>
+										<span class="slds-assistive-text">Minimize Composer Panel</span>
+									</button>
+									<button id="closeRecordsDockerBtn" class="slds-button slds-button_icon slds-button_icon slds-hide" title="Close">
+										<svg class="slds-button__icon" aria-hidden="true">
+											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/styles/slds/assets/icons/utility-sprite/svg/symbols.svg#close" />
+										</svg>
+										<span class="slds-assistive-text">Close Composer Panel</span>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="slds-docked-composer__body" id="recordsDocker-content-01" style="background-color: #f7f9fb;">
+							<div id="recordsContent" class="slds-scrollable--y" style="padding: 5px; max-height: 310px;">
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--
 			<span class="sidenav sirene-side-panel">
 				<div class="card-panel">
 					<div class="card-content">
@@ -72,17 +149,22 @@
 					</div>
 				</div>
 			</div>
+		-->
 		</div>
 		<div id="map"></div>
-		<!-- Compiled and minified JavaScript -->
-		<script src="/styles/materializecss/js/materialize.js"></script>
 
 	</body>
 	<script>
 		var self = this;
 		$(document).ready(function(e){
 			console.log(' >> document is ready');
-			$('#sirene-class-select').formSelect();
+			$('#backToDemoIcon').click(function(e){
+				window.location = '../';
+			});
+			var wWidth = $(window).width();
+			var dockerW = (wWidth-300) + 'px';
+
+			$('#recordsDocker').css('width', dockerW);
 			self.galigeo = new GGO.GGOApp ();
 			GGO.EventBus.dispatch(GGO.EVENTS.APPISREADY);
 		});

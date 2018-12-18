@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SIRENE</title>
+		<link rel="stylesheet" type="text/css" href="/styles/galigeo.css" />
+		<link rel="stylesheet" type="text/css" href="/styles/sirene.css" />
+	
+		<script src="/scripts/vendors/jquery/jquery-3.3.1.min.js"></script>
+		<script src="/scripts/vendors/d3js/d3.min.js"></script>
+
+		<script src='/scripts/vendors/mapbox/V3.1.1/mapbox.js'></script>
+		<link rel="stylesheet" type="text/css" href="/scripts/vendors/mapbox/V3.1.1/mapbox.css" />
+
+		<script src='/scripts/vendors/mapbox/plugins/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.min.js'></script>
+		<link rel="stylesheet" type="text/css" href="/scripts/vendors/mapbox/plugins/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.min.css" />
+
+		<script src='/scripts/vendors/turfjs/turf.min.js'></script>
+
+		<script type="module" src="/scripts/galigeo/sirene/sirene.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="/styles/materializecss/css/materialize.css" media="screen,projection"/>
+
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	</head>
+	<body>
+		<div class="mcss">
+			<nav>
+				<div class="nav-wrapper">
+					<a href="../" class="brand-logo" style="margin-left: 15px;"> <i class="material-icons">arrow_back</i> SIRENE</a>
+				</div>				
+			</nav>
+			<span class="sidenav sirene-side-panel">
+				<div class="card-panel">
+					<div class="card-content">
+						<h6 class="card-title">SIRENE Explorer</h6>
+						<form class="col">
+							<div class="row hide">
+								<div class="col s12">
+									<label>Classe</label>
+									<select id="sirene-class-select" class="">
+										<option value="47.11,47.2">Alimentaire</option>
+										<option value="47.4">Ordinateur, périphérique, logiciel</option>
+										<option value="47.5">Electroménager</option>
+									</select>	
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s12">
+									<input placeholder="Rechercher" id="search_term" type="text" class="validate">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s12">
+									<div class="center-align">
+										<a class="waves-effect waves-light btn-small" id="search_btn"><i class="material-icons right">search</i>Rechercher</a>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</span>
+			<div id="sirenedatapanel" class="sirene-data-panel sirene-data-panel-expanded hide" style=" ">
+				<div class="card-panel" style=" padding: 10px; margin: 0px; ">
+ 					<div class="data-panel-header teal">
+ 						<div class="data-panel-header-title white-text" >Search results</div>
+ 						<div class="collapser white-text">
+	 						<i class="Small material-icons">expand_more</i>
+	 					</div>
+ 					</div>
+					<div id="datapanelcontent" class="data-panel-content">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="map"></div>
+		<!-- Compiled and minified JavaScript -->
+		<script src="/styles/materializecss/js/materialize.js"></script>
+
+	</body>
+	<script>
+		var self = this;
+		$(document).ready(function(e){
+			console.log(' >> document is ready');
+			$('#sirene-class-select').formSelect();
+			self.galigeo = new GGO.GGOApp ();
+			GGO.EventBus.dispatch(GGO.EVENTS.APPISREADY);
+		});
+	</script>
+</html>

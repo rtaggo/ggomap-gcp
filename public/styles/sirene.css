@@ -7,10 +7,23 @@
 
 #map {
 	left: 300px;
+	top:50px;
 }
 
 .smallmap {
 	bottom:276px !important;
+}
+
+
+.ggoslds .slds-panel_docked-left {
+	top: 50px !important;
+    bottom: 0px !important;
+    position: fixed !important;
+    width: 300px !important;
+}
+
+.ggoslds .slds-docked-composer.slds-is-open {
+    height: 350px !important;
 }
 
 .sirene-side-panel {
@@ -90,6 +103,21 @@
 	padding: 0px !important;
 	margin: 0px !important;
 	line-height: 14px !important;
+}
+
+.mcss [type="checkbox"] + span:not(.lever) {
+    padding-left: 0px !important;
+    height: 18px !important;
+    line-height: 18px !important;
+ }
+
+.mcss [type="checkbox"]:checked + span:not(.lever):before {
+    width: 8px !important;
+    height: 14px !important;
+}
+.mcss [type="checkbox"] + span:not(.lever):before, .mcss [type="checkbox"]:not(.filled-in) + span:not(.lever):after {
+    width: 14px !important;
+    height: 14px !important;
 }
 
 
