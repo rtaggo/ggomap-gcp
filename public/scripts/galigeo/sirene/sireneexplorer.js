@@ -20,7 +20,7 @@
 		},
 		_doSearch: function(searchTerm) {
 			var self = this;
-			var sUrl = self._options.searchsireneurl + '?searchTerm='+searchTerm;
+			var sUrl = self._options.searchsireneurl + '?searchTerm='+searchTerm;			
 			$.ajax({
 				type: 'GET',
 				url: sUrl,

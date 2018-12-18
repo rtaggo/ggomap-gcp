@@ -10,8 +10,12 @@
 			this.setupListeners();
 		}, 
 		setupListeners: function() {
+			$(document).keypress(function(e) {
+				if(e.which == 13) {
+					$('#search_btn').trigger('click');
+				}
+			});
 			$('#search_btn').click(function(){
-				console.log('Clicked on search button');
 				var classeSirene = $('#sirene-class-select').val();
 				var searchInput = $('#search_term');
 				var sTerm = searchInput.val().trim();
@@ -27,21 +31,10 @@
 				var data2Send = {
 					searchTerm: sTerm
 				};
+				$('#search-infos').addClass('slds-hide');
+				$('#search-spinner').removeClass('slds-hide');
 				GGO.EventBus.dispatch(GGO.EVENTS.DOSIRENESEARCH, data2Send);
 			});
-			/*
-			$('.data-panel-header i').click(function(e){
-				$('.sirene-data-panel').toggleClass('sirene-data-panel-expanded');
-				var dataPanelIsExpanded = $('.sirene-data-panel').hasClass('sirene-data-panel-expanded');
-				var ic = dataPanelIsExpanded ?'expand_more':'expand_less';
-				$(this).text(ic);
-				var data2Send = {
-					isExpanded: dataPanelIsExpanded
-				};
-				GGO.EventBus.dispatch('sirenedatapaneheightchanged', data2Send);
-
-			});
-			*/
 			$('#minimizeExpandRecordsDockerBtn').click(function(e){
 				var docker = $('#recordsDocker');
 				var iconPath = '/styles/slds/assets/icons/utility-sprite/svg/symbols.svg#chevrondown';
@@ -56,6 +49,10 @@
 					isExpanded: docker.hasClass('slds-is-open')
 				};
 				GGO.EventBus.dispatch('sirenedatapaneheightchanged', data2Send);
+			});
+			GGO.EventBus.addEventListener(GGO.EVENTS.SIRENESEARCHCOMPLETED, function(e) {
+				$('#search-spinner').addClass('slds-hide');
+				$('#search-infos').removeClass('slds-hide');
 			});
 		}
 	};

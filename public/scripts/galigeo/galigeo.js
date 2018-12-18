@@ -50,6 +50,7 @@
 		APPISREDAY: "appisready",
 		GETSTATIONDETAILS: "getstationdetails",
 		DOSIRENESEARCH: "dosirenesearch",
+		SIRENESEARCHCOMPLETED : "sirenesearchcompleted"
 	}
 })();
 /* end GGO: put code below in galigeo.js */
