@@ -73,37 +73,44 @@
 			self.searched.geojson = response;
 			self.searched.pdvs = {};
 			var regionsValuesSet = new Set();
-			$.each(self.searched.geojson.features, function(idx, val){
-				val.properties['isVisible'] = true;
-				val.properties['marker-size'] = 'small';
-				var desc = '<span class="ttip-title">' + val.properties.name + '</span><br />';
-				var tbl = '<table>';
-				tbl += '<tr><td class="infowindow-field">SIRET : </td><td>' + val.properties.siret +'</td></tr>';
-				var addr = val.properties.adresse + '<br />';
-				addr += val.properties.codepostal + ' - ' + val.properties.commune + '<br />';
-				addr += val.properties.departement;								
-				
-				tbl += '<tr style="vertical-align:top;"><td  class="infowindow-field">Adresse : </td><td>' + addr +'</td></tr>';
-				tbl += '</table>';
-				
-				desc += tbl;
-				val.properties['description'] = desc;
-				regionsValuesSet.add(val.properties.region);
-			});
+			if (self.searched.geojson.features.length>0) {
+				$.each(self.searched.geojson.features, function(idx, val){
+					val.properties['isVisible'] = true;
+					val.properties['marker-size'] = 'small';
+					var desc = '<span class="ttip-title">' + val.properties.name + '</span><br />';
+					var tbl = '<table>';
+					tbl += '<tr><td class="infowindow-field">SIRET : </td><td>' + val.properties.siret +'</td></tr>';
+					var addr = val.properties.adresse + '<br />';
+					addr += val.properties.codepostal + ' - ' + val.properties.commune + '<br />';
+					addr += val.properties.departement;								
+					
+					tbl += '<tr style="vertical-align:top;"><td  class="infowindow-field">Adresse : </td><td>' + addr +'</td></tr>';
+					tbl += '</table>';
+					
+					desc += tbl;
+					val.properties['description'] = desc;
+					regionsValuesSet.add(val.properties.region);
+				});
 
-			self._filtersProps.regions.values = Array.from(regionsValuesSet).sort();
-			self._filtersProps.regions.filteredValues = new Set(regionsValuesSet);
+				self._filtersProps.regions.values = Array.from(regionsValuesSet).sort();
+				self._filtersProps.regions.filteredValues = new Set(regionsValuesSet);
 
-			self.searched.layer.setGeoJSON(self.searched.geojson);
-			self.searched.layer.eachLayer(function(lyr) {
-				self.searched.pdvs[lyr.feature.properties.siret] = lyr;
-			});
+				self.searched.layer.setGeoJSON(self.searched.geojson);
+				self.searched.layer.eachLayer(function(lyr) {
+					self.searched.pdvs[lyr.feature.properties.siret] = lyr;
+				});
 
-			if (!self._map.hasLayer(self.searched.layer)) {
-				self._map.addLayer(self.searched.layer);
+				if (!self._map.hasLayer(self.searched.layer)) {
+					self._map.addLayer(self.searched.layer);
+				}
+				self._map.fitBounds(self.searched.layer.getBounds());
+				self.buildDataTableContent(self.searched.geojson.features);
+			} else {
+				$('#recordsContent').empty();
 			}
-			self._map.fitBounds(self.searched.layer.getBounds());
-			self.buildDataTableContent(self.searched.geojson.features);
+			$('#search-infos').empty()
+				.text(self.searched.geojson.features.length + ' élément(s) trouvé(s)')
+				.removeClass('slds-hide');
 			GGO.EventBus.dispatch(GGO.EVENTS.SIRENESEARCHCOMPLETED);
 		},		
 		buildDataTableContent: function(pdvs){

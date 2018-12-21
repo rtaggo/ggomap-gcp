@@ -20,10 +20,19 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@google-cloud/bigquery": "^2.0.3",
+    "@google-cloud/logging-winston": "^0.8.1",
+    "@google-cloud/pubsub": "0.20.1",
     "body-parser": "^1.18.3",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "express-winston": "2.5.0",
+    "nconf": "^0.10.0",
+    "safe-buffer": "^5.1.2",
+    "winston": "2.4.0",
+    "lodash": "4.17.11",
+    "mysql": "2.16.0"
   },
   "devDependencies": {
+    "@google-cloud/pubsub": "^0.22.0",
     "@google-cloud/nodejs-repo-tools": "1.4.17",
     "ava": "0.25.0"
   },

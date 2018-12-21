@@ -1,5 +1,18 @@
 'use strict';
 
+const Pubsub = require('@google-cloud/pubsub');
+//const config = require('../config');
+const logging = require('../../lib/logging');
+
+const topicName = 'pdvanalyzer-topic'; // config.get('TOPIC_NAME');
+
+const pubsub = new Pubsub({
+  projectId: 'ggo-background' //config.get('GCLOUD_PROJECT'),
+});
+
+const Buffer = require('safe-buffer').Buffer;
+
+
 async function _search(searchTerm) {
 	console.log(`[SIRENE-SQL Module] _search: : '${searchTerm}'`);
 	// Imports the Google Cloud client library
@@ -73,6 +86,115 @@ async function _search(searchTerm) {
 	*/
 };
 
+function insertNewJob(messageid) {
+	const extend = require('lodash').assign;
+	const mysql = require('mysql');
+	const config = require('../../config');
+
+	const dbconfig = {
+		"GCLOUD_PROJECT": "ggo-background",
+		"MYSQL_USER": "root",
+		"MYSQL_PASSWORD": "G@L1ge02018",
+		"INSTANCE_CONNECTION_NAME": "ggo-background:europe-west1:ggobgpdvanalyzer",
+		"DATABASE_NAME": "pdvanalyzerdb"
+	};
+
+	const options = {
+	  user: dbconfig.MYSQL_USER,
+	  password: dbconfig.MYSQL_PASSWORD,
+	  database: dbconfig.DATABASE_NAME,
+	};
+
+
+	/*
+	if (
+	  config.get('INSTANCE_CONNECTION_NAME') &&
+	  config.get('NODE_ENV') === 'production'
+	) {
+	  options.socketPath = `/cloudsql/${config.get('INSTANCE_CONNECTION_NAME')}`;
+	}
+	*/
+	//options.socketPath = `/cloudsql/${config.get('INSTANCE_CONNECTION_NAME')}`;
+	if ( process.env.NODE_ENV === 'production') {
+		options.socketPath = `/cloudsql/${dbconfig['INSTANCE_CONNECTION_NAME']}`;
+	}
+
+	const connection = mysql.createConnection(options);
+	let insertJob = `INSERT INTO jobs(messageid, status) VALUES ('${messageid}', 'waiting')`;
+
+	connection.query(insertJob, (err, res) => {
+		if (err) {
+			logging.error(`Failed to insert a new job for message id ${messageid}. ${err}`);
+			return;
+		}
+	});
+};
+
+function getTopic(cb) {
+	pubsub.createTopic(topicName, (err, topic) => {
+		// topic already exists.
+		if (err && err.code === 6) {
+			cb(null, pubsub.topic(topicName));
+			return;
+		}
+		cb(err, topic);
+	});
+}
+/**
+ * Publishes a message to a Cloud Pub/Sub Topic.
+
+ * @param {object} req Cloud Function request context.
+ * @param {object} req.body The request body.
+ * @param {string} req.body.topic Topic name on which to publish.
+ * @param {string} req.body.message Message to publish.
+ * @param {object} res Cloud Function response context.
+ */
+async function _publish (sirets, res) {
+	const dbTable = 'pdvanalyzer_' + Date.now();
+	const message = {
+		sirets: sirets
+	};
+
+	/*
+	const topicname = 'pdvanalyzer-topic';
+	// References an existing topic
+	const topic = pubsub.topic(topicname);
+	console.log(`Publishing message to topic ${topicname}`);
+	
+	
+	getTopic((err, topic) => {
+		if (err) {
+			logging.error('Error occurred while getting pubsub topic', err);
+			return;
+		}
+
+		logging.info(`Message info to send ${JSON.stringify(message)}`);
+
+		const publisher = topic.publisher();
+		publisher.publish(Buffer.from(JSON.stringify(message)), err => {
+		  if (err) {
+		    logging.error('Error occurred while queuing background task', err);
+		  } else {
+		    logging.info(`Queued for background processing`);
+		  }
+		});
+	});
+	*/
+	const dataBuffer = Buffer.from(JSON.stringify(message));
+
+	const msgId = await pubsub
+		.topic(topicName)
+		.publisher()
+		.publish(dataBuffer);
+	logging.info(`Message ${msgId} published.`);
+
+	insertNewJob(msgId);
+	logging.info(`New Job ${msgId} inserted in database.`);
+
+	return { table: dbTable, messageId: msgId};
+};
+
 module.exports = {
-	search: _search
+	search: _search,
+	publish: _publish
 };

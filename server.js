@@ -21,6 +21,8 @@ const bodyParser = require('body-parser');
 const path = require(`path`);
 //const {BigQuery} = require('@google-cloud/bigquery');
 
+const config = require('./config');
+
 const app = express();
 
 async function query() {
@@ -314,6 +316,7 @@ app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, '/views/index.html'));
 });
 
+/*
 app.get('/sirene', (req, res) => {
 	res.sendFile(path.join(__dirname, '/views/sirene.html'));
 });
@@ -326,6 +329,10 @@ app.get('/sirene/search', (req, res) => {
 	});
 	//res.json(JSON.stringify(req.paramy));
 });
+
+*/
+// SIRENE
+app.use('/sirene', require('./api/sirene/sirene-api'));
 
 app.get('/bikes', (req, res) => {
 	res.sendFile(path.join(__dirname, '/views/bikes.html'));
