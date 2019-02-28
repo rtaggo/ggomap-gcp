@@ -50,7 +50,8 @@
 		APPISREDAY: "appisready",
 		GETSTATIONDETAILS: "getstationdetails",
 		DOSIRENESEARCH: "dosirenesearch",
-		SIRENESEARCHCOMPLETED : "sirenesearchcompleted"
+		SIRENESEARCHCOMPLETED : "sirenesearchcompleted",
+		DOPOSANALYZER: "doposanalyzer",
 	}
 })();
 /* end GGO: put code below in galigeo.js */

@@ -331,6 +331,14 @@ app.get('/sirene/search', (req, res) => {
 });
 
 */
+
+// GEOSERVICE
+app.use('/geoservice', require('./api/geoservice/geoservice'));
+
+// INSEE
+//app.use('/insee', require('./api/insee/insee-api'));
+app.use('/insee', require('./api/insee/insee-api'));
+
 // SIRENE
 app.use('/sirene', require('./api/sirene/sirene-api'));
 

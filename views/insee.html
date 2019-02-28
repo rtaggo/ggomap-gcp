@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<title>INSEE</title>
+		<meta charset='utf-8' />
+		<meta http-equiv='x-ua-compatible' content='ie=edge' />
+		<meta name='viewport' content='width=device-width, initial-scale=1' />
+
+		<link rel='stylesheet' type='text/css' href='/styles/galigeo.css' />
+		<link rel='stylesheet' type='text/css' href='/styles/insee.css' />
+	
+		<script src='/scripts/vendors/jquery/jquery-3.3.1.min.js'></script>
+		<script src='/scripts/vendors/d3js/d3.min.js'></script>
+
+		<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.js'></script>
+		<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.css' rel='stylesheet' />
+
+
+		<script src='/scripts/vendors/turfjs/turf.min.js'></script>
+		<script src='/scripts/vendors/momentjs/moment-with-locales.min.js'></script>
+		<script src='/scripts/vendors/momentjs/moment-duration-format.js'></script>
+
+		<script type='module' src='/scripts/galigeo/insee/insee.js'></script>
+		
+		<link rel='stylesheet' type='text/css' href='/styles/slds/assets/styles/salesforce-lightning-design-system-vf.css' />
+
+		<style>
+
+		.legend {
+		    background-color: #fff !important;
+		    border-radius: 3px;
+		    bottom: 30px;
+		    box-shadow: 0 1px 2px rgba(0,0,0,0.10) !important;
+		    padding: 10px;
+		    position: absolute;
+		    right: 10px;
+		    z-index: 1;
+		    min-width: 80px;
+		}
+
+		/*
+		.legend {
+		    background-color: #fff !important;
+		    border-radius: 3px;
+		    bottom: 30px;
+		    box-shadow: 0 1px 2px rgba(0,0,0,0.10) !important;
+		    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+		    padding: 10px;
+		    position: absolute;
+		    right: 10px;
+		    z-index: 1;
+		    min-width: 80px;
+		}
+
+		.legend h4 {
+		    margin: 0 0 10px;
+		}
+
+		.legend div span {
+		    border-radius: 50%;
+		    display: inline-block;
+		    height: 10px;
+		    margin-right: 8px;
+		    width: 10px;
+		    float: unset;
+		}
+
+		.legend label {
+			float: unset;
+		    display: inline-block;
+		    font-size: 12px;
+		    line-height: 12px;
+		    vertical-align: middle;
+		}
+		*/
+
+		</style>
+	</head>
+	<body>
+		<div id='map'></div>
+		<div id='carreaux-switcher' class='ggoslds legend' style="bottom: unset; top: 110px;">
+			<div class="slds-text-heading_small">Couches</div>
+			<!--
+			<div>
+			  <input type="radio" id="carreaux_revenus" name="carreaux_layers" value="carreaux_revenus" checked>
+			  <label for="carreaux_revenus">Revenus</label>
+			</div>
+			<div>
+			  <input type="radio" id="carreaux_menage" name="carreaux_layers" value="carreaux_men">
+			  <label for="carreaux_menage" >Ménages</label>
+			</div>
+			-->
+			<fieldset class="slds-form-element slds-form-element_stacked">
+				<legend class="slds-form-element__legend slds-form-element__label">Isochrones</legend>
+				<div class="slds-form-element__control">
+					<div class="slds-checkbox">
+						<input type="checkbox" name="default" id="isochonesLayer" value="isochrones" />
+						<label class="slds-checkbox__label" for="isochonesLayer">
+							<span class="slds-checkbox_faux"></span>
+							<span class="slds-form-element__label">Isochrones</span>
+						</label>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset class="slds-form-element slds-form-element_stacked">
+				<legend class="slds-form-element__legend slds-form-element__label">Carreaux</legend>
+				<div class="slds-form-element__control">
+					<span class="slds-radio">
+						<input type="radio" id="carreaux_revenus" value="carreaux_revenus" name="carreaux_layers" checked />
+						<label class="slds-radio__label" for="carreaux_revenus">
+							<span class="slds-radio_faux"></span>
+							<span class="slds-form-element__label">Revenus</span>
+						</label>
+					</span>
+					<span class="slds-radio">
+						<input type="radio" id="carreaux_menage" value="carreaux_men" name="carreaux_layers" />
+						<label class="slds-radio__label" for="carreaux_menage">
+							<span class="slds-radio_faux"></span>
+							<span class="slds-form-element__label">Ménages</span>
+						</label>
+					</span>
+				</div>
+			</fieldset>
+
+		</div>
+		
+		<div id='carreaux-legend' class='legend' style="display:none; height: 130px;">
+		</div>
+		<div id="mainUIDiv" class='ggoslds'>
+			<div id="notifierContainer" class="slds-notify_container slds-hide">
+			</div>
+			<div class="slds-vertical-tabs ggo-vertical-tabs">
+				<ul class="slds-vertical-tabs__nav" role="tablist" aria-orientation="vertical" style="width:40px;">
+					<li class="slds-vertical-tabs__nav-item" title="Se localiser" role="presentation">
+						<a class="slds-vertical-tabs__link" href="javascript:void(0)" role="tab" tabindex="0" aria-selected="false" aria-controls="slds-vertical-tabs-1" id="slds-vertical-tabs-1__nav" style="padding: 0.5rem;">
+							<span class="slds-icon_container slds-icon-utility-search" title="Rechercher">
+								<svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true">
+									<use xlink:href="/styles/slds/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
+								</svg>
+								<span class="slds-assistive-text">Description of icon when needed</span>
+							</span>
+						</a>
+					</li>
+					<li class="slds-vertical-tabs__nav-item" title="Se localiser" role="presentation">
+						<a class="slds-vertical-tabs__link" href="javascript:void(0)" role="tab" tabindex="0" aria-selected="false" aria-controls="slds-vertical-tabs-analytics" id="slds-vertical-tabs-analytics__nav" style="padding: 0.5rem;">
+							<span class="slds-icon_container slds-icon-utility-search" title="Rechercher">
+								<svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true">
+									<use xlink:href="/styles/slds/assets/icons/utility-sprite/svg/symbols.svg#chart"></use>
+								</svg>
+								<span class="slds-assistive-text">Description of icon when needed</span>
+							</span>
+						</a>
+					</li>
+				</ul>
+				<div class="slds-vertical-tabs__content slds-hide ggo-vertical-tabs__content" id="slds-vertical-tabs-1" role="tabpanel" aria-labelledby="slds-vertical-tabs-1__nav">
+					<div class="slds-panel slds-size_medium slds-panel_docked slds-is-open" aria-hidden="false">
+						<div class="slds-panel__header">
+							<h2 class="slds-panel__header-title slds-text-heading_small">Rechercher une adresse</h2>
+							<button class="slds-button slds-button_icon slds-panel__close slds-button_icon-small" title="Close Filter Panel">
+								<svg class="slds-button__icon" aria-hidden="true">
+									<use xlink:href="/styles/slds/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+								</svg>
+								<span class="slds-assistive-text">Close Search Panel</span>
+							</button>
+						</div>
+						<div class="slds-panel__body">
+							<div class="slds-form-element">
+								<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left-right" style="display: inline-block; width: 270px;">
+									<svg class="slds-icon slds-input__icon slds-input__icon_left slds-icon-text-default" aria-hidden="true">
+										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/styles/slds/assets/icons/utility-sprite/svg/symbols.svg#search" />
+									</svg>
+									<input type="text" id="search-input" class="slds-input" placeholder="Entrer une adresse" />
+									<button id="clear-search-input" class="slds-input__icon slds-input__icon_right slds-button slds-button_icon slds-hide">
+										<svg class="slds-button__icon slds-icon-text-light" aria-hidden="true">
+											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/styles/slds/assets/icons/utility-sprite/svg/symbols.svg#clear" />
+										</svg>
+										<span class="slds-assistive-text">Clear</span>
+									</button>
+								</div>
+								<button id="locateUserIcon" class="slds-button slds-button_icon slds-button_icon-border slds-button_icon-medium" title="More Options">
+									<svg class="slds-button__icon" aria-hidden="true">
+										<use xlink:href="/styles/slds/assets/icons/utility-sprite/svg/symbols.svg#campaign"></use>
+									</svg>
+									<span class="slds-assistive-text">More options</span>
+								</button>
+							</div>
+							<div id="currentLocation" class="slds-m-top_small slds-border_bottom slds-hide" style="position:relative;"></div>
+							<div id="userAddrAutoCompleteRes" class="slds-scrollable_y slds-box slds-hide" style="max-height:200px; max-width:310px; min-width:310px; z-index:900; background-color: #FFF;position: absolute;padding: .15rem; margin-top: 5px; top: 70px;">
+							</div>
+							<div id="isochroniepanel" class="slds-m-top_x-small slds-hide">
+								<h2 class="slds-text-heading_small">Isochronie</h2>
+								<fieldset class="slds-form-element slds-form-element_compound">
+									<legend class="slds-form-element__legend slds-form-element__label">Intervalles</legend>
+									<div class="slds-form-element__control">
+										<span class="slds-badge" style="background-color: #2b83ba; color: white;">5 min</span>
+										<span class="slds-badge" style="background-color: #abdda4; color: white;">10 min</span>
+										<span class="slds-badge" style="background-color: #d7191c; color: white;">15 min</span>
+									</div>
+								</fieldset>
+								<div class="slds-m-top_small">
+								</div>
+								<div class="slds-grid slds-wrap slds-grid slds-wrap slds-m-top_x-small">
+									<div class="slds-col slds-size_1-of-2" style="text-align: center;">
+										<button id="isochrone-compute-btn" class="slds-button slds-button_brand">Calculer</button>
+									</div>
+									<div class="slds-col slds-size_1-of-2 slds-hide" style="text-align: center;">
+										<button id="isochrone-analyze-btn" class="slds-button slds-button_brand">Analyse</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="slds-vertical-tabs__content slds-hide ggo-vertical-tabs__content" id="slds-vertical-tabs-analytics" role="tabpanel" aria-labelledby="slds-vertical-tabs-analytics__nav">
+					<div class="slds-panel slds-size_medium slds-panel_docked slds-is-open" aria-hidden="false">
+						<div class="slds-panel__header">
+							<h2 class="slds-panel__header-title slds-text-heading_small">Analyse</h2>
+							<button class="slds-button slds-button_icon slds-panel__close slds-button_icon-small" title="Close Filter Panel">
+								<svg class="slds-button__icon" aria-hidden="true">
+									<use xlink:href="/styles/slds/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+								</svg>
+								<span class="slds-assistive-text">Close Search Panel</span>
+							</button>
+						</div>
+						<div id="main_analytics_panel_body" class="slds-panel__body slds-scrollable_y">
+							<fieldset class="slds-form-element slds-form-element_compound">
+								<legend class="slds-form-element__legend slds-form-element__label">Détails</legend>
+								<div class="slds-form-element__control">
+									<div id="details_analysis" class="">
+									</div>
+								</div>
+							</fieldset>
+							<fieldset class="slds-form-element slds-form-element_compound slds-hide">
+								<legend class="slds-form-element__legend slds-form-element__label">Surfaces (km²)</legend>
+								<div class="slds-form-element__control">
+									<div id="area_barcharts">
+										<svg width="290" height="250"></svg>
+									</div>
+								</div>
+							</fieldset>							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--
+		<div class="ggoslds">
+			<div id="analysis_panel" class="slds-panel slds-size_medium slds-panel_docked slds-panel_docked-right slds-is-open slds-hide" aria-hidden="false" style="z-index: 1000;">
+				<div class="slds-panel__header">
+					<h2 class="slds-panel__header-title slds-text-heading_small slds-truncate" title="Panel Header">Analyse</h2>
+					<button class="slds-button slds-button_icon slds-button_icon-small slds-panel__close" title="Fermer">
+					  <svg class="slds-button__icon" aria-hidden="true">
+					    <use xlink:href="/styles/slds/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+					  </svg>
+					  <span class="slds-assistive-text">Collapse Panel Header</span>
+					</button>
+				</div>
+				<div class="slds-panel__body">
+					<fieldset class="slds-form-element slds-form-element_compound">
+						<legend class="slds-form-element__legend slds-form-element__label">Surfaces (km²)</legend>
+						<div class="slds-form-element__control">
+							<div id="area_barcharts">
+								<svg width="290" height="250"></svg>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset class="slds-form-element slds-form-element_compound">
+						<legend class="slds-form-element__legend slds-form-element__label">Détails</legend>
+						<div class="slds-form-element__control">
+							<div id="details_analysis">
+							</div>
+						</div>
+					</fieldset>
+				</div>
+			</div>
+		</div>
+		-->
+	</body>
+	<script>
+		var self = this;
+		$(document).ready(function(e){
+			console.log(' >> document is ready');
+			$('#backToDemoIcon').click(function(e){
+				window.location = '../';
+			});
+			var wHeight = $(window).height();
+			var detailsH = (wHeight - 60) + 'px';
+			$('#main_analytics_panel_body').css('max-height', detailsH);
+			self.galigeo = new GGO.GGOApp ();
+			GGO.EventBus.dispatch(GGO.EVENTS.APPISREADY);
+		});
+	</script>
+</html>

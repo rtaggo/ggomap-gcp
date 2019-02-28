@@ -29,7 +29,10 @@
     "safe-buffer": "^5.1.2",
     "winston": "2.4.0",
     "lodash": "4.17.11",
-    "mysql": "2.16.0"
+    "mysql": "2.16.0",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
+    "@turf/turf": "^5.1.6"
   },
   "devDependencies": {
     "@google-cloud/pubsub": "^0.22.0",

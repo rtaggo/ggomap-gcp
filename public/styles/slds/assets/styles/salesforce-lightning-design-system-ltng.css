@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*! Lightning Design System 2.7.5 */
+/*! Lightning Design System 2.8.0 */
 /*!
  * Copyright (c) 2015-present, Salesforce.com, Inc. - All rights reserved.
  * Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -85,6 +85,7 @@
  * @name base
  * @selector .slds-timeline__item_expandable
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -138,6 +139,7 @@
  * @name base
  * @selector .slds-badge
  * @restrict span
+ * @support dev-ready
  * @variant
  */
   /**
@@ -157,10 +159,34 @@
  * @group color
  */
   /**
+ * @summary Adds an icon to badge
+ * @name icon-container
+ * @selector .slds-badge__icon
+ * @restrict .slds-badge span
+ * @modifier
+ */
+  /**
+ * @summary Adds an icon to the left of the badge text
+ * @name icon-left
+ * @selector .slds-badge__icon_left
+ * @restrict .slds-badge__icon
+ * @modifier
+ * @group spacing
+ */
+  /**
+ * @summary Adds an icon to the right of the badge text
+ * @name icon-right
+ * @selector .slds-badge__icon_right
+ * @restrict .slds-badge__icon
+ * @modifier
+ * @group spacing
+ */
+  /**
  * @summary Create breadcrumbs component
  * @name base
  * @selector .slds-breadcrumb
  * @restrict ol
+ * @support dev-ready
  * @variant
  */
   /**
@@ -169,6 +195,7 @@
  * @name row
  * @selector .slds-button-group-row
  * @restrict div, ul
+ * @support dev-ready
  * @variant
  */
   /**
@@ -177,12 +204,28 @@
  * @name base
  * @selector .slds-button-group
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
  * @summary If the last button in the group is required to be wrapped in a div, apply this class to the div
  * @selector .slds-button_last
  * @restrict .slds-button-group div, .slds-button-group-list div
+ */
+  /**
+ * @summary Explicitly style the first button in a button group
+ * @selector .slds-button_first
+ * @restrict .slds-button
+ */
+  /**
+ * @summary Explicitly style buttons in the middle (i.e., not first or last) in a button group
+ * @selector .slds-button_middle
+ * @restrict .slds-button
+ */
+  /**
+ * @summary Explicitly style the last button in a button group
+ * @selector .slds-button_last
+ * @restrict .slds-button
  */
   /**
  * @selector .slds-button-space-left
@@ -198,6 +241,7 @@
  * @name base
  * @selector .slds-button
  * @restrict button, a, span
+ * @support dev-ready
  * @variant
  */
   /**
@@ -268,6 +312,7 @@
  * @summary Sizing for icon that sits inside button__icon
  * @selector .slds-button__icon
  * @restrict .slds-button svg
+ * @support dev-ready
  * @variant
  */
   /**
@@ -305,8 +350,15 @@
  * @restrict .slds-button__icon, .slds-button__icon_stateful
  */
   /**
- * @summary Creates a button style for full width
+ * @summary Creates a button style for full width that resets styling
  * @selector .slds-button_full-width
+ * @restrict .slds-button
+ * @modifier
+ * @group size
+ */
+  /**
+ * @summary Creates a button style for 100% width that maintains current styling
+ * @selector .slds-button_stretch
  * @restrict .slds-button
  * @modifier
  * @group size
@@ -321,6 +373,7 @@
  * @name stateful
  * @selector .slds-button_stateful
  * @restrict button
+ * @support dev-ready
  * @variant
  */
   /**
@@ -349,11 +402,28 @@
  * @group interaction
  */
   /**
+ * @summary Initiates a dual stateful button
+ * @name dual-stateful
+ * @selector .slds-button_dual-stateful
+ * @restrict button
+ * @support dev-ready
+ * @variant
+ */
+  /**
+ * @summary When button is in pressed state
+ * @selector .slds-is-pressed
+ * @restrict .slds-button_dual-stateful
+ * @notes This class should be toggled with JavaScript
+ * @modifier
+ * @group interaction
+ */
+  /**
  * @summary Creates a button that looks like a plain icon
  *
  * @name base
  * @selector .slds-button_icon
  * @restrict button
+ * @support dev-ready
  * @variant
  */
   /**
@@ -389,6 +459,11 @@
   /**
  * @summary Error state - Typically used in conjunction with an error toolip
  * @selector .slds-button_icon-error
+ * @restrict .slds-button_icon
+ */
+  /**
+ * @summary Apply the current color to the icon contained within
+ * @selector .slds-button_icon-current-color
  * @restrict .slds-button_icon
  */
   /**
@@ -438,6 +513,7 @@
  * @name brand
  * @selector .slds-button_icon-brand
  * @restrict button
+ * @support dev-ready
  * @variant
  */
   /**
@@ -458,6 +534,7 @@
  * @name stateful
  * @selector .slds-is-selected
  * @restrict .slds-button_icon
+ * @support dev-ready
  * @variant
  */
   /**
@@ -472,6 +549,7 @@
  * @name base
  * @selector .slds-color-picker
  * @restrict div
+ * @support dev-ready
  */
   /**
  * @summary 'Summary' element for color selection.
@@ -572,6 +650,7 @@
  * @name custom-only
  * @selector .slds-color-picker_custom-only
  * @restrict .slds-color-picker
+ * @support dev-ready
  * @variant
  */
   /**
@@ -583,6 +662,7 @@
  * @name predefined-only
  * @selector .slds-color-picker_predefined-only
  * @restrict .slds-color-picker
+ * @support dev-ready
  * @variant
  */
   /**
@@ -609,6 +689,7 @@
  * @name swatches-only
  * @selector .slds-color-picker_swatches-only
  * @restrict .slds-color-picker
+ * @support dev-ready
  * @variant
  */
   /**
@@ -618,6 +699,7 @@
  * @selector .slds-icon_container
  * @restrict span, div
  * @notes Used when an icon with a background color is accompanied by `.slds-assistive-text` and also receives a `background-color` class
+ * @support dev-ready
  * @variant
  */
   /**
@@ -748,12 +830,14 @@
  * @name ellie
  * @selector .slds-icon-ellie
  * @restrict span
+ * @support dev-ready
  * @variant
  */
   /**
  * @name eq
  * @selector .slds-icon-eq
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -768,6 +852,7 @@
  * @name score
  * @selector .slds-icon-score
  * @restrict span
+ * @support dev-ready
  * @variant
  */
   /**
@@ -788,6 +873,7 @@
  * @name strength
  * @selector .slds-icon-strength
  * @restrict span
+ * @support dev-ready
  * @variant
  */
   /**
@@ -796,6 +882,7 @@
  * @name trend
  * @selector .slds-icon-trend
  * @restrict span
+ * @support dev-ready
  * @variant
  */
   /**
@@ -816,6 +903,7 @@
  * @name waffle
  * @selector .slds-icon-waffle_container
  * @restrict button
+ * @support dev-ready
  * @variant
  */
   /**
@@ -831,6 +919,7 @@
  * @name global-action-help
  * @selector .slds-icon-help
  * @restrict button, a
+ * @support prototype
  */
   /**
  * @summary Modifies hover effect of global help icon
@@ -848,6 +937,7 @@
  * @name typing
  * @selector .slds-icon-typing
  * @restrict span
+ * @support dev-ready
  * @variant
  */
   /**
@@ -857,10 +947,23 @@
  * @restrict .slds-icon-typing span
  */
   /**
+ * @name base
+ * @selector .slds-dynamic-menu
+ * @restrict section[role="dialog"]
+ * @variant
+ * @support dev-ready
+ */
+  /**
+ * @summary Headers styles for dynamic menu
+ * @selector .slds-dynamic-menu__header
+ * @restrict .slds-dynamic-menu h3
+ */
+  /**
  * @summary Initiates a carousel component
  * @name base
  * @selector .slds-carousel
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -927,6 +1030,7 @@
 * @name base
 * @selector .slds-card
 * @restrict article, div, section
+* @support dev-ready
 * @variant
 */
   /**
@@ -974,6 +1078,7 @@
  * @summary Removes the card look from nested cards and pulls them to the boundary of the card wrapper, making the nested cards look like they are inside of one card
  * @selector .slds-card-wrapper
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -990,6 +1095,7 @@
  * @name base
  * @selector .slds-chat
  * @restrict section[role="log"]
+ * @support dev-ready
  * @variant
  */
   /**
@@ -1180,6 +1286,7 @@
  * @name past
  * @selector .slds-chat_past
  * @restrict .slds-chat
+ * @support dev-ready
  * @variant
  */
   /**
@@ -1187,6 +1294,7 @@
  * @name base
  * @selector .slds-form-element
  * @restrict div, fieldset, li
+ * @support dev-ready
  * @variant
  */
   /**
@@ -1253,7 +1361,7 @@
  * @name base
  * @selector .slds-input
  * @restrict input
- * @required
+ * @support dev-ready
  * @variant
  */
   /**
@@ -1304,7 +1412,7 @@
  * @name base
  * @selector .slds-textarea
  * @restrict textarea
- * @required
+ * @support dev-ready
  * @variant
  */
   /**
@@ -1313,6 +1421,7 @@
  * @name base
  * @selector .slds-radio
  * @restrict span
+ * @support dev-ready
  * @variant
  */
   /**
@@ -1321,7 +1430,7 @@
  * @name base
  * @selector .slds-radio_button-group
  * @restrict div
- * @required
+ * @support dev-ready
  * @variant
  */
   /**
@@ -1341,6 +1450,7 @@
  * @selector .slds-checkbox
  * @restrict span, label, div
  * @required
+ * @support dev-ready
  * @variant
  */
   /**
@@ -1348,6 +1458,7 @@
  * @name form-element
  * @selector .slds-checkbox_standalone
  * @restrict .slds-checkbox
+ * @support dev-ready
  * @variant
  */
   /**
@@ -1356,6 +1467,7 @@
  * @name base
  * @selector .slds-checkbox_toggle
  * @restrict label
+ * @support dev-ready
  * @variant
  */
   /**
@@ -1364,6 +1476,7 @@
  * @name base
  * @selector .slds-checkbox_add-button
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -1372,7 +1485,7 @@
  * @name base
  * @selector .slds-checkbox_button-group
  * @restrict div, span
- * @required
+ * @support dev-ready
  * @variant
  */
   /**
@@ -1386,34 +1499,25 @@
  * @name base
  * @selector .slds-select
  * @restrict select
- * @required
+ * @support dev-ready
  * @variant
  */
   /**
- * @name base
- * @selector .slds-form
- * @restrict form, div, fieldset
- * @variant
- */
-  /**
- * Horizontally aligns a single form label and control on the same line
- *
+ * @summary Horizontal form elements with label left-aligned to the control
  * @selector .slds-form_horizontal
- * @restrict .slds-form:not(.slds-form_compound)
- * @modifier
- * @group layout
+ * @restrict .slds-form
+ * @deprecated
  */
   /**
- * @summary Vertically aligns form label and control, provides spacing between form elements
+ * @summary Vertical form elements with label stacked on top of control
  * @selector .slds-form_stacked
- * @restrict .slds-form:not(.slds-form_compound)
- * @modifier
- * @group layout
+ * @restrict .slds-form
+ * @deprecated
  */
   /**
  * @summary Horizontally align multiple form elements on the same axis
  * @selector .slds-form_inline
- * @restrict .slds-form
+ * @restrict div
  * @modifier
  */
   /**
@@ -1428,7 +1532,7 @@
  *
  * @name compound
  * @selector .slds-form_compound
- * @restrict .slds-form, .slds-form-element
+ * @restrict div, fieldset
  * @variant
  */
   /**
@@ -1438,6 +1542,68 @@
  * @selector .slds-form-element_address
  * @restrict .slds-form_compound
  * @modifier
+ */
+  /**
+ * @summary Vertical form elements with label stacked on top of control
+ * @name stacked
+ * @selector .slds-form-element_stacked
+ * @restrict .slds-form-element
+ * @support dev-ready
+ * @variant
+ */
+  /**
+ * @summary Horizontal form elements with label left-aligned to the control
+ * @name horizontal
+ * @selector .slds-form-element_horizontal
+ * @restrict .slds-form-element
+ * @support dev-ready
+ * @variant
+ */
+  /**
+ * @summary Creates a form that consists of multiple form groups
+ *
+ * @name compound
+ * @selector .slds-form-element_compound
+ * @restrict .slds-form-element
+ * @support dev-ready
+ * @variant
+ */
+  /**
+ * @summary Creates a form that consists of multiple form groups specific to an address form
+ *
+ * @name address
+ * @selector .slds-form-element_address
+ * @restrict .slds-form-element_compound, .slds-form_compound
+ * @support dev-ready
+ * @variant
+ */
+  /**
+ * @summary Creates layout for a form
+ * @name record-detail
+ * @selector .slds-form
+ * @restrict div, form
+ * @support dev-ready
+ * @variant
+ */
+  /**
+ * @summary Each row inside of a record form
+ * @selector .slds-form__row
+ * @restrict .slds-form div
+ */
+  /**
+ * @summary Each item inside of a record form row
+ * @selector .slds-form__item
+ * @restrict .slds-form__row div
+ */
+  /**
+ * @summary Inidicates if a form element has been edited, but unsaved
+ * @selector .slds-is-edited
+ * @restrict .slds-form div
+ */
+  /**
+ * @summary Container for the undo button icon found inside of slds-form-element
+ * @selector .slds-form-element__undo
+ * @restrict .slds-form-element div
  */
   /**
  * The popover should be positioned with JavaScript.
@@ -1452,7 +1618,7 @@
  * @name base
  * @selector .slds-docked-form-footer
  * @restrict div
- * @required
+ * @support dev-ready
  * @variant
  */
   /**
@@ -1461,6 +1627,7 @@
  * @name base
  * @selector .slds-slider
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -1504,6 +1671,7 @@
  * @name base
  * @selector .slds-file-selector
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -1547,7 +1715,7 @@
  * @name image
  * @selector .slds-file-selector_images
  * @restrict .slds-file-selector
- * @required
+ * @support dev-ready
  * @variant
  */
   /**
@@ -1559,7 +1727,7 @@
  * @name integrated
  * @selector .slds-file-selector_integrated
  * @restrict .slds-file-selector
- * @required
+ * @support dev-ready
  * @variant
  */
   /**
@@ -1784,6 +1952,7 @@
  * @name base
  * @selector .slds-panel
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -1852,6 +2021,7 @@
  * @selector .slds-panel_filters
  * @restrict .slds-panel
  * @variant
+ * @support dev-ready
  * @s1 false
  */
   /**
@@ -1863,6 +2033,7 @@
  * @name base
  * @selector .slds-popover
  * @restrict [role="dialog"], [role="tooltip"]
+ * @support dev-ready
  * @variant
  */
   /**
@@ -1881,36 +2052,67 @@
  * @restrict .slds-popover footer
  */
   /**
-  * @summary Close button within a popover
-  * @selector .slds-popover__close
-  * @restrict .slds-popover button
-  */
+ * @summary Applies styles to center align content for footer area of a form popover
+ * @selector .slds-popover__footer_form
+ * @restrict .slds-popover footer
+ */
   /**
-  * @summary Width modifier for popover - small
-  * @selector .slds-popover_small
-  * @restrict .slds-popover
-  * @modifier
-  * @group width
-  */
+ * @summary Applies a max-height and vertical scrolling to a popover body
+ *
+ * @selector .slds-popover__body_small
+ * @restrict .slds-popover__body
+ * @modifier
+ * @group body
+ */
   /**
-  * @summary Width modifier for popover - medium
-  * @selector .slds-popover_medium
-  * @restrict .slds-popover
-  * @modifier
-  * @group width
-  */
+ * @summary Close button within a popover
+ * @selector .slds-popover__close
+ * @restrict .slds-popover button
+ */
   /**
-  * @summary Width modifier for popover - large
-  * @selector .slds-popover_large
-  * @restrict .slds-popover
-  * @modifier
-  * @group width
-  */
+ * @summary Width modifier for popover - small
+ * @selector .slds-popover_small
+ * @restrict .slds-popover
+ * @modifier
+ * @group width
+ */
+  /**
+ * @summary Width modifier for popover - medium
+ * @selector .slds-popover_medium
+ * @restrict .slds-popover
+ * @modifier
+ * @group width
+ */
+  /**
+ * @summary Width modifier for popover - large
+ * @selector .slds-popover_large
+ * @restrict .slds-popover
+ * @modifier
+ * @group width
+ */
+  /**
+ * @summary Modifier for popover to take 100% width
+ * @selector .slds-popover_full-width
+ * @restrict .slds-popover
+ * @modifier
+ * @group width
+ */
+  /**
+ * @summary Modifier to hide a popover
+ * @selector .slds-popover_hide
+ * @restrict .slds-popover
+ */
   /**
  * @name panels
  * @selector .slds-popover_panel
  * @restrict .slds-popover
+ * @support dev-ready
  * @variant
+ */
+  /**
+ * @name Label for panels
+ * @selector .slds-popover_panel__label
+ * @restrict .slds-popover_panel p
  */
   /**
   * @selector .slds-nubbin_top
@@ -2040,6 +2242,7 @@
  * @name walkthrough
  * @selector .slds-popover_walkthrough
  * @restrict .slds-popover
+ * @support dev-ready
  * @variant
  */
   /**
@@ -2057,6 +2260,7 @@
  * @name einstein
  * @selector .slds-popover_einstein
  * @restrict [role="dialog"], [role="tooltip"]
+ * @support dev-ready
  * @variant
  */
   /**
@@ -2071,6 +2275,7 @@
  * @name error
  * @selector .slds-popover_error
  * @restrict .slds-popover
+ * @support dev-ready
  * @variant
  */
   /**
@@ -2085,6 +2290,7 @@
  * @name warning
  * @selector .slds-popover_warning
  * @restrict .slds-popover
+ * @support dev-ready
  * @variant
  */
   /**
@@ -2154,6 +2360,7 @@
  * @name dropdown
  * @selector .slds-dropdown-trigger
  * @restrict div, span, li
+ * @support dev-ready
  * @variant
  */
   /**
@@ -2306,6 +2513,7 @@
  * @name base
  * @selector .slds-combobox_container
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -2325,6 +2533,7 @@
  * @name listbox
  * @selector .slds-listbox
  * @restrict ul
+ * @support dev-ready
  * @variant
  */
   /**
@@ -2346,6 +2555,11 @@
  *
  * @selector .slds-listbox__option
  * @restrict .slds-listbox__item > div
+ */
+  /**
+ * @summary Header for choosable option within listbox
+ * @selector .slds-listbox__option-header
+ * @restrict .slds-listbox__option h3
  */
   /**
  * @summary Container for listbox option icon
@@ -2418,6 +2632,7 @@
  * @name grouped
  * @selector .slds-combobox-group
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -2449,6 +2664,7 @@
  * @name base
  * @selector .slds-dueling-list
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -2475,6 +2691,7 @@
  * @name base
  * @selector .slds-datepicker
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -2489,6 +2706,7 @@
  * @name base
  * @selector .slds-timepicker
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -2523,8 +2741,12 @@
  * @restrict .slds-email-composer label
  */
   /**
- * Fixed bar at the bottom of viewport, contains items
+ * Fixed bar at the bottom of viewport, that contains items.
  *
+ * If the utility bar item is active and its panel is popped open in a new window, use `.slds-utility-bar__item_pop-out` on the
+ * `.slds-utility-bar__item`. This will add a visual indicator to communicate that the panel is opened in a new window.
+ *
+ * @summary Fixed bar at the bottom of viewport, that contains items
  * @name base
  * @selector .slds-utility-bar_container
  * @restrict footer
@@ -2542,6 +2764,14 @@
  *
  * @selector .slds-utility-bar__item
  * @restrict .slds-utility-bar li
+ */
+  /**
+ * @name pop-out
+ * @summary Modifier to add pop out element
+ * @selector .slds-utility-bar__item_pop-out
+ * @restrict .slds-utility-bar__item
+ * @modifier
+ * @group feedback
  */
   /**
  * Button that invokes utility panel
@@ -2572,6 +2802,7 @@
  * @name base
  * @selector .slds-drop-zone
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -2606,6 +2837,7 @@
  * @name base
  * @selector .slds-global-header_container
  * @restrict header
+ * @support dev-ready
  * @variant
  */
   /**
@@ -2671,6 +2903,7 @@
  * @name navigation-bar
  * @selector .slds-context-bar
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -2708,6 +2941,7 @@
  * @name base
  * @selector .slds-expression
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -2748,6 +2982,7 @@
  * @name custom-logic
  * @selector .slds-expression__custom-logic
  * @restrict .slds-expression div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -2758,6 +2993,7 @@
   * @name formula
   * @selector .slds-expression_formula__rte
   * @restrict .slds-expression div
+  * @support dev-ready
   * @variant
   */
   /**
@@ -2768,6 +3004,7 @@
   * @name filters
   * @selector .slds-filters
   * @restrict div
+  * @support dev-ready
   * @variant
   */
   /**
@@ -2800,6 +3037,7 @@
  * @name base
  * @selector .slds-builder-header_container
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -2847,6 +3085,7 @@
  * @summary Builder header toolbar
  * @selector .slds-builder-toolbar
  * @restrict .slds-builder-header_container div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -2882,6 +3121,7 @@
  * @name base
  * @selector .slds-publisher
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -2914,7 +3154,7 @@
  * @name comment
  * @selector .slds-publisher_comment
  * @restrict .slds-publisher
- * @required
+ * @support dev-ready
  * @variant
  */
   /**
@@ -2932,12 +3172,12 @@
  * @selector .slds-feed__item-comments
  * @restrict .slds-feed__item div
  * @notes Contains comment replies and publisher
- * @required
  */
   /**
  * @name post
  * @selector .slds-post
  * @restrict .slds-feed article
+ * @support dev-ready
  * @variant
  */
   /**
@@ -2962,19 +3202,28 @@
  * @name base
  * @selector .slds-modal
  * @restrict section
+ * @support dev-ready
  * @variant
  */
   /**
- * Widens the modal to take more horizontal space
- *
+ * @summary Widens the modal to take more horizontal space than default
+ * @name small
+ * @selector .slds-modal_small
+ * @restrict .slds-modal
+ * @modifier
+ * @group size
+ */
+  /**
+ * @summary Widens the modal to take more horizontal space than small
+ * @name medium
  * @selector .slds-modal_medium
  * @restrict .slds-modal
  * @modifier
  * @group size
  */
   /**
- * Widens the modal to take more horizontal space
- *
+ * @summary Widens the modal to take more horizontal space than large
+ * @name large
  * @selector .slds-modal_large
  * @restrict .slds-modal
  * @modifier
@@ -3026,6 +3275,7 @@
  * @name base
  * @selector .slds-map_container
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -3092,6 +3342,7 @@
  * @summary Tile cards that contains the app information, the icon and description
  * @selector .slds-app-launcher__tile
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -3110,6 +3361,7 @@
  * @name coverable-content
  * @selector .slds-visual-picker
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -3144,6 +3396,7 @@
  * @name non-coverable-content
  * @selector .slds-visual-picker__text-check
  * @restrict .slds-visual-picker span
+ * @support dev-ready
  * @variant
  */
   /**
@@ -3152,6 +3405,7 @@
  * @name vertical
  * @selector .slds-visual-picker_vertical
  * @restrict .slds-visual-picker
+ * @support dev-ready
  * @variant
  */
   /**
@@ -3187,6 +3441,7 @@
  * @selector .slds-path
  * @restrict div
  * @variant
+ * @support dev-ready
  * @s1 false
  */
   /**
@@ -3327,6 +3582,7 @@
  * @name base
  * @selector .slds-progress-bar
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -3349,12 +3605,14 @@
  * @name vertical
  * @selector .slds-progress-bar_vertical
  * @restrict .slds-progress-bar
+ * @support dev-ready
  * @variant
  */
   /**
  * @name base
  * @selector .slds-progress
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -3382,6 +3640,7 @@
  * @name vertical
  * @selector .slds-progress_vertical
  * @restrict .slds-progress
+ * @support dev-ready
  * @variant
  */
   /**
@@ -3396,6 +3655,7 @@
  * @variant
  * @name base
  * @selector .slds-progress-ring
+ * @support prototype
  * @restrict div
  */
   /**
@@ -3461,6 +3721,7 @@
  * @name base
  * @selector .slds-rich-text-editor
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -3522,6 +3783,7 @@
  * @name base
  * @selector .slds-spinner
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -3605,6 +3867,7 @@
  * @name base
  * @selector .slds-split-view_container
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -3648,6 +3911,7 @@
  * @name base
  * @selector .slds-tile
  * @restrict article
+ * @support dev-ready
  * @variant
  */
   /**
@@ -3656,6 +3920,7 @@
  * @name base
  * @selector .slds-tabs_default
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -3700,6 +3965,16 @@
  * @group size
  */
   /**
+ * @summary
+ * @selector .slds-tabs__left-icon
+ * @restrict .slds-tabs_default__item span
+ */
+  /**
+ * @summary
+ * @selector .slds-tabs__right-icon
+ * @restrict .slds-tabs_default__item span
+ */
+  /**
    * @summary Styles the tab title
    * @selector .slds-tabs_mobile__title
    * @restrict .slds-tabs_mobile div
@@ -3732,6 +4007,7 @@
  * @name mobile-stack
  * @selector .slds-tabs-mobile__container
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -3750,6 +4026,7 @@
  *
  * @selector .slds-tabs-mobile__group
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -3763,6 +4040,7 @@
  * @name base
  * @selector .slds-tabs_scoped
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -3821,6 +4099,7 @@
  * @name sub-tabs
  * @selector .slds-sub-tabs
  * @restrict .slds-tabs_default
+ * @support dev-ready
  * @variant
  */
   /**
@@ -3847,6 +4126,7 @@
  * @name list
  * @selector .slds-nav-vertical
  * @restrict nav, fieldset
+ * @support dev-ready
  * @variant
  */
   /**
@@ -3893,6 +4173,7 @@
  * @summary Version of vertical nav that uses radio buttons
  * @selector .slds-nav-vertical__item [type="radio"]
  * @restrict .slds-nav-vertical
+ * @support dev-ready
  * @variant
  * @release 2.5.0
  */
@@ -3913,6 +4194,7 @@
  * @name base
  * @selector .slds-notify_alert
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -3920,8 +4202,8 @@
  *
  * @name base
  * @selector .slds-modal_prompt
- * @restrict .slds-modal
- * @required
+ * @restrict section[role="alertdialog"]
+ * @support dev-ready
  * @variant
  */
   /**
@@ -3930,6 +4212,7 @@
  * @name base
  * @selector .slds-notify_container
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -3942,6 +4225,7 @@
  * @name base
  * @selector .slds-scoped-notification
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -3964,10 +4248,10 @@
  * @restrict div
  */
   /**
- *
  * @name base
  * @selector .slds-notification
  * @restrict .slds-notification-container section, .slds-notification-container div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -3999,6 +4283,7 @@
  * @name header
  * @selector .slds-trial-header
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -4007,6 +4292,7 @@
  * @name base
  * @selector .slds-combobox
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -4016,6 +4302,7 @@
  * @name base
  * @selector .slds-avatar
  * @restrict div, span, a
+ * @support dev-ready
  * @variant
  */
   /**
@@ -4071,6 +4358,7 @@
  * @summary Used for initials inside an avatar
  * @selector .slds-avatar__initials
  * @restrict .slds-avatar abbr
+ * @support dev-ready
  * @variant
  */
   /**
@@ -4082,6 +4370,83 @@
  * @group color
  */
   /**
+ * An image is the preferred format for an avatar
+ *
+ * @summary Creates an Avatar Group
+ * @name base
+ * @selector .slds-avatar-group
+ * @restrict div, span
+ * @support dev-ready
+ * @variant
+ */
+  /**
+* @summary Variant of an Avatar in an Avatar Group
+* @name grouped
+* @selector .slds-avatar-grouped
+* @restrict .slds-avatar-group span
+* @variant
+*/
+  /**
+* @summary Variant of an Avatar with inverse background in an Avatar Group
+* @name grouped-inverse
+* @selector .slds-avatar-grouped_inverse
+* @restrict .slds-avatar-grouped
+* @modifier
+*/
+  /**
+* @summary Modifier for the primary Avatar in an Avatar Group
+* @name grouped-primary
+* @selector .slds-avatar-grouped__primary
+* @restrict .slds-avatar-grouped
+* @modifier
+*/
+  /**
+* @summary Modifier for the secondary Avatar in an Avatar Group
+* @name grouped-secondary
+* @selector .slds-avatar-grouped__secondary
+* @restrict .slds-avatar-grouped
+* @modifier
+*/
+  /**
+* @summary Modifier for the icon Avatar in an Avatar Group
+* @name icon
+* @selector .slds-avatar-grouped__icon
+* @restrict .slds-icon_container
+* @modifier
+*/
+  /**
+* @summary Creates an extra small Avatar Group
+* @name x-small
+* @selector .slds-avatar-group_x-small
+* @restrict .slds-avatar-group
+* @modifier
+* @group sizing
+*/
+  /**
+* @summary Creates a small Avatar Group
+* @name small
+* @selector .slds-avatar-group_small
+* @restrict .slds-avatar-group
+* @modifier
+* @group sizing
+*/
+  /**
+* @summary Creates a medium Avatar Group
+* @name medium
+* @selector .slds-avatar-group_medium
+* @restrict .slds-avatar-group
+* @modifier
+* @group sizing
+*/
+  /**
+* @summary Creates a large Avatar Group
+* @name large
+* @selector .slds-avatar-group_large
+* @restrict .slds-avatar-group
+* @modifier
+* @group sizing
+*/
+  /**
  * A figure component is a self-contained unit of content, such as an image with an optional caption. The figure component should NOT be used with icons or logos. A figure can optionally be cropped to a specific ratio such as 16x9, 4x3 and 1x1 with the use of `.slds-image__crop` and passing in a ratio class such as `.slds-image__crop_16-by-9`.
  *
  * @summary Initializes a file component
@@ -4089,6 +4454,7 @@
  * @name base
  * @selector .slds-file
  * @restrict figure, div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -4097,7 +4463,7 @@
  * @name base
  * @selector .slds-table
  * @restrict table
- * @required
+ * @support dev-ready
  * @variant
  */
   /**
@@ -4135,6 +4501,7 @@
  * @name advanced
  * @selector .slds-table_fixed-layout
  * @restrict .slds-table
+ * @support dev-ready
  * @variant
  */
   /**
@@ -4204,18 +4571,18 @@
  * @name responsive
  * @selector .slds-max-medium-table_stacked
  * @restrict .slds-table
+ * @support prototype
  * @variant
  * @layout responsive
- * @prototype
  */
   /**
  * @summary Creates stacked rows with horizontal cells
  *
  * @selector .slds-max-medium-table_stacked-horizontal
  * @restrict .slds-table
+ * @support prototype
  * @modifier
  * @layout responsive
- * @prototype
  */
   /**
  * Inline edit plugin for advanced tables
@@ -4251,7 +4618,7 @@
  * @name inline-edit
  * @selector .slds-table_edit
  * @restrict .slds-table
- * @required
+ * @support dev-ready
  * @variant
  */
   /**
@@ -4288,6 +4655,7 @@
  * @name hidden-header
  * @selector .slds-table_header-hidden
  * @restrict .slds-table
+ * @support dev-ready
  * @variant
  */
   /**
@@ -4341,6 +4709,12 @@
  * - `Ctrl` + `Up` and `Ctrl` + `Down` moves focus. Current selection is maintained
  * - `Ctrl` + `Space` will add or remove the currently focused tree item to the selection
  *
+ * #### Filtering
+ *
+ * When filtering a tree you should couple the tree with a search input. The search input will control the contents of the tree and as such should the attribute `aria-controls` added to it. The value of the `aria-controls` attribute should be the ID of the tree it controls. The search input should also be of type `search`.
+ *
+ * Upon typing in the input the tree should start filtering immediately, expanding all nodes that have matching tree items to display, and highlighting the search term in each of the matching items. The highlight is provided by wrapping the term in `<mark />` elements.
+ *
  * @summary A tree is visualization of a structure hierarchy. A branch can be expanded or collapsed.
  *
  * @name base
@@ -4354,6 +4728,48 @@
  * @summary Initializes a slds tree
  * @selector .slds-tree
  * @restrict .slds-tree_container ul, table
+ */
+  /**
+ * @summary Initializes a slds tree item
+ * @selector .slds-tree__item
+ * @restrict .slds-tree div
+ */
+  /**
+ * @name item-hovered
+ * @summary Hover state for a tree item
+ * @selector .slds-is-hovered
+ * @restrict .slds-tree__item
+ * @notes Class should be applied via Javascript
+ * @modifier
+ * @group interactions
+ */
+  /**
+ * @name item-disabled
+ * @summary When a branch doesn't have children, apply slds-is-disabled to the button icon
+ * @selector .slds-is-disabled
+ * @restrict .slds-tree__item button
+ * @modifier
+ * @group interactions
+ */
+  /**
+ * @summary Styles the focus and selected state for any tree item that has role="treeitem"
+ * @selector [role="treeitem"]
+ * @restrict .slds-tree li
+ */
+  /**
+* @summary The label text of a tree item or tree branch
+* @selector .slds-tree__item-label
+* @restrict .slds-tree__item span
+*/
+  /**
+* @summary The meta text or secondary text of a tree item
+* @selector .slds-tree__item-meta
+* @restrict .slds-tree__item span
+*/
+  /**
+ * @summary Initializes a slds tree group header
+ * @selector .slds-tree__group-header
+ * @restrict .slds-tree_container h4
  */
   /**
  * A tree grid is additional semantics that are laid on top of a grid based component via ARIA attributes, to enable hierarchically structured tabular data.
@@ -4407,6 +4823,7 @@
  * @name base
  * @selector .slds-table_tree
  * @restrict table
+ * @support dev-ready
  * @variant
  * @s1 false
  */
@@ -4416,6 +4833,7 @@
  * @name base
  * @selector .slds-section
  * @restrict article, div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -4425,6 +4843,7 @@
  * @name base
  * @selector .slds-illustration
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -4433,6 +4852,7 @@
  * @name base
  * @selector .slds-region
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -4462,6 +4882,7 @@
  * @name base
  * @selector .slds-vertical-tabs
  * @restrict div, section
+ * @support dev-ready
  * @variant
  */
   /**
@@ -4478,6 +4899,16 @@
  * @summary Tab Navigation Link
  * @selector .slds-vertical-tabs__link
  * @restrict .slds-vertical-tabs__nav-item a
+ */
+  /**
+ * @summary Left icon inside of vertical tabs nav item
+ * @selector .slds-vertical-tabs__left-icon
+ * @restrict .slds-vertical-tabs__nav-item span
+ */
+  /**
+ * @summary Right icon inside of vertical tabs nav item
+ * @selector .slds-vertical-tabs__right-icon
+ * @restrict .slds-vertical-tabs__nav-item span
  */
   /**
  * @summary Tab Content Container
@@ -4505,13 +4936,14 @@
  * @summary Welcome Mat component
  * @name base
  * @selector .slds-welcome-mat
- * @restrict section
+ * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
  * @summary Content container for the whole Welcome Mat
  * @selector .slds-welcome-mat__content
- * @restrict .slds-welcome-mat .slds-modal__content
+ * @restrict .slds-welcome-mat div
  */
   /**
  * @summary Container element for the informational side of the Welcome Mat
@@ -4549,9 +4981,19 @@
  * @restrict .slds-welcome-mat__tiles li
  */
   /**
+* @summary Figure element for Welcome Mat Tile item, based on SLDS Media Object figure.
+* @selector .slds-welcome-mat__tile-figure
+* @restrict .slds-welcome-mat__tile .slds-media__figure div
+*/
+  /**
  * @summary Title element for Welcome Mat Tile item.
  * @selector .slds-welcome-mat__tile-title
  * @restrict .slds-welcome-mat__tile h3
+ */
+  /**
+ * @summary Body element for Welcome Mat Tile item, based on SLDS Media Object body.
+ * @selector .slds-welcome-mat__tile-body
+ * @restrict .slds-welcome-mat__tile .slds-media__body div
  */
   /**
  * @summary Description element for Welcome Mat Tile item.
@@ -4572,6 +5014,32 @@
  * @group state
  */
   /**
+ * @summary Creates Welcome Mat Full Width
+ * @name splash
+ * @selector .slds-welcome-mat_splash
+ * @restrict .slds-welcome-mat
+ * @support dev-ready
+ * @variant
+ */
+  /**
+ * @summary Creates Welcome Mat Info Only
+ * @name info-only
+ * @selector .slds-welcome-mat_info-only
+ * @restrict .slds-welcome-mat
+ * @support dev-ready
+ * @variant
+ */
+  /**
+ * @summary Sets tile area of Welcome Mat to read only
+ * @selector .slds-welcome-mat__tiles_info-only
+ * @restrict .slds-welcome-mat__tiles
+ */
+  /**
+ * @summary Welcome Mat Tile with only info item. Shows informational content. Based on a SLDS Media Object.
+ * @selector .slds-welcome-mat__tile_info-only
+ * @restrict .slds-welcome-mat_info-only li
+ */
+  /**
  * The Trailhead Connected variant should be used when users can achieve
  * a badge in Trailhead for completing all steps in the current Welcome Mat.
  *
@@ -4581,6 +5049,7 @@
  * @name trailhead-connected
  * @selector .slds-welcome-mat_trailhead
  * @restrict .slds-welcome-mat
+ * @support dev-ready
  * @variant
  */
   /**
@@ -4608,6 +5077,7 @@
  * @name base
  * @selector .slds-summary-detail
  * @restrict div
+ * @support dev-ready
  * @variant
  */
   /**
@@ -4623,6 +5093,7 @@
  * @name base
  * @selector .slds-setup-assistant
  * @restrict ol
+ * @support dev-ready
  * @variant
  */
   /**
@@ -6584,21 +7055,15 @@
     background-color: #ecebea;
     padding: 0.25rem 0.5rem;
     border-radius: 15rem;
-    font-size: 0.625rem;
+    font-size: 0.75rem;
+    font-weight: 700;
     line-height: normal;
-    text-transform: uppercase;
-    letter-spacing: 0.0625em;
     color: #080707;
-    vertical-align: bottom;
     white-space: nowrap; }
     .ggoslds .slds-badge + .slds-badge {
       margin-left: 0.5rem; }
     .ggoslds .slds-badge:empty {
       padding: 0; }
-    .ggoslds .slds-badge .slds-icon_container {
-      vertical-align: middle; }
-    .ggoslds .slds-badge > * {
-      vertical-align: bottom; }
   .ggoslds .slds-badge_inverse {
     background-color: #706e6b;
     color: white; }
@@ -6608,6 +7073,28 @@
     font-size: 0.75rem;
     text-transform: none;
     letter-spacing: normal; }
+  .ggoslds .slds-badge__icon {
+    color: #706e6b;
+    vertical-align: middle;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-align: center;
+        align-items: center;
+    line-height: 1;
+    /**
+   * @summary Change badge icon fill color to inverse
+   * @name icon-inverse
+   * @selector .slds-badge__icon_inverse
+   * @restrict .slds-badge__icon
+   * @modifier
+   * @group color
+   */ }
+    .ggoslds .slds-badge__icon.slds-badge__icon_inverse {
+      color: currentColor; }
+  .ggoslds .slds-badge__icon_left {
+    margin-right: 0.25rem; }
+  .ggoslds .slds-badge__icon_right {
+    margin-left: 0.25rem; }
   .ggoslds .slds-breadcrumb {
     /**
    * @summary Item of the breadcrumb list
@@ -6615,7 +7102,8 @@
    * @restrict .slds-breadcrumb li
    */ }
     .ggoslds .slds-breadcrumb .slds-list__item, .ggoslds .slds-breadcrumb__item {
-      position: relative; }
+      position: relative;
+      font-weight: 700; }
       .ggoslds .slds-breadcrumb .slds-list__item:before, .ggoslds .slds-breadcrumb__item:before {
         content: '\003E';
         position: absolute;
@@ -6680,6 +7168,15 @@
   .ggoslds .slds-button-group .slds-button:only-child,
   .ggoslds .slds-button-group-list li:only-child .slds-button {
     border-radius: 0.25rem; }
+  .ggoslds .slds-button.slds-button_first.slds-button_first {
+    border-right: 0;
+    border-radius: 0.25rem 0 0 0.25rem; }
+  .ggoslds .slds-button.slds-button_middle.slds-button_middle {
+    border-radius: 0;
+    margin-left: -1px; }
+  .ggoslds .slds-button.slds-button_last.slds-button_last {
+    border-radius: 0 0.25rem 0.25rem 0;
+    margin-left: -1px; }
   .ggoslds .slds-button-group + .slds-button-group,
   .ggoslds .slds-button-group + .slds-button-group-list,
   .ggoslds .slds-button-group + .slds-button,
@@ -6821,9 +7318,9 @@
     .ggoslds .slds-button_outline-brand:active {
       background-color: #eef1f6; }
     .ggoslds .slds-button_outline-brand[disabled], .ggoslds .slds-button_outline-brand:disabled {
-      background: #c9c7c5;
-      border-color: #c9c7c5;
-      color: white; }
+      border-color: #dddbda;
+      color: #dddbda;
+      background-color: white; }
   .ggoslds .slds-button_inverse,
   .ggoslds .slds-button--inverse {
     padding-left: 1rem;
@@ -6904,8 +7401,8 @@
     .ggoslds .slds-button_destructive[disabled], .ggoslds .slds-button_destructive:disabled,
     .ggoslds .slds-button--destructive[disabled],
     .ggoslds .slds-button--destructive:disabled {
-      background: #e0e5ee;
-      border-color: transparent;
+      background: #c9c7c5;
+      border-color: #c9c7c5;
       color: white; }
   .ggoslds .slds-button_text-destructive {
     padding-left: 1rem;
@@ -6952,6 +7449,12 @@
     .ggoslds .slds-button--success:active {
       background-color: #04844b;
       border-color: #04844b; }
+    .ggoslds .slds-button_success[disabled], .ggoslds .slds-button_success:disabled,
+    .ggoslds .slds-button--success[disabled],
+    .ggoslds .slds-button--success:disabled {
+      background: #c9c7c5;
+      border-color: #c9c7c5;
+      color: white; }
   .ggoslds .slds-button__icon {
     width: 0.875rem;
     height: 0.875rem;
@@ -6993,6 +7496,8 @@
         justify-content: space-between; }
     .ggoslds .slds-button_full-width:focus {
       box-shadow: none; }
+  .ggoslds .slds-button_stretch {
+    width: 100%; }
   .ggoslds .slds-button__icon_stateful,
   .ggoslds .slds-button__icon--stateful {
     width: 0.75rem;
@@ -7062,6 +7567,48 @@
     display: none; }
   .ggoslds .slds-is-selected:hover .slds-text-selected-focus, .ggoslds .slds-is-selected:focus .slds-text-selected-focus {
     display: block; }
+  .ggoslds .slds-button_dual-stateful {
+    /**
+   * @summary Shown text when button is not pressed - default state
+   * @selector .slds-text-not-pressed
+   * @restrict .slds-button_dual-stateful span
+   */
+    /**
+   * @summary Shown text when button is pressed
+   * @selector .slds-text-pressed
+   * @restrict .slds-button_dual-stateful span
+   */ }
+    .ggoslds .slds-button_dual-stateful .slds-text-not-pressed {
+      display: block; }
+    .ggoslds .slds-button_dual-stateful .slds-text-pressed {
+      display: none; }
+  .ggoslds .slds-button_dual-stateful.slds-is-pressed {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #dddbda;
+    transition: border 0.15s linear;
+    background-color: #0070d2;
+    border-color: #0070d2;
+    color: white; }
+    .ggoslds .slds-button_dual-stateful.slds-is-pressed:link, .ggoslds .slds-button_dual-stateful.slds-is-pressed:visited, .ggoslds .slds-button_dual-stateful.slds-is-pressed:active {
+      color: white; }
+    .ggoslds .slds-button_dual-stateful.slds-is-pressed:hover, .ggoslds .slds-button_dual-stateful.slds-is-pressed:focus {
+      background-color: #005fb2;
+      border-color: #005fb2;
+      color: white; }
+    .ggoslds .slds-button_dual-stateful.slds-is-pressed:active {
+      background-color: #005fb2;
+      border-color: #005fb2; }
+    .ggoslds .slds-button_dual-stateful.slds-is-pressed[disabled], .ggoslds .slds-button_dual-stateful.slds-is-pressed:disabled {
+      background: #c9c7c5;
+      border-color: #c9c7c5;
+      color: white; }
+    .ggoslds .slds-button_dual-stateful.slds-is-pressed .slds-text-not-pressed {
+      display: none; }
+    .ggoslds .slds-button_dual-stateful.slds-is-pressed .slds-text-pressed {
+      display: block; }
   .ggoslds .slds-button_icon-bare,
   .ggoslds .slds-button--icon-bare {
     line-height: 1;
@@ -7192,6 +7739,8 @@
   .ggoslds .slds-button--icon-error:active,
   .ggoslds .slds-button--icon-error:focus {
     color: #c23934; }
+  .ggoslds .slds-button_icon-current-color {
+    color: currentColor; }
   .ggoslds .slds-button_icon-small,
   .ggoslds .slds-button--icon-small {
     width: 1.5rem;
@@ -7338,6 +7887,20 @@
     .ggoslds .slds-button_icon-border-inverse.slds-is-selected:hover .slds-button__icon,
     .ggoslds .slds-button_icon-border-inverse.slds-is-selected:focus .slds-button__icon {
       fill: white; }
+    .ggoslds .slds-button_icon-container.slds-is-selected[disabled], .ggoslds .slds-button_icon-container.slds-is-selected:disabled,
+    .ggoslds .slds-button--icon-container.slds-is-selected[disabled],
+    .ggoslds .slds-button--icon-container.slds-is-selected:disabled,
+    .ggoslds .slds-button_icon-border.slds-is-selected[disabled],
+    .ggoslds .slds-button_icon-border.slds-is-selected:disabled,
+    .ggoslds .slds-button--icon-border.slds-is-selected[disabled],
+    .ggoslds .slds-button--icon-border.slds-is-selected:disabled,
+    .ggoslds .slds-button_icon-border-filled.slds-is-selected[disabled],
+    .ggoslds .slds-button_icon-border-filled.slds-is-selected:disabled,
+    .ggoslds .slds-button_icon-border-inverse.slds-is-selected[disabled],
+    .ggoslds .slds-button_icon-border-inverse.slds-is-selected:disabled {
+      background: #c9c7c5;
+      border-color: #c9c7c5;
+      color: white; }
   .ggoslds .slds-color-picker {
     position: relative; }
     .ggoslds .slds-color-picker .slds-form-error {
@@ -7517,6 +8080,7 @@
   .ggoslds .slds-icon__container {
     display: inline-block;
     border-radius: 0.25rem;
+    line-height: 1;
     /**
    * @summary Circle container for icons
    * @selector .slds-icon_container_circle
@@ -7526,8 +8090,7 @@
     .ggoslds .slds-icon__container_circle,
     .ggoslds .slds-icon__container--circle {
       padding: 0.5rem;
-      border-radius: 50%;
-      line-height: 1; }
+      border-radius: 50%; }
   .ggoslds [class*='slds-icon-action-'] {
     padding: 0.5rem;
     border-radius: 50%; }
@@ -8399,6 +8962,8 @@
     background-color: #56aadf; }
   .ggoslds .slds-icon-standard-investment-account {
     background-color: #4bc076; }
+  .ggoslds .slds-icon-standard-output {
+    background-color: #439cba; }
   .ggoslds .slds-icon-standard-all {
     background-color: #54698d; }
   .ggoslds .slds-icon-standard-picklist-choice {
@@ -8511,6 +9076,8 @@
     background-color: #fa975c; }
   .ggoslds .slds-icon-standard-brand {
     background-color: #7e8be4; }
+  .ggoslds .slds-icon-standard-visits {
+    background-color: #3c97dd; }
   .ggoslds .slds-icon-standard-coaching {
     background-color: #f67594; }
   .ggoslds .slds-icon-standard-record-lookup {
@@ -8533,6 +9100,8 @@
     background-color: #e9696e; }
   .ggoslds .slds-icon-standard-service-territory-member {
     background-color: #7e8be4; }
+  .ggoslds .slds-icon-standard-user-role {
+    background-color: #8fc96e; }
   .ggoslds .slds-icon-standard-work-capacity-usage {
     background-color: #0079bc; }
   .ggoslds .slds-icon-standard-record-create {
@@ -8562,7 +9131,7 @@
   .ggoslds .slds-icon-standard-channel-programs {
     background-color: #0eb58a; }
   .ggoslds .slds-icon-standard-quip {
-    background-color: #25b4e9; }
+    background-color: #d3451d; }
   .ggoslds .slds-icon-standard-quip-sheet {
     background-color: #30c85a; }
   .ggoslds .slds-icon-standard-timeslot {
@@ -8583,6 +9152,8 @@
     background-color: #0eb58a; }
   .ggoslds .slds-icon-standard-resource-preference {
     background-color: #45c173; }
+  .ggoslds .slds-icon-standard-first-non-empty {
+    background-color: #e9696e; }
   .ggoslds .slds-icon-standard-resource-absence {
     background-color: #45c173; }
   .ggoslds .slds-icon-standard-text-template {
@@ -8607,6 +9178,8 @@
     background-color: #00afa0; }
   .ggoslds .slds-icon-standard-task2 {
     background-color: #4bc076; }
+  .ggoslds .slds-icon-standard-code-playground {
+    background-color: #54698d; }
   .ggoslds .slds-icon-standard-social {
     background-color: #ea74a2; }
   .ggoslds .slds-icon-standard-endorsement {
@@ -8771,6 +9344,8 @@
     background-color: #3c97dd; }
   .ggoslds .slds-icon-standard-service-resource {
     background-color: #7e8be4; }
+  .ggoslds .slds-icon-standard-filter {
+    background-color: #1539ee; }
   .ggoslds .slds-icon-standard-sales-path {
     background-color: #2a739e; }
   .ggoslds .slds-icon-standard-sms {
@@ -8821,6 +9396,8 @@
     background-color: #6ca1e9; }
   .ggoslds .slds-icon-standard-password {
     background-color: #969492; }
+  .ggoslds .slds-icon-standard-branch-merge {
+    background-color: #e9696e; }
   .ggoslds .slds-icon-standard-insights {
     background-color: #ec94ed; }
   .ggoslds .slds-icon-standard-dropbox {
@@ -8833,6 +9410,8 @@
     background-color: #54698d; }
   .ggoslds .slds-icon-standard-team-member {
     background-color: #f2cf5b; }
+  .ggoslds .slds-icon-standard-agent-session {
+    background-color: #f88960; }
   .ggoslds .slds-icon-standard-group-loading {
     background-color: #b8c3ce; }
   .ggoslds .slds-icon-standard-lead {
@@ -8849,6 +9428,8 @@
     background-color: #7e8be4; }
   .ggoslds .slds-icon-standard-contact-list {
     background-color: #a094ed; }
+  .ggoslds .slds-icon-standard-planogram {
+    background-color: #3c97dd; }
   .ggoslds .slds-icon-standard-channel-program-history {
     background-color: #0eb58a; }
   .ggoslds .slds-icon-standard-question-best {
@@ -8869,6 +9450,8 @@
     background-color: #4cc3c7; }
   .ggoslds .slds-icon-standard-feed {
     background-color: #62b7ed; }
+  .ggoslds .slds-icon-standard-sort {
+    background-color: #1539ee; }
   .ggoslds .slds-icon-standard-messaging-conversation {
     background-color: #34becd; }
   .ggoslds .slds-icon-standard-service-report {
@@ -8879,6 +9462,8 @@
     background-color: #f2cf5b; }
   .ggoslds .slds-icon-standard-stage {
     background-color: #ff9a3c; }
+  .ggoslds .slds-icon-standard-sales-cadence {
+    background-color: #54698d; }
   .ggoslds .slds-icon-standard-product-request-line-item {
     background-color: #88c651; }
   .ggoslds .slds-icon-standard-return-order-line-item {
@@ -9492,6 +10077,9 @@
     background-color: #c9c7c5; }
   100% {
     background-color: #dddbda; } }
+  .ggoslds .slds-dynamic-menu__header {
+    font-size: 0.875rem;
+    font-weight: 700; }
   .ggoslds .slds-carousel {
     position: relative; }
   .ggoslds .slds-carousel__stage {
@@ -9700,6 +10288,9 @@
       padding-right: 0;
       margin-left: 0;
       margin-right: 0; }
+    .ggoslds .slds-tabs_card .slds-card__header,
+    .ggoslds .slds-tabs_card.slds-tabs_card .slds-card__header {
+      padding-top: 0; }
   .ggoslds .slds-tabs_card .slds-card_boundary,
   .ggoslds .slds-tabs_card.slds-tabs_card .slds-card_boundary,
   .ggoslds .slds-card-wrapper .slds-card_boundary {
@@ -9955,13 +10546,14 @@
     display: inline-block;
     color: #3e3e3c;
     font-size: 0.75rem;
-    margin-right: 0.5rem;
+    padding-right: 0.5rem;
     padding-top: 0.25rem;
     margin-bottom: 0.125rem; }
     .ggoslds .slds-form-element__label:empty {
       margin: 0; }
   .ggoslds .slds-form-element__control {
-    clear: left; }
+    clear: left;
+    position: relative; }
     .ggoslds .slds-form-element__control .slds-radio,
     .ggoslds .slds-form-element__control .slds-checkbox {
       display: block; }
@@ -9985,7 +10577,8 @@
   .ggoslds .slds-form-element_readonly {
     -ms-flex-preferred-size: 0%;
         flex-basis: 0%;
-    border-bottom: 1px solid #dddbda; }
+    border-bottom: 1px solid #dddbda;
+    margin-bottom: 0; }
     .ggoslds .slds-form-element_readonly .slds-form-element__control {
       padding-top: 0.125rem;
       padding-bottom: 0.125rem; }
@@ -10591,6 +11184,7 @@
    * @restrict .slds-checkbox
    * @modifier
    * @group layout
+   * @deprecated
    */
     /**
    * @summary Creates a custom styled checkbox
@@ -11408,90 +12002,6 @@
     background-clip: padding-box; }
     .ggoslds .slds-has-error .slds-select:focus, .ggoslds .slds-has-error .slds-select:active {
       box-shadow: #c23934 0 0 0 1px inset, 0 0 3px #0070D2; }
-  .ggoslds .slds-form_horizontal .slds-form-element {
-    margin-bottom: 0.75rem; }
-  .ggoslds .slds-form_horizontal .slds-form-element:not([class*="slds-size"]) {
-    width: 100%;
-    -ms-flex-preferred-size: 100%;
-        flex-basis: 100%; }
-  @media (min-width: 48em) {
-    .ggoslds .slds-form_horizontal .slds-form-element__label:first-child {
-      float: left;
-      max-width: calc(33% - 1.25rem);
-      -ms-flex-preferred-size: calc(33% - 1.25rem);
-          flex-basis: calc(33% - 1.25rem);
-      padding-top: 0.25rem;
-      padding-right: 0.75rem;
-      margin: 0;
-      position: relative;
-      z-index: 1; }
-    .ggoslds .slds-form_horizontal .slds-form-element__control {
-      padding-left: 33%;
-      clear: none; }
-      .ggoslds .slds-form_horizontal .slds-form-element__control .slds-form-element__control {
-        padding-left: 0; }
-    .ggoslds .slds-form_horizontal .slds-dueling-list {
-      clear: none; }
-    .ggoslds .slds-form_horizontal .slds-checkbox:not(.slds-checkbox_stacked) .slds-form-element__label,
-    .ggoslds .slds-form_horizontal .slds-radio .slds-form-element__label {
-      position: relative;
-      float: none;
-      width: auto; }
-    .ggoslds .slds-form_horizontal .slds-checkbox_stacked {
-      width: 100%; }
-      .ggoslds .slds-form_horizontal .slds-checkbox_stacked .slds-checkbox__label {
-        -ms-flex-direction: row;
-            flex-direction: row;
-        -ms-flex-align: center;
-            -ms-grid-row-align: center;
-            align-items: center; }
-    .ggoslds .slds-form_horizontal .slds-form-element__row .slds-form-element__label,
-    .ggoslds .slds-form_horizontal .slds-form-element__row .slds-form-element__control,
-    .ggoslds .slds-form_horizontal .slds-dueling-list__column .slds-form-element__label {
-      width: auto;
-      max-width: 100%;
-      -ms-flex-preferred-size: auto;
-          flex-basis: auto;
-      float: none;
-      position: relative;
-      padding-left: 0;
-      margin-bottom: 0; }
-    .ggoslds .slds-form_horizontal .slds-form-element__icon {
-      float: left; } }
-  .ggoslds .slds-form_stacked .slds-form-element,
-  .ggoslds .slds-form--stacked .slds-form-element,
-  .ggoslds .slds-form-element.slds-form-element_stacked {
-    display: block;
-    margin-bottom: 0.75rem; }
-    .ggoslds .slds-form_stacked .slds-form-element:not([class*="slds-size"]),
-    .ggoslds .slds-form--stacked .slds-form-element:not([class*="slds-size"]),
-    .ggoslds .slds-form-element.slds-form-element_stacked:not([class*="slds-size"]) {
-      width: 100%;
-      -ms-flex-preferred-size: 100%;
-          flex-basis: 100%; }
-    .ggoslds .slds-form_stacked .slds-form-element .slds-checkbox,
-    .ggoslds .slds-form_stacked .slds-form-element .slds-radio,
-    .ggoslds .slds-form--stacked .slds-form-element .slds-checkbox,
-    .ggoslds .slds-form--stacked .slds-form-element .slds-radio,
-    .ggoslds .slds-form-element.slds-form-element_stacked .slds-checkbox,
-    .ggoslds .slds-form-element.slds-form-element_stacked .slds-radio {
-      display: block; }
-    .ggoslds .slds-form_stacked .slds-form-element .slds-form-element__label,
-    .ggoslds .slds-form_stacked .slds-form-element .slds-form-element__control,
-    .ggoslds .slds-form--stacked .slds-form-element .slds-form-element__label,
-    .ggoslds .slds-form--stacked .slds-form-element .slds-form-element__control,
-    .ggoslds .slds-form-element.slds-form-element_stacked .slds-form-element__label,
-    .ggoslds .slds-form-element.slds-form-element_stacked .slds-form-element__control {
-      border-bottom: 0;
-      padding-left: 0;
-      position: relative; }
-    .ggoslds .slds-form_stacked .slds-form-element .slds-form-element__control,
-    .ggoslds .slds-form--stacked .slds-form-element .slds-form-element__control,
-    .ggoslds .slds-form-element.slds-form-element_stacked .slds-form-element__control {
-      width: 100%;
-      -ms-flex-preferred-size: 100%;
-          flex-basis: 100%;
-      clear: left; }
   .ggoslds .slds-form_inline .slds-form-element,
   .ggoslds .slds-form_inline .slds-form-element__label,
   .ggoslds .slds-form_inline .slds-form-element__control,
@@ -11520,9 +12030,6 @@
       margin-bottom: 0; } }
   .ggoslds .slds-form-element__legend_has-tooltip {
     float: left; }
-  .ggoslds .slds-form_compound .slds-form-element,
-  .ggoslds .slds-form-element.slds-form-element_readonly {
-    margin-bottom: 0; }
   .ggoslds .slds-form_compound .slds-form-element__control,
   .ggoslds .slds-form--compound .slds-form-element__control {
     position: relative; }
@@ -11540,6 +12047,9 @@
       .ggoslds .slds-form_compound .slds-form-element__row + .slds-form-element__row,
       .ggoslds .slds-form--compound .slds-form-element__row + .slds-form-element__row {
         clear: both; }
+      .ggoslds .slds-form_compound .slds-form-element__row .slds-form-element,
+      .ggoslds .slds-form--compound .slds-form-element__row .slds-form-element {
+        margin-bottom: 0; }
       .ggoslds .slds-form_compound .slds-form-element__row .slds-form-element + .slds-form-element,
       .ggoslds .slds-form--compound .slds-form-element__row .slds-form-element + .slds-form-element {
         padding-left: 0.5rem;
@@ -11551,6 +12061,198 @@
     -ms-flex-align: end;
         -ms-grid-row-align: flex-end;
         align-items: flex-end; }
+  .ggoslds .slds-form-element_stacked,
+  .ggoslds .slds-form_stacked .slds-form-element,
+  .ggoslds .slds-form_horizontal .slds-form-element_stacked {
+    display: block; }
+    .ggoslds .slds-form-element_stacked:not(.slds-form-element_readonly),
+    .ggoslds .slds-form_stacked .slds-form-element:not(.slds-form-element_readonly),
+    .ggoslds .slds-form_horizontal .slds-form-element_stacked:not(.slds-form-element_readonly) {
+      margin-bottom: 0.5rem; }
+    .ggoslds .slds-form-element_stacked:not(.slds-is-editing),
+    .ggoslds .slds-form_stacked .slds-form-element:not(.slds-is-editing),
+    .ggoslds .slds-form_horizontal .slds-form-element_stacked:not(.slds-is-editing) {
+      padding: 0 0.25rem; }
+    .ggoslds .slds-form-element_stacked .slds-form-element,
+    .ggoslds .slds-form_stacked .slds-form-element .slds-form-element,
+    .ggoslds .slds-form_horizontal .slds-form-element_stacked .slds-form-element {
+      padding: 0;
+      margin-bottom: 0; }
+    .ggoslds .slds-form-element_stacked:not([class*="slds-size"]),
+    .ggoslds .slds-form_stacked .slds-form-element:not([class*="slds-size"]),
+    .ggoslds .slds-form_horizontal .slds-form-element_stacked:not([class*="slds-size"]) {
+      width: 100%;
+      -ms-flex-preferred-size: 100%;
+          flex-basis: 100%; }
+    .ggoslds .slds-form-element_stacked .slds-checkbox,
+    .ggoslds .slds-form-element_stacked .slds-radio,
+    .ggoslds .slds-form_stacked .slds-form-element .slds-checkbox,
+    .ggoslds .slds-form_stacked .slds-form-element .slds-radio,
+    .ggoslds .slds-form_horizontal .slds-form-element_stacked .slds-checkbox,
+    .ggoslds .slds-form_horizontal .slds-form-element_stacked .slds-radio {
+      display: block; }
+    .ggoslds .slds-form-element_stacked .slds-form-element__label,
+    .ggoslds .slds-form-element_stacked .slds-form-element__control,
+    .ggoslds .slds-form_stacked .slds-form-element .slds-form-element__label,
+    .ggoslds .slds-form_stacked .slds-form-element .slds-form-element__control,
+    .ggoslds .slds-form_horizontal .slds-form-element_stacked .slds-form-element__label,
+    .ggoslds .slds-form_horizontal .slds-form-element_stacked .slds-form-element__control {
+      border-bottom: 0;
+      padding-left: 0; }
+    .ggoslds .slds-form-element_stacked .slds-form-element__control,
+    .ggoslds .slds-form_stacked .slds-form-element .slds-form-element__control,
+    .ggoslds .slds-form_horizontal .slds-form-element_stacked .slds-form-element__control {
+      width: 100%;
+      -ms-flex-preferred-size: 100%;
+          flex-basis: 100%;
+      clear: left; }
+    .ggoslds .slds-form-element_stacked .slds-form-element__icon,
+    .ggoslds .slds-form_stacked .slds-form-element .slds-form-element__icon,
+    .ggoslds .slds-form_horizontal .slds-form-element_stacked .slds-form-element__icon {
+      float: none;
+      padding-top: 0.25rem; }
+  .ggoslds .slds-form-element_horizontal,
+  .ggoslds .slds-form_horizontal .slds-form-element,
+  .ggoslds .slds-form_stacked .slds-form-element_horizontal {
+    display: block; }
+    .ggoslds .slds-form-element_horizontal:not(.slds-form-element_readonly),
+    .ggoslds .slds-form_horizontal .slds-form-element:not(.slds-form-element_readonly),
+    .ggoslds .slds-form_stacked .slds-form-element_horizontal:not(.slds-form-element_readonly) {
+      margin-bottom: 0.5rem; }
+    .ggoslds .slds-form-element_horizontal:not([class*="slds-size"]),
+    .ggoslds .slds-form_horizontal .slds-form-element:not([class*="slds-size"]),
+    .ggoslds .slds-form_stacked .slds-form-element_horizontal:not([class*="slds-size"]) {
+      width: 100%;
+      -ms-flex-preferred-size: 100%;
+          flex-basis: 100%; }
+    .ggoslds .slds-form-element_horizontal:not(.slds-is-editing),
+    .ggoslds .slds-form_horizontal .slds-form-element:not(.slds-is-editing),
+    .ggoslds .slds-form_stacked .slds-form-element_horizontal:not(.slds-is-editing) {
+      padding: 0.25rem 0.25rem; }
+    .ggoslds .slds-form-element_horizontal .slds-form-element,
+    .ggoslds .slds-form_horizontal .slds-form-element .slds-form-element,
+    .ggoslds .slds-form_stacked .slds-form-element_horizontal .slds-form-element {
+      padding: 0;
+      margin-bottom: 0; }
+    .ggoslds .slds-form-element_horizontal.slds-is-edited,
+    .ggoslds .slds-form_horizontal .slds-form-element.slds-is-edited,
+    .ggoslds .slds-form_stacked .slds-form-element_horizontal.slds-is-edited {
+      padding-top: 1.25rem; }
+    @media (min-width: 48em) {
+      .ggoslds .slds-form-element_horizontal.slds-form-element_1-col .slds-form-element__label,
+      .ggoslds .slds-form_horizontal .slds-form-element.slds-form-element_1-col .slds-form-element__label,
+      .ggoslds .slds-form_stacked .slds-form-element_horizontal.slds-form-element_1-col .slds-form-element__label {
+        max-width: calc((50% - 33.333%) - 1.25rem); }
+      .ggoslds .slds-form-element_horizontal.slds-form-element_1-col .slds-form-element__control,
+      .ggoslds .slds-form_horizontal .slds-form-element.slds-form-element_1-col .slds-form-element__control,
+      .ggoslds .slds-form_stacked .slds-form-element_horizontal.slds-form-element_1-col .slds-form-element__control {
+        padding-left: calc((50% - 33.333%) - (0.25rem * 2)); } }
+    @media (min-width: 48em) {
+      .ggoslds .slds-form-element_horizontal .slds-form-element__label,
+      .ggoslds .slds-form_horizontal .slds-form-element .slds-form-element__label,
+      .ggoslds .slds-form_stacked .slds-form-element_horizontal .slds-form-element__label {
+        float: left;
+        max-width: calc(33% - 1.25rem);
+        -ms-flex-preferred-size: calc(33% - 1.25rem);
+            flex-basis: calc(33% - 1.25rem);
+        margin-bottom: 0;
+        position: relative;
+        z-index: 1; }
+      .ggoslds .slds-form-element_horizontal .slds-form-element__control,
+      .ggoslds .slds-form_horizontal .slds-form-element .slds-form-element__control,
+      .ggoslds .slds-form_stacked .slds-form-element_horizontal .slds-form-element__control {
+        padding-left: 33%;
+        clear: none; }
+        .ggoslds .slds-form-element_horizontal .slds-form-element__control .slds-form-element__control,
+        .ggoslds .slds-form_horizontal .slds-form-element .slds-form-element__control .slds-form-element__control,
+        .ggoslds .slds-form_stacked .slds-form-element_horizontal .slds-form-element__control .slds-form-element__control {
+          padding-left: 0; }
+      .ggoslds .slds-form-element_horizontal .slds-form-element__icon,
+      .ggoslds .slds-form_horizontal .slds-form-element .slds-form-element__icon,
+      .ggoslds .slds-form_stacked .slds-form-element_horizontal .slds-form-element__icon {
+        float: left;
+        padding-top: 0.25rem; }
+      .ggoslds .slds-form-element_horizontal .slds-checkbox_standalone,
+      .ggoslds .slds-form_horizontal .slds-form-element .slds-checkbox_standalone,
+      .ggoslds .slds-form_stacked .slds-form-element_horizontal .slds-checkbox_standalone {
+        padding: 0.25rem 0; }
+      .ggoslds .slds-form-element_horizontal .slds-checkbox:not(.slds-checkbox_stacked) .slds-form-element__label,
+      .ggoslds .slds-form-element_horizontal .slds-radio .slds-form-element__label,
+      .ggoslds .slds-form_horizontal .slds-form-element .slds-checkbox:not(.slds-checkbox_stacked) .slds-form-element__label,
+      .ggoslds .slds-form_horizontal .slds-form-element .slds-radio .slds-form-element__label,
+      .ggoslds .slds-form_stacked .slds-form-element_horizontal .slds-checkbox:not(.slds-checkbox_stacked) .slds-form-element__label,
+      .ggoslds .slds-form_stacked .slds-form-element_horizontal .slds-radio .slds-form-element__label {
+        position: relative;
+        float: none;
+        width: auto; }
+      .ggoslds .slds-form-element_horizontal .slds-form-element__row .slds-form-element__label,
+      .ggoslds .slds-form-element_horizontal .slds-form-element__row .slds-form-element__control,
+      .ggoslds .slds-form-element_horizontal .slds-dueling-list__column .slds-form-element__label,
+      .ggoslds .slds-form_horizontal .slds-form-element .slds-form-element__row .slds-form-element__label,
+      .ggoslds .slds-form_horizontal .slds-form-element .slds-form-element__row .slds-form-element__control,
+      .ggoslds .slds-form_horizontal .slds-form-element .slds-dueling-list__column .slds-form-element__label,
+      .ggoslds .slds-form_stacked .slds-form-element_horizontal .slds-form-element__row .slds-form-element__label,
+      .ggoslds .slds-form_stacked .slds-form-element_horizontal .slds-form-element__row .slds-form-element__control,
+      .ggoslds .slds-form_stacked .slds-form-element_horizontal .slds-dueling-list__column .slds-form-element__label {
+        width: auto;
+        max-width: 100%;
+        -ms-flex-preferred-size: auto;
+            flex-basis: auto;
+        float: none;
+        position: relative;
+        padding-left: 0;
+        margin-bottom: 0; }
+      .ggoslds .slds-form-element_horizontal .slds-dueling-list,
+      .ggoslds .slds-form_horizontal .slds-form-element .slds-dueling-list,
+      .ggoslds .slds-form_stacked .slds-form-element_horizontal .slds-dueling-list {
+        clear: none; }
+      .ggoslds .slds-form-element_horizontal .slds-input-has-icon_left .slds-input__icon,
+      .ggoslds .slds-form_horizontal .slds-form-element .slds-input-has-icon_left .slds-input__icon,
+      .ggoslds .slds-form_stacked .slds-form-element_horizontal .slds-input-has-icon_left .slds-input__icon {
+        left: calc(33% + 0.75rem); }
+      .ggoslds .slds-form-element_horizontal .slds-input-has-icon_left-right .slds-input__icon_left,
+      .ggoslds .slds-form_horizontal .slds-form-element .slds-input-has-icon_left-right .slds-input__icon_left,
+      .ggoslds .slds-form_stacked .slds-form-element_horizontal .slds-input-has-icon_left-right .slds-input__icon_left {
+        left: calc(33% + 0.75rem); } }
+  .ggoslds .slds-form-element_compound .slds-form-element__row {
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 0.25rem;
+    margin-left: -0.25rem;
+    margin-right: -0.25rem; }
+    .ggoslds .slds-form-element_compound .slds-form-element__row .slds-form-element__label {
+      padding-top: 0; }
+  .ggoslds .slds-form-element_compound .slds-form-element {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem; }
+  .ggoslds .slds-form-element_address .slds-form-element__row {
+    -ms-flex-align: end;
+        -ms-grid-row-align: flex-end;
+        align-items: flex-end; }
+  .ggoslds .slds-form__row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin-left: -0.75rem;
+    margin-right: -0.75rem; }
+  .ggoslds .slds-form__item {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex: 1 1 0%;
+        flex: 1 1 0%;
+    min-width: 280px;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem; }
+  .ggoslds .slds-is-edited {
+    background: #faffbd; }
+    .ggoslds .slds-is-edited .slds-form-element__undo {
+      top: -1.25rem;
+      right: 0.25rem; }
+  .ggoslds .slds-form-element__undo {
+    position: absolute;
+    top: 0;
+    right: 0; }
   .ggoslds .slds-docked-form-footer {
     position: fixed;
     bottom: 0;
@@ -11839,7 +12541,7 @@
   .ggoslds .slds-file-selector__text--integrated {
     margin-top: 0.75rem; }
   .ggoslds .slds-page-header {
-    padding: 1rem;
+    padding: 1rem 1rem;
     border-bottom: 1px solid #dddbda;
     border-radius: 0.25rem;
     background: #f3f2f2;
@@ -11957,6 +12659,9 @@
       padding-top: 0.5rem;
       margin-top: 0.5rem;
       border-top: 1px solid #dddbda; }
+    .ggoslds .slds-page-header_vertical .slds-page-header__name-title,
+    .ggoslds .slds-page-header--vertical .slds-page-header__name-title {
+      margin-top: 0.25rem; }
   .ggoslds .slds-page-header__detail-list {
     display: -ms-flexbox;
     display: flex;
@@ -12237,6 +12942,13 @@
     border-bottom: 1px solid #dddbda; }
   .ggoslds .slds-popover__footer {
     border-top: 1px solid #dddbda; }
+  .ggoslds .slds-popover__footer_form {
+    text-align: center;
+    background: #f3f2f2;
+    border-radius: 0 0 0.25rem 0.25rem; }
+  .ggoslds .slds-popover__body_small {
+    max-height: 15rem;
+    overflow-y: auto; }
   .ggoslds .slds-popover__close {
     position: relative;
     margin: 0.25rem;
@@ -12256,6 +12968,10 @@
     border: 0; }
   .ggoslds .slds-popover *:last-child {
     margin-bottom: 0; }
+  .ggoslds .slds-popover_full-width {
+    width: 100%; }
+  .ggoslds .slds-popover_hide {
+    display: none; }
   .ggoslds .slds-popover_panel .slds-popover__header,
   .ggoslds .slds-popover--panel .slds-popover__header {
     background: #f3f2f2;
@@ -12298,6 +13014,9 @@
   .ggoslds .slds-popover--panel.slds-nubbin--right-top:before,
   .ggoslds .slds-popover--panel.slds-nubbin--right-top:after {
     top: 2.25rem; }
+  .ggoslds .slds-popover_panel__label {
+    font-size: 0.875rem;
+    font-weight: 700; }
   .ggoslds .slds-nubbin_top:before,
   .ggoslds .slds-nubbin--top:before {
     width: 1rem;
@@ -12850,6 +13569,17 @@
       .ggoslds .slds-popover_error .slds-popover__body_scrollable + .slds-popover__footer,
       .ggoslds .slds-popover_warning .slds-popover__body_scrollable + .slds-popover__footer {
         border-top: 0; }
+  .ggoslds .slds-popover_warning button {
+    color: #514f4d;
+    text-decoration: underline; }
+    .ggoslds .slds-popover_warning button:hover {
+      color: #706e6b; }
+    .ggoslds .slds-popover_warning button:focus {
+      color: #514f4d;
+      box-shadow: 0 0 3px #514f4d;
+      border: 1px solid #514f4d; }
+    .ggoslds .slds-popover_warning button:active {
+      color: #706e6b; }
   .ggoslds .slds-popover_warning .slds-popover__header {
     background-color: #ffb75d;
     color: #2b2826; }
@@ -12857,8 +13587,6 @@
       fill: currentColor; }
   .ggoslds .slds-popover_warning .slds-popover__close {
     color: currentColor; }
-    .ggoslds .slds-popover_warning .slds-popover__close:focus, .ggoslds .slds-popover_warning .slds-popover__close:hover {
-      color: #706e6b; }
   .ggoslds .slds-popover_warning.slds-nubbin_top:before, .ggoslds .slds-popover_warning.slds-nubbin--top:before, .ggoslds .slds-popover_warning.slds-nubbin_top-left:before, .ggoslds .slds-popover_warning.slds-nubbin--top-left:before, .ggoslds .slds-popover_warning.slds-nubbin_top-right:before, .ggoslds .slds-popover_warning.slds-nubbin--top-right:before, .ggoslds .slds-popover_warning.slds-nubbin_left-top:before, .ggoslds .slds-popover_warning.slds-nubbin--left-top:before, .ggoslds .slds-popover_warning.slds-nubbin_right-top:before, .ggoslds .slds-popover_warning.slds-nubbin--right-top:before {
     background-color: #ffb75d; }
   .ggoslds .slds-tooltip {
@@ -13251,9 +13979,12 @@
     .ggoslds .slds-dropdown[class*="slds-nubbin_bottom"], .ggoslds .slds-dropdown[class*="slds-nubbin--bottom"] {
       margin-bottom: 0.5rem; }
     .ggoslds .slds-dropdown__header {
+      font-size: 0.875rem;
+      font-weight: 700;
       padding: 0.5rem 0.75rem; }
     .ggoslds .slds-dropdown__item {
       line-height: 1.5;
+      font-weight: 400;
       /**
      * @summary If menu contains menuitemcheckbox then this toggles the selected icon when it is selected
      * @selector .slds-icon_selected
@@ -13276,7 +14007,31 @@
         padding: 0.5rem 0.75rem;
         color: #080707;
         white-space: nowrap;
-        cursor: pointer; }
+        cursor: pointer;
+        /**
+       * @summary Places a menu item into an errored state
+       *
+       * @selector .slds-has-error
+       * @restrict .slds-dropdown__item > a
+       * @modifier
+       * @group notification
+       */
+        /**
+       * @summary Places a menu item into a success state
+       *
+       * @selector .slds-has-success
+       * @restrict .slds-dropdown__item > a
+       * @modifier
+       * @group notification
+       */
+        /**
+       * @summary Places a menu item into a warning state
+       *
+       * @selector .slds-has-warning
+       * @restrict .slds-dropdown__item > a
+       * @modifier
+       * @group notification
+       */ }
         .ggoslds .slds-dropdown__item > a:hover, .ggoslds .slds-dropdown__item > a:focus {
           outline: 0;
           text-decoration: none;
@@ -13291,6 +14046,20 @@
             background-color: transparent; }
           .ggoslds .slds-dropdown__item > a[aria-disabled="true"] .slds-icon {
             fill: #dddbda; }
+        .ggoslds .slds-dropdown__item > a.slds-has-error {
+          background: #c23934; }
+        .ggoslds .slds-dropdown__item > a.slds-has-success {
+          background: #04844b; }
+        .ggoslds .slds-dropdown__item > a.slds-has-error, .ggoslds .slds-dropdown__item > a.slds-has-success {
+          color: white; }
+        .ggoslds .slds-dropdown__item > a.slds-has-warning {
+          background: #ffb75d; }
+          .ggoslds .slds-dropdown__item > a.slds-has-warning .slds-indicator_unread {
+            background-color: currentColor; }
+          .ggoslds .slds-dropdown__item > a.slds-has-warning .slds-indicator_unsaved {
+            color: currentColor; }
+        .ggoslds .slds-dropdown__item > a.slds-has-error:hover, .ggoslds .slds-dropdown__item > a.slds-has-error:focus, .ggoslds .slds-dropdown__item > a.slds-has-success:hover, .ggoslds .slds-dropdown__item > a.slds-has-success:focus, .ggoslds .slds-dropdown__item > a.slds-has-warning:hover, .ggoslds .slds-dropdown__item > a.slds-has-warning:focus {
+          text-decoration: underline; }
       .ggoslds .slds-dropdown__item .slds-icon_selected,
       .ggoslds .slds-dropdown__item .slds-icon--selected {
         opacity: 0;
@@ -13513,6 +14282,9 @@
   .ggoslds .slds-listbox__option .slds-truncate {
     display: inline-block;
     vertical-align: middle; }
+  .ggoslds .slds-listbox__option-header {
+    font-size: 0.875rem;
+    font-weight: 700; }
   .ggoslds .slds-listbox__option-icon {
     width: 1.5rem;
     display: -ms-inline-flexbox;
@@ -13991,6 +14763,7 @@
    * @name range
    * @selector .slds-has-multi-selection
    * @restrict .slds-datepicker tr
+   * @support dev-ready
    * @variant
    */
     /**
@@ -14282,6 +15055,26 @@
     display: -ms-flexbox;
     display: flex;
     margin-right: 1px; }
+  .ggoslds .slds-utility-bar__item_pop-out {
+    position: relative; }
+    .ggoslds .slds-utility-bar__item_pop-out:before {
+      content: '';
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      height: 4px;
+      width: 4px;
+      border-top: 1px solid #080707;
+      border-right: 1px solid #080707; }
+    .ggoslds .slds-utility-bar__item_pop-out:after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      right: 6px;
+      height: 7px;
+      width: 7px;
+      border-right: 1px solid #080707;
+      transform: rotate(45deg); }
   .ggoslds .slds-utility-bar__action {
     position: relative;
     display: -ms-inline-flexbox;
@@ -14694,7 +15487,17 @@
     display: inline-flex;
     margin-right: 0.5rem; }
   .ggoslds .slds-global-actions__favorites-action {
-    border-color: #919191; }
+    border-color: #919191;
+    /**
+   * @summary Selected/clicked state on favorites button
+   * @selector .slds-is-selected
+   * @restrict .slds-global-actions__favorites-action
+   */
+    /**
+   * @summary Disabled state on favorites button
+   * @selector .slds-is-disabled
+   * @restrict .slds-global-actions__favorites-action
+   */ }
     .ggoslds .slds-global-actions__favorites-action:hover {
       border-color: #5e5e5e; }
     .ggoslds .slds-global-actions__favorites-action .slds-button__icon {
@@ -14851,21 +15654,53 @@
    * @restrict .slds-context-bar div
    */
     /**
+   *
+   * #### Accessibility
+   *
+   * **Communicating Status to Screen Readers**
+   *
+   * When communitcatin tab status updates to the user, unread, warning, error and success notifications should  all employ the same technique to communicate that update to users of assistive technology, who would be otherwise unaware of that status change.
+   *
+   * You should use a single hidden ARIA live region for the entire sub tabs block, the contents of which gets updated each time a sub tab changes its status. The contents should contain a description of the status level and the name of the tab the status change event occured in. The markup would look something like:
+   *
+   * `<div className="slds-assistive-text" aria-live="polite">...</div>`
+   *
+   * Upon clearing the status on a given tab, you should clear the message from the live region.
+
+   * **Unread status**
+   *
+   * In order to inform screen readers of new activity in a tab, 2 things should occur.
+   *
+   * 1. The `title` attribute and `aria-label` on the element that displays the red dot should read **"New Activity"**. This will update the text content of the tab to include the "New Activity" text: "New Activity Chat - Customer".
+   *
+   * 2. The hidden live region as described above, should have its content updated to **"New Activity in Tab: [Tab Name Here]"** to alert the user of new activity in that particular sub tab.
+   *
+   * `<span aria-label="New Activity" className="slds-indicator_unread" title="New Activity"></span>`
+   *
+   * `<div className="slds-assistive-text" aria-live="polite">New activity in Tab: Chat - Customer</div>`
+   *
+   * **Warning, Error and Success Tabs**
+   *
+   * When you wish to draw attention to a particular tab because something has occurred in that tab that corresponds to an alert level, you can use the `slds-has-warning`, `slds-has-error` or `slds-has-success` class to change the background color and introduce a short pulsing animation to draw attention from the user.
+   *
+   * The icon is updated to match the corresponding alert level, to give an extra way to communicate the level of the status without relying on the use of color alone.
+   *
+   * In this example we show that something inside the tab is about to break a service level agreement in 30 seconds, and we wish to draw the users attention to it to take action.
+   *
+   * Update the hidden live region with a message that informs the user of the status level, the message and the offending sub tab **[level]: [message] in tab: [tab_name]**.
+   *
+   * `<div className="slds-assistive-text" aria-live="polite">Warning: SLA agreement in 30 seconds in tab: Chat - Customer</div>`
+   *
    * @summary Tab modifier when using a tabset
    *
    * @name navigation-tab-bar
    * @selector .slds-context-bar_tabs
    * @restrict .slds-context-bar
+   * @support dev-ready
    * @variant
    */
     /**
-   *
-   * #### Accessibility
-   *
-   * On the Split View Toggle button, `aria-expanded` is set to `false` by default.
-   * Set `aria-expanded` to `true` when  Split View is active. When Split View is active,
-   * set the value of `aria-controls` on the Split View Toggle button, to the `ID` of the
-   * wrapper element that contains the Split View List.
+   * @summary Context bar tab items
    *
    * @selector .slds-context-bar__item_tab
    * @restrict .slds-context-bar_tabs .slds-context-bar__item
@@ -14922,6 +15757,24 @@
      * @modifier
      */
       /**
+     * @summary Success notification on a tab
+     *
+     * @selector .slds-has-success
+     * @restrict .slds-context-bar__item
+     */
+      /**
+     * @summary Error notification on a tab
+     *
+     * @selector .slds-has-error
+     * @restrict .slds-context-bar__item
+     */
+      /**
+     * @summary Warning notification on a tab
+     *
+     * @selector .slds-has-warning
+     * @restrict .slds-context-bar__item
+     */
+      /**
      * Add a left border to a context bar item
      *
      * @selector .slds-context-bar__item_divider-left
@@ -14953,6 +15806,16 @@
           .ggoslds .slds-context-bar__item:not(.slds-no-hover):hover:after {
             background: rgba(0, 0, 0, 0.75);
             mix-blend-mode: soft-light; } }
+      .ggoslds .slds-context-bar__item:before {
+        background: #fff;
+        bottom: 0;
+        content: '';
+        height: auto;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition-property: top, background-color; }
       .ggoslds .slds-context-bar__item.slds-is-active {
         animation: bkAnim 0.135s cubic-bezier(0.39, 0.575, 0.565, 1) both; }
 
@@ -14988,6 +15851,111 @@
         height: 4px; }
       .ggoslds .slds-context-bar__item.slds-has-notification {
         background: rgba(21, 137, 238, 0.1); }
+
+@keyframes error-pulse {
+  0% {
+    background-color: #c23934; }
+  40% {
+    background-color: #870500; }
+  100% {
+    background-color: #c23934; } }
+
+@keyframes success-pulse {
+  0% {
+    background-color: #04844b; }
+  40% {
+    background-color: #004a29; }
+  100% {
+    background-color: #04844b; } }
+
+@keyframes warning-pulse {
+  0% {
+    background-color: #ffb75d; }
+  40% {
+    background-color: #ff9e2c; }
+  100% {
+    background-color: #ffb75d; } }
+      .ggoslds .slds-context-bar__item.slds-has-success:before {
+        animation: none;
+        animation-duration: 1s;
+        animation-iteration-count: 3;
+        animation-delay: 150ms;
+        animation-timing-function: cubic-bezier(0.07, 0.49, 0.5, 1);
+        background-color: #04844b;
+        bottom: 0;
+        content: '';
+        height: auto;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: background-color 0.25s cubic-bezier(0.39, 0.575, 0.565, 1); }
+      .ggoslds .slds-context-bar__item.slds-has-success:hover:before {
+        background-color: #004a29;
+        height: auto; }
+      .ggoslds .slds-context-bar__item.slds-has-success:before {
+        animation-name: success-pulse; }
+      .ggoslds .slds-context-bar__item.slds-has-error:before {
+        animation: none;
+        animation-duration: 1s;
+        animation-iteration-count: 3;
+        animation-delay: 150ms;
+        animation-timing-function: cubic-bezier(0.07, 0.49, 0.5, 1);
+        background-color: #c23934;
+        bottom: 0;
+        content: '';
+        height: auto;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: background-color 0.25s cubic-bezier(0.39, 0.575, 0.565, 1); }
+      .ggoslds .slds-context-bar__item.slds-has-error:hover:before {
+        background-color: #870500;
+        height: auto; }
+      .ggoslds .slds-context-bar__item.slds-has-error:before {
+        animation-name: error-pulse; }
+      .ggoslds .slds-context-bar__item.slds-has-success .slds-context-bar__label-action, .ggoslds .slds-context-bar__item.slds-has-error .slds-context-bar__label-action {
+        color: white; }
+      .ggoslds .slds-context-bar__item.slds-has-success .slds-indicator_unread, .ggoslds .slds-context-bar__item.slds-has-error .slds-indicator_unread {
+        background-color: white; }
+      .ggoslds .slds-context-bar__item.slds-has-success .slds-indicator_unsaved, .ggoslds .slds-context-bar__item.slds-has-error .slds-indicator_unsaved {
+        color: white; }
+      .ggoslds .slds-context-bar__item.slds-has-warning:before {
+        animation: none;
+        animation-duration: 1s;
+        animation-iteration-count: 3;
+        animation-delay: 150ms;
+        animation-timing-function: cubic-bezier(0.07, 0.49, 0.5, 1);
+        background-color: #ffb75d;
+        bottom: 0;
+        content: '';
+        height: auto;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: background-color 0.25s cubic-bezier(0.39, 0.575, 0.565, 1); }
+      .ggoslds .slds-context-bar__item.slds-has-warning:hover:before {
+        background-color: #ff9e2c;
+        height: auto; }
+      .ggoslds .slds-context-bar__item.slds-has-warning:before {
+        animation-name: warning-pulse; }
+      .ggoslds .slds-context-bar__item.slds-has-warning .slds-indicator_unread {
+        background-color: currentColor; }
+      .ggoslds .slds-context-bar__item.slds-has-warning .slds-indicator_unsaved {
+        color: currentColor; }
+      .ggoslds .slds-context-bar__item.slds-has-success.slds-is-active:after, .ggoslds .slds-context-bar__item.slds-has-warning.slds-is-active:after, .ggoslds .slds-context-bar__item.slds-has-error.slds-is-active:after {
+        content: '';
+        background: #3e3e3c;
+        position: absolute;
+        height: 3px;
+        opacity: 0.4;
+        top: 0;
+        right: 0;
+        left: 0; }
+      .ggoslds .slds-context-bar__item.slds-has-success.slds-has-focus:after, .ggoslds .slds-context-bar__item.slds-has-warning.slds-has-focus:after, .ggoslds .slds-context-bar__item.slds-has-error.slds-has-focus:after {
+        height: 4px; }
       .ggoslds .slds-context-bar__item_divider-left, .ggoslds .slds-context-bar__item--divider-left {
         border-left: 1px solid #dddbda; }
       .ggoslds .slds-context-bar__item_divider-right, .ggoslds .slds-context-bar__item--divider-right {
@@ -15005,7 +15973,8 @@
       border-radius: 0;
       min-width: 0%;
       color: inherit;
-      font-size: 0.8125rem; }
+      font-size: 0.8125rem;
+      z-index: 1; }
       .ggoslds .slds-context-bar__label-action:focus, .ggoslds .slds-context-bar__label-action:focus:hover {
         outline: 0;
         text-decoration: underline; }
@@ -15059,8 +16028,7 @@
       width: 12rem;
       border-right: 1px solid #dddbda;
       /**
-     * Pinned state
-     * Toggles visibility of elements inside of tab
+     * @summary Pinned state - toggles visibility of elements inside of tab
      *
      * @selector .slds-is-pinned
      * @restrict .slds-context-bar__item_tab
@@ -15275,6 +16243,10 @@
         flex-grow: 1;
     min-width: 0%;
     height: 100%; }
+    .ggoslds .slds-builder-header__item-action .slds-media__body,
+    .ggoslds .slds-builder-header__item-label .slds-media__body {
+      -ms-flex-preferred-size: auto;
+          flex-basis: auto; }
   .ggoslds .slds-builder-header__item-action {
     transition: all 150ms linear; }
     .ggoslds .slds-builder-header__item-action:hover, .ggoslds .slds-builder-header__item-action:focus {
@@ -15758,6 +16730,10 @@
       position: absolute;
       top: -2.5rem;
       right: -0.5rem; }
+  @media (min-width: 48em) {
+    .ggoslds .slds-modal_small .slds-modal__container {
+      width: 52.0625rem;
+      max-width: none; } }
   @media (min-width: 48em) {
     .ggoslds .slds-modal_medium .slds-modal__container {
       width: 70%;
@@ -16910,12 +17886,11 @@
     margin-top: 1rem;
     padding-right: 0.75rem; }
   .ggoslds .slds-path__coach-title {
+    font-size: 0.875rem;
+    font-weight: 700;
     margin-bottom: 0.5rem;
     border-bottom: #dddbda 1px solid;
     padding-bottom: 0.5rem;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.0625rem;
     line-height: 1.125; }
   .ggoslds .slds-path__coach-edit {
     border: 0;
@@ -18154,6 +19129,9 @@
   .ggoslds .slds-split-view__header {
     padding: 1rem 1rem 0.5rem 1.5rem; }
   .ggoslds .slds-split-view__list-header {
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.25;
     border-top: 1px solid #dddbda;
     border-bottom: 1px solid #dddbda;
     padding: 0.5rem 1rem 0.5rem 1.5rem; }
@@ -18423,7 +19401,8 @@
     line-height: 2.5rem;
     color: currentColor;
     border: 0;
-    text-transform: inherit; }
+    text-transform: inherit;
+    z-index: 1; }
     .ggoslds .slds-tabs_default__link:focus,
     .ggoslds .slds-tabs--default__link:focus {
       outline: 0; }
@@ -18447,6 +19426,8 @@
       box-shadow: none; }
       .ggoslds .slds-tabs_default__overflow-button .slds-button:focus {
         text-decoration: underline; }
+    .ggoslds .slds-tabs_default__overflow-button.slds-has-error .slds-button, .ggoslds .slds-tabs_default__overflow-button.slds-has-success .slds-button {
+      color: white; }
   .ggoslds .slds-tabs_default__content,
   .ggoslds .slds-tabs--default__content {
     position: relative;
@@ -18455,6 +19436,12 @@
     font-size: 1rem; }
   .ggoslds .slds-tabs_large .slds-tabs_default__item {
     font-size: 1.25rem; }
+  .ggoslds .slds-tabs__left-icon {
+    margin-right: 0.5rem; }
+    .ggoslds .slds-tabs__left-icon:empty {
+      margin-right: 0; }
+  .ggoslds .slds-tabs__right-icon {
+    margin-left: 0.5rem; }
   .ggoslds .slds-tabs_mobile__title {
     width: 100%;
     height: 100%;
@@ -18731,7 +19718,25 @@
   .ggoslds .slds-sub-tabs__item {
     text-transform: none;
     letter-spacing: 0;
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    /**
+   * @summary Success notification on a sub tab
+   *
+   * @selector .slds-has-success
+   * @restrict .slds-sub-tabs__item
+   */
+    /**
+   * @summary Error notification on a sub tab
+   *
+   * @selector .slds-has-error
+   * @restrict .slds-sub-tabs__item
+   */
+    /**
+   * @summary Warning notification on a sub tab
+   *
+   * @selector .slds-has-warning
+   * @restrict .slds-sub-tabs__item
+   */ }
     .ggoslds .slds-sub-tabs__item.slds-active, .ggoslds .slds-sub-tabs__item.slds-is-open {
       background: rgba(21, 137, 238, 0.1); }
     .ggoslds .slds-sub-tabs__item:after {
@@ -18740,6 +19745,88 @@
       text-decoration: underline; }
     .ggoslds .slds-sub-tabs__item + .slds-sub-tabs__item {
       margin-left: 0; }
+
+@keyframes error-pulse {
+  0% {
+    background-color: #c23934; }
+  40% {
+    background-color: #870500; }
+  100% {
+    background-color: #c23934; } }
+
+@keyframes success-pulse {
+  0% {
+    background-color: #04844b; }
+  40% {
+    background-color: #004a29; }
+  100% {
+    background-color: #04844b; } }
+
+@keyframes warning-pulse {
+  0% {
+    background-color: #ffb75d; }
+  40% {
+    background-color: #ff9e2c; }
+  100% {
+    background-color: #ffb75d; } }
+    .ggoslds .slds-sub-tabs__item.slds-has-success:before {
+      animation-duration: 1s;
+      animation-iteration-count: 3;
+      animation-timing-function: linear;
+      background-color: #04844b;
+      bottom: 0;
+      content: " ";
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: background-color 0.25s cubic-bezier(0.39, 0.575, 0.565, 1); }
+    .ggoslds .slds-sub-tabs__item.slds-has-success:hover:before {
+      background-color: #004a29; }
+    .ggoslds .slds-sub-tabs__item.slds-has-success:before {
+      animation-name: success-pulse; }
+    .ggoslds .slds-sub-tabs__item.slds-has-error:before {
+      animation-duration: 1s;
+      animation-iteration-count: 3;
+      animation-timing-function: linear;
+      background-color: #c23934;
+      bottom: 0;
+      content: " ";
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: background-color 0.25s cubic-bezier(0.39, 0.575, 0.565, 1); }
+    .ggoslds .slds-sub-tabs__item.slds-has-error:hover:before {
+      background-color: #870500; }
+    .ggoslds .slds-sub-tabs__item.slds-has-error:before {
+      animation-name: error-pulse; }
+    .ggoslds .slds-sub-tabs__item.slds-has-success, .ggoslds .slds-sub-tabs__item.slds-has-error {
+      color: white; }
+      .ggoslds .slds-sub-tabs__item.slds-has-success .slds-indicator_unread, .ggoslds .slds-sub-tabs__item.slds-has-error .slds-indicator_unread {
+        background-color: white; }
+      .ggoslds .slds-sub-tabs__item.slds-has-success .slds-indicator_unsaved, .ggoslds .slds-sub-tabs__item.slds-has-error .slds-indicator_unsaved {
+        color: white; }
+    .ggoslds .slds-sub-tabs__item.slds-has-warning:before {
+      animation-duration: 1s;
+      animation-iteration-count: 3;
+      animation-timing-function: linear;
+      background-color: #ffb75d;
+      bottom: 0;
+      content: " ";
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: background-color 0.25s cubic-bezier(0.39, 0.575, 0.565, 1); }
+    .ggoslds .slds-sub-tabs__item.slds-has-warning:hover:before {
+      background-color: #ff9e2c; }
+    .ggoslds .slds-sub-tabs__item.slds-has-warning:before {
+      animation-name: warning-pulse; }
+    .ggoslds .slds-sub-tabs__item.slds-has-warning .slds-indicator_unread {
+      background-color: currentColor; }
+    .ggoslds .slds-sub-tabs__item.slds-has-warning .slds-indicator_unsaved {
+      color: currentColor; }
   .ggoslds .slds-has-pinned-regions .slds-sub-tabs__item.slds-active:before, .ggoslds .slds-has-pinned-regions .slds-sub-tabs__item.slds-is-open:before {
     content: '';
     height: 3px;
@@ -18801,85 +19888,83 @@
   .ggoslds .slds-nav-vertical_compact .slds-nav-vertical__title,
   .ggoslds .slds-nav-vertical_compact .slds-nav-vertical__action {
     padding: 0.25rem 1.5rem; }
-  .ggoslds .slds-nav-vertical_shade .slds-nav-vertical__action:hover {
-    background-color: #f3f2f2; }
-  .ggoslds .slds-nav-vertical_shade .slds-nav-vertical__action:active {
-    background-color: #ecebea; }
+  .ggoslds .slds-nav-vertical_shade .slds-is-active.slds-nav-vertical__item:before {
+    background: white; }
+  .ggoslds .slds-nav-vertical_shade .slds-nav-vertical__item:hover:before {
+    background: white; }
   .ggoslds .slds-nav-vertical_shade .slds-is-active .slds-nav-vertical__action {
-    background-color: white;
     border-color: #dddbda; }
   .ggoslds .slds-nav-vertical__title {
     padding: 0.5rem 1rem;
-    padding-left: 1.5rem; }
+    padding-left: 1.5rem;
+    font-size: 1rem;
+    font-weight: 700; }
     .ggoslds .slds-nav-vertical__title:not(:first-of-type) {
       margin-top: 0.5rem; }
   .ggoslds .slds-nav-vertical__section:not(:first-of-type) {
     margin-top: 0.5rem; }
   .ggoslds .slds-nav-vertical__item {
     position: relative; }
-    .ggoslds .slds-nav-vertical__item.slds-is-active:before {
-      content: '';
-      width: 4px;
-      left: 0;
-      top: 0;
-      bottom: 0;
+    .ggoslds .slds-nav-vertical__item:before {
       position: absolute;
-      background: #1589ee; }
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      content: ''; }
+    .ggoslds .slds-nav-vertical__item:hover:before, .ggoslds .slds-nav-vertical__item.slds-is-active:before {
+      background: #d8edff; }
   .ggoslds .slds-nav-vertical__action {
+    position: relative;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: center;
         align-items: center;
     width: 100%;
-    padding: 0.5rem 1.5rem;
+    padding: 0.5rem 1.5rem 0.5rem 2rem;
+    color: #080707;
     border-top: 1px solid transparent;
     border-bottom: 1px solid transparent;
-    border-radius: 0; }
-    .ggoslds .slds-nav-vertical__action, .ggoslds .slds-nav-vertical__action:active, .ggoslds .slds-nav-vertical__action:hover, .ggoslds .slds-nav-vertical__action:focus {
+    border-radius: 0;
+    box-shadow: inset 0 0 0 #1589ee;
+    cursor: pointer; }
+    .ggoslds .slds-nav-vertical__action:active, .ggoslds .slds-nav-vertical__action:hover, .ggoslds .slds-nav-vertical__action:focus {
       color: currentColor; }
     .ggoslds .slds-nav-vertical__action:hover {
-      background-color: #f3f2f2;
-      text-decoration: none; }
+      text-decoration: none;
+      box-shadow: inset 0.125rem 0 0 #1589ee; }
     .ggoslds .slds-nav-vertical__action:focus {
       outline: 0;
-      box-shadow: none;
       text-decoration: underline; }
-    .ggoslds .slds-nav-vertical__action:active {
-      background-color: #ecebea; }
-      .ggoslds .slds-nav-vertical__action:active:focus {
-        text-decoration: none; }
   .ggoslds .slds-nav-vertical__item.slds-is-active .slds-nav-vertical__action {
-    background-color: rgba(21, 137, 238, 0.1); }
-  .ggoslds .slds-nav-vertical__item [type="radio"] {
-    width: 1px;
-    height: 1px;
-    border: 0;
-    clip: rect(0 0 0 0);
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute; }
-    .ggoslds .slds-nav-vertical__item [type="radio"]:focus + .slds-nav-vertical__action {
-      /**
+    font-weight: bold;
+    box-shadow: inset 0.25rem 0 0 #1589ee; }
+  .ggoslds .slds-nav-vertical__item {
+    display: block; }
+    .ggoslds .slds-nav-vertical__item [type="radio"] {
+      width: 1px;
+      height: 1px;
+      border: 0;
+      clip: rect(0 0 0 0);
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute; }
+      .ggoslds .slds-nav-vertical__item [type="radio"]:focus + .slds-nav-vertical__action {
+        /**
        * @summary Used for styling the radio button
        * @selector .slds-nav-vertical_radio-faux
        * @restrict .slds-nav-vertical__action span
        */ }
-      .ggoslds .slds-nav-vertical__item [type="radio"]:focus + .slds-nav-vertical__action .slds-nav-vertical_radio-faux {
-        text-decoration: underline; }
-    .ggoslds .slds-nav-vertical__item [type="radio"]:checked + .slds-nav-vertical__action {
-      background-color: rgba(21, 137, 238, 0.1); }
-      .ggoslds .slds-nav-vertical__item [type="radio"]:checked + .slds-nav-vertical__action:before {
-        content: '';
-        width: 4px;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        position: absolute;
-        background: #1589ee; }
+        .ggoslds .slds-nav-vertical__item [type="radio"]:focus + .slds-nav-vertical__action .slds-nav-vertical_radio-faux {
+          text-decoration: underline; }
+      .ggoslds .slds-nav-vertical__item [type="radio"]:checked + .slds-nav-vertical__action {
+        font-weight: bold;
+        background-color: #d8edff;
+        box-shadow: inset 0.25rem 0 0 #1589ee; }
   .ggoslds .slds-nav-vertical_shade .slds-nav-vertical__item [type="radio"]:checked + .slds-nav-vertical__action {
-    background-color: rgba(21, 137, 238, 0.1);
-    border-color: #dddbda; }
+    border-color: #dddbda;
+    background-color: white; }
   .ggoslds .slds-nav-vertical__action_overflow {
     color: #706e6b; }
     .ggoslds .slds-nav-vertical__action_overflow[aria-expanded="true"] .slds-button__icon {
@@ -19210,6 +20295,8 @@
       .ggoslds .slds-lookup__item > button .slds-icon {
         margin-right: 0.5rem; }
     .ggoslds .slds-lookup__item_label, .ggoslds .slds-lookup__item--label {
+      font-size: 0.875rem;
+      font-weight: 700;
       display: -ms-flexbox;
       display: flex;
       -ms-flex-align: center;
@@ -19406,6 +20493,107 @@
     text-shadow: none; }
     .ggoslds .slds-avatar__initials_inverse:hover {
       color: #3e3e3c; }
+  .ggoslds .slds-avatar-group {
+    width: 2rem;
+    height: 2rem;
+    position: relative;
+    display: inline-block; }
+  .ggoslds .slds-avatar-grouped {
+    border: 1px solid white;
+    line-height: 0;
+    border-radius: 50%;
+    background: #34becd; }
+  .ggoslds .slds-avatar-grouped_inverse {
+    background-color: #f3f2f2; }
+  .ggoslds .slds-avatar-grouped__primary {
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    /**
+  * @summary Modifier for the Avatar that contains User Initials in an Avatar Group
+  * @name initials
+  * @selector .slds-avatar-grouped__initials
+  * @restrict .slds-avatar-grouped
+  * @modifier
+  */ }
+    .ggoslds .slds-avatar-grouped__primary .slds-avatar-grouped__initials {
+      transform: scale(0.6428571429); }
+  .ggoslds .slds-avatar-grouped__secondary {
+    width: 1.25rem;
+    height: 1.25rem;
+    position: absolute;
+    top: 0;
+    right: 0; }
+    .ggoslds .slds-avatar-grouped__secondary .slds-avatar-grouped__initials {
+      transform: scale(0.5); }
+  .ggoslds .slds-avatar-grouped__icon {
+    height: 100%;
+    line-height: 0; }
+    .ggoslds .slds-avatar-grouped__icon .slds-icon {
+      width: 100%;
+      height: 100%; }
+  .ggoslds .slds-avatar-group_x-small {
+    width: 1.25rem;
+    height: 1.25rem; }
+    .ggoslds .slds-avatar-group_x-small .slds-avatar-grouped__primary {
+      width: 1rem;
+      height: 1rem;
+      /**
+    * @summary Modifier for the initials Avatar in an Avatar Group
+    * @name initials
+    * @selector .slds-avatar-grouped__initials
+    * @restrict .slds-avatar__initials
+    * @modifier
+    */ }
+      .ggoslds .slds-avatar-group_x-small .slds-avatar-grouped__primary .slds-avatar-grouped__initials {
+        transform: scale(0.3571428571); }
+    .ggoslds .slds-avatar-group_x-small .slds-avatar-grouped__secondary {
+      width: 0.75rem;
+      height: 0.75rem; }
+      .ggoslds .slds-avatar-group_x-small .slds-avatar-grouped__secondary .slds-avatar-grouped__initials {
+        transform: scale(0.2142857143); }
+  .ggoslds .slds-avatar-group_small {
+    width: 1.5rem;
+    height: 1.5rem; }
+    .ggoslds .slds-avatar-group_small .slds-avatar-grouped__primary {
+      width: 1.25rem;
+      height: 1.25rem; }
+      .ggoslds .slds-avatar-group_small .slds-avatar-grouped__primary .slds-avatar-grouped__initials {
+        transform: scale(0.4714285714); }
+    .ggoslds .slds-avatar-group_small .slds-avatar-grouped__secondary {
+      width: 1rem;
+      height: 1rem; }
+      .ggoslds .slds-avatar-group_small .slds-avatar-grouped__secondary .slds-avatar-grouped__initials {
+        transform: scale(0.3571428571); }
+  .ggoslds .slds-avatar-group_medium {
+    width: 2rem;
+    height: 2rem; }
+    .ggoslds .slds-avatar-group_medium .slds-avatar-grouped__primary {
+      width: 1.5rem;
+      height: 1.5rem; }
+      .ggoslds .slds-avatar-group_medium .slds-avatar-grouped__primary .slds-avatar-grouped__initials {
+        transform: scale(0.6428571429); }
+    .ggoslds .slds-avatar-group_medium .slds-avatar-grouped__secondary {
+      width: 1.25rem;
+      height: 1.25rem; }
+      .ggoslds .slds-avatar-group_medium .slds-avatar-grouped__secondary .slds-avatar-grouped__initials {
+        transform: scale(0.5); }
+  .ggoslds .slds-avatar-group_large {
+    width: 3rem;
+    height: 3rem; }
+    .ggoslds .slds-avatar-group_large .slds-avatar-grouped__primary {
+      width: 2.5rem;
+      height: 2.5rem; }
+      .ggoslds .slds-avatar-group_large .slds-avatar-grouped__primary .slds-avatar-grouped__initials {
+        transform: scale(1); }
+    .ggoslds .slds-avatar-group_large .slds-avatar-grouped__secondary {
+      width: 1.5rem;
+      height: 1.5rem; }
+      .ggoslds .slds-avatar-group_large .slds-avatar-grouped__secondary .slds-avatar-grouped__initials {
+        transform: scale(0.5714285714); }
   .ggoslds .slds-image,
   .ggoslds .slds-file {
     display: block;
@@ -19496,23 +20684,31 @@
    * @selector .slds-file_center-icon
    * @restrict .slds-file
    */ }
-    .ggoslds .slds-image:not(.slds-file_loading):hover:before, .ggoslds .slds-image:not(.slds-file_loading):hover:after,
-    .ggoslds .slds-file:not(.slds-file_loading):hover:before,
-    .ggoslds .slds-file:not(.slds-file_loading):hover:after {
+    .ggoslds .slds-image:not(.slds-file_loading) a:hover:before,
+    .ggoslds .slds-image:not(.slds-file_loading) a:hover:after,
+    .ggoslds .slds-image:not(.slds-file_loading) a:focus:before,
+    .ggoslds .slds-image:not(.slds-file_loading) a:focus:after,
+    .ggoslds .slds-file:not(.slds-file_loading) a:hover:before,
+    .ggoslds .slds-file:not(.slds-file_loading) a:hover:after,
+    .ggoslds .slds-file:not(.slds-file_loading) a:focus:before,
+    .ggoslds .slds-file:not(.slds-file_loading) a:focus:after {
       position: absolute;
       z-index: 8000;
       cursor: pointer;
-      pointer-events: none;
       content: ''; }
-    .ggoslds .slds-image:not(.slds-file_loading):hover:before,
-    .ggoslds .slds-file:not(.slds-file_loading):hover:before {
+    .ggoslds .slds-image:not(.slds-file_loading) a:hover:before,
+    .ggoslds .slds-image:not(.slds-file_loading) a:focus:before,
+    .ggoslds .slds-file:not(.slds-file_loading) a:hover:before,
+    .ggoslds .slds-file:not(.slds-file_loading) a:focus:before {
       top: 0;
       right: 0;
       bottom: 0;
       left: 0;
       background-color: rgba(0, 0, 0, 0.6); }
-    .ggoslds .slds-image:not(.slds-file_loading):hover:after,
-    .ggoslds .slds-file:not(.slds-file_loading):hover:after {
+    .ggoslds .slds-image:not(.slds-file_loading) a:hover:after,
+    .ggoslds .slds-image:not(.slds-file_loading) a:focus:after,
+    .ggoslds .slds-file:not(.slds-file_loading) a:hover:after,
+    .ggoslds .slds-file:not(.slds-file_loading) a:focus:after {
       top: 50%;
       left: 50%;
       width: 2rem;
@@ -19523,17 +20719,24 @@
       background-size: contain;
       transform: translate(-50%, -50%); }
     @media (any-hover: none) {
-      .ggoslds .slds-image:not(.slds-file_loading):hover:before, .ggoslds .slds-image:not(.slds-file_loading):hover:after,
-      .ggoslds .slds-file:not(.slds-file_loading):hover:before,
-      .ggoslds .slds-file:not(.slds-file_loading):hover:after {
+      .ggoslds .slds-image:not(.slds-file_loading) a:hover:before,
+      .ggoslds .slds-image:not(.slds-file_loading) a:hover:after,
+      .ggoslds .slds-image:not(.slds-file_loading) a:focus:before,
+      .ggoslds .slds-image:not(.slds-file_loading) a:focus:after,
+      .ggoslds .slds-file:not(.slds-file_loading) a:hover:before,
+      .ggoslds .slds-file:not(.slds-file_loading) a:hover:after,
+      .ggoslds .slds-file:not(.slds-file_loading) a:focus:before,
+      .ggoslds .slds-file:not(.slds-file_loading) a:focus:after {
         display: none; } }
-    .ggoslds .slds-image:not(.slds-file_loading):hover .slds-file__title,
-    .ggoslds .slds-image:not(.slds-file_loading):hover .slds-file__actions-menu,
-    .ggoslds .slds-file:not(.slds-file_loading):hover .slds-file__title,
-    .ggoslds .slds-file:not(.slds-file_loading):hover .slds-file__actions-menu {
+    .ggoslds .slds-image:not(.slds-file_loading) a:hover + .slds-file__title,
+    .ggoslds .slds-image:not(.slds-file_loading) a:focus + .slds-file__title,
+    .ggoslds .slds-file:not(.slds-file_loading) a:hover + .slds-file__title,
+    .ggoslds .slds-file:not(.slds-file_loading) a:focus + .slds-file__title {
       z-index: 8000; }
-    .ggoslds .slds-image.slds-has-title:hover:after,
-    .ggoslds .slds-file.slds-has-title:hover:after {
+    .ggoslds .slds-image.slds-has-title a:hover:after,
+    .ggoslds .slds-image.slds-has-title a:focus:after,
+    .ggoslds .slds-file.slds-has-title a:hover:after,
+    .ggoslds .slds-file.slds-has-title a:focus:after {
       transform: translate(-50%, calc(-50% - (2rem / 2))); }
     .ggoslds .slds-image:focus,
     .ggoslds .slds-file:focus {
@@ -19612,6 +20815,7 @@
     .ggoslds .slds-file__title {
       display: -ms-flexbox;
       display: flex;
+      z-index: 8000;
       -ms-flex-align: center;
           align-items: center;
       padding: 0.5rem;
@@ -19692,6 +20896,7 @@
     .ggoslds .slds-image__actions-menu,
     .ggoslds .slds-file__actions-menu {
       position: absolute;
+      z-index: 8000;
       bottom: 0.5rem;
       right: 0.25rem; }
     .ggoslds .slds-image__external-icon,
@@ -19762,7 +20967,9 @@
     .ggoslds .slds-table thead th {
       background-color: #fafaf9;
       color: #514f4d;
-      padding: 0.25rem 0.5rem; }
+      padding: 0.25rem 0.5rem;
+      font-weight: 700;
+      line-height: normal; }
     .ggoslds .slds-table:not(.slds-no-row-hover) tbody tr:hover,
     .ggoslds .slds-table:not(.slds-no-row-hover) tbody tr:focus {
       outline: 0; }
@@ -20500,6 +21707,42 @@
       border: 0; }
   .ggoslds .slds-table_header-hidden {
     border-top: 0; }
+  .ggoslds .slds-tree {
+    /**
+   * @name item-selected
+   * @summary Selected state for a tree item
+   * @selector .slds-is-selected
+   * @restrict .slds-tree__item
+   * @notes Class should be applied via Javascript
+   * @deprecated
+   */
+    /**
+   * @name item-focused
+   * @summary Focus state for a tree item
+   * @selector .slds-is-focused
+   * @restrict .slds-tree__item
+   * @deprecated
+   */ }
+    .ggoslds .slds-tree__item a {
+      color: #080707; }
+      .ggoslds .slds-tree__item a:hover {
+        text-decoration: none; }
+      .ggoslds .slds-tree__item a:focus {
+        outline: 0;
+        text-decoration: underline; }
+    .ggoslds .slds-tree .slds-is-selected {
+      background: #ecebea;
+      box-shadow: #0070d2 4px 0 0 inset; }
+    .ggoslds .slds-tree .slds-is-focused {
+      text-decoration: underline; }
+    .ggoslds .slds-tree [aria-expanded="false"] > .slds-tree__item > .slds-button[aria-controls] > .slds-button__icon,
+    .ggoslds .slds-tree [aria-expanded="false"] > .slds-tree__item > .slds-button[aria-controls] > span > .slds-button__icon {
+      transition: 0.2s transform ease-in-out;
+      transform: rotate(0deg); }
+    .ggoslds .slds-tree [aria-expanded="true"] > .slds-tree__item > .slds-button[aria-controls] > .slds-button__icon,
+    .ggoslds .slds-tree [aria-expanded="true"] > .slds-tree__item > .slds-button[aria-controls] > span > .slds-button__icon {
+      transition: 0.2s transform ease-in-out;
+      transform: rotate(90deg); }
   .ggoslds .slds-tree-container,
   .ggoslds .slds-tree_container {
     min-width: 7.5rem;
@@ -20509,238 +21752,170 @@
     .ggoslds .slds-tree_container > .slds-text-heading_label,
     .ggoslds .slds-tree_container > .slds-text-heading--label {
       margin-bottom: 0.5rem; }
-  .ggoslds .slds-tree {
-    /**
-   * @summary Initializes a slds item
-   * @selector .slds-tree__item
-   * @restrict .slds-tree div, .slds-tree th
-   */
-    /**
-   * @summary The label text of a tree item or tree branch
-   * @selector .slds-tree__item-label
-   * @restrict .slds-tree__item span
-   */
-    /**
-   * @summary The meta text or secondary text of a tree item
-   * @selector .slds-tree__item-meta
-   * @restrict .slds-tree__item span
-   */
-    /**
-   * @summary Styles the focus and selected state for any tree item that has role="treeitem"
-   * @selector [role="treeitem"]
-   * @restrict .slds-tree li
-   */
-    /**
-   * @name item-selected
-   * @summary Selected state for a tree item
-   * @selector .slds-is-selected
-   * @restrict .slds-tree__item
-   * @notes Class should be applied via Javascript
-   * @modifier
-   * @deprecated
-   * @group interactions
-   */
-    /**
-   * @name item-focused
-   * @summary Focus state for a tree item
-   * @selector .slds-is-focused
-   * @restrict .slds-tree__item
-   * @modifier
-   * @deprecated
-   * @group interactions
-   */ }
-    .ggoslds .slds-tree__item {
-      display: -ms-flexbox;
-      display: flex;
-      line-height: 1.875rem;
-      padding-left: 1rem;
-      /**
-     * @name item-disabled
-     * @summary When a branch doesn't have children, apply slds-is-disabled to the button icon
-     * @selector .slds-is-disabled
-     * @restrict .slds-tree__item button
-     * @modifier
-     * @group interactions
-     */
-      /**
-     * @name item-hovered
-     * @summary Hover state for a tree item
-     * @selector .slds-is-hovered
-     * @restrict .slds-tree__item
-     * @notes Class should be applied via Javascript
-     * @modifier
-     * @group interactions
-     */ }
-      .ggoslds .slds-tree__item .slds-is-disabled {
-        visibility: hidden; }
-      .ggoslds .slds-tree__item a {
-        color: #080707; }
-        .ggoslds .slds-tree__item a:hover {
-          text-decoration: none; }
-        .ggoslds .slds-tree__item a:focus {
-          outline: 0;
-          text-decoration: underline; }
-      .ggoslds .slds-tree__item.slds-is-hovered, .ggoslds .slds-tree__item:hover {
-        background: #f3f2f2;
-        cursor: pointer; }
-    .ggoslds .slds-tree .slds-tree__item-label {
-      display: block; }
-    .ggoslds .slds-tree .slds-tree__item-meta {
-      display: block;
-      margin-top: -0.75rem;
-      color: #3e3e3c; }
-    .ggoslds .slds-tree [role="treeitem"]:focus {
-      outline: 0; }
-      .ggoslds .slds-tree [role="treeitem"]:focus > .slds-tree__item {
-        background: #f3f2f2;
-        cursor: pointer;
-        text-decoration: underline; }
-    .ggoslds .slds-tree [role="treeitem"][aria-selected="true"] > .slds-tree__item {
-      background: rgba(21, 137, 238, 0.1);
-      box-shadow: #1589ee 4px 0 0 inset; }
-    .ggoslds .slds-tree [role="treeitem"] > [role="group"] {
-      display: none; }
-    .ggoslds .slds-tree [role="treeitem"][aria-expanded="true"] > [role="group"] {
-      display: block; }
-    .ggoslds .slds-tree .slds-is-selected {
-      background: #ecebea;
-      box-shadow: #0070d2 4px 0 0 inset; }
-    .ggoslds .slds-tree .slds-is-focused {
+  .ggoslds .slds-tree__item {
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0.375rem 0 0.375rem 1rem; }
+  .ggoslds .slds-tree__item.slds-is-hovered,
+  .ggoslds .slds-tree__item:hover {
+    background: #f3f2f2;
+    cursor: pointer; }
+  .ggoslds .slds-tree__item .slds-is-disabled {
+    visibility: hidden; }
+  .ggoslds .slds-tree [role="treeitem"]:focus {
+    outline: 0; }
+    .ggoslds .slds-tree [role="treeitem"]:focus > .slds-tree__item {
+      background: #f3f2f2;
+      cursor: pointer;
       text-decoration: underline; }
-    .ggoslds .slds-tree [aria-level="1"] > .slds-tree__item {
-      padding-left: 1rem; }
-    .ggoslds .slds-tree [aria-level="2"] > .slds-tree__item {
-      padding-left: 2rem; }
-    .ggoslds .slds-tree [aria-level="3"] > .slds-tree__item {
-      padding-left: 3rem; }
-    .ggoslds .slds-tree [aria-level="4"] > .slds-tree__item {
-      padding-left: 4rem; }
-    .ggoslds .slds-tree [aria-level="5"] > .slds-tree__item {
-      padding-left: 5rem; }
-    .ggoslds .slds-tree [aria-level="6"] > .slds-tree__item {
-      padding-left: 6rem; }
-    .ggoslds .slds-tree [aria-level="7"] > .slds-tree__item {
-      padding-left: 7rem; }
-    .ggoslds .slds-tree [aria-level="8"] > .slds-tree__item {
-      padding-left: 8rem; }
-    .ggoslds .slds-tree [aria-level="9"] > .slds-tree__item {
-      padding-left: 9rem; }
-    .ggoslds .slds-tree [aria-level="10"] > .slds-tree__item {
-      padding-left: 10rem; }
-    .ggoslds .slds-tree [aria-level="11"] > .slds-tree__item {
-      padding-left: 11rem; }
-    .ggoslds .slds-tree [aria-level="12"] > .slds-tree__item {
-      padding-left: 12rem; }
-    .ggoslds .slds-tree [aria-level="13"] > .slds-tree__item {
-      padding-left: 13rem; }
-    .ggoslds .slds-tree [aria-level="14"] > .slds-tree__item {
-      padding-left: 14rem; }
-    .ggoslds .slds-tree [aria-level="15"] > .slds-tree__item {
-      padding-left: 15rem; }
-    .ggoslds .slds-tree [aria-level="16"] > .slds-tree__item {
-      padding-left: 16rem; }
-    .ggoslds .slds-tree [aria-level="17"] > .slds-tree__item {
-      padding-left: 17rem; }
-    .ggoslds .slds-tree [aria-level="18"] > .slds-tree__item {
-      padding-left: 18rem; }
-    .ggoslds .slds-tree [aria-level="19"] > .slds-tree__item {
-      padding-left: 19rem; }
-    .ggoslds .slds-tree [aria-level="20"] > .slds-tree__item {
-      padding-left: 20rem; }
-    .ggoslds .slds-tree [aria-expanded="false"] > .slds-tree__item > .slds-button[aria-controls] > .slds-button__icon,
-    .ggoslds .slds-tree [aria-expanded="false"] > .slds-tree__item > .slds-button[aria-controls] > span > .slds-button__icon {
-      transition: 0.2s transform ease-in-out;
-      transform: rotate(0deg); }
-    .ggoslds .slds-tree [aria-expanded="true"] > .slds-tree__item > .slds-button[aria-controls] > .slds-button__icon,
-    .ggoslds .slds-tree [aria-expanded="true"] > .slds-tree__item > .slds-button[aria-controls] > span > .slds-button__icon {
-      transition: 0.2s transform ease-in-out;
-      transform: rotate(90deg); }
-    .ggoslds .slds-tree [aria-expanded="false"] > .slds-tree__item .slds-button__icon {
-      transition: 0.2s transform ease-in-out;
-      transform: rotate(0deg); }
-    .ggoslds .slds-tree [aria-expanded="true"] > .slds-tree__item .slds-button__icon {
-      transition: 0.2s transform ease-in-out;
-      transform: rotate(90deg); }
-    .ggoslds .slds-tree .slds-button {
-      -ms-flex-item-align: start;
-          align-self: flex-start;
-      margin-top: 0.5rem; }
-    .ggoslds .slds-tree .slds-pill {
-      margin-left: 0.75rem; }
-  .ggoslds .slds-table_tree .slds-tree__item,
-  .ggoslds .slds-table--tree .slds-tree__item {
-    line-height: 1.5rem; }
-    .ggoslds .slds-table_tree .slds-tree__item a,
-    .ggoslds .slds-table--tree .slds-tree__item a {
-      color: #006dcc; }
-      .ggoslds .slds-table_tree .slds-tree__item a:hover,
-      .ggoslds .slds-table--tree .slds-tree__item a:hover {
-        text-decoration: underline; }
-  .ggoslds .slds-table_tree .slds-button,
-  .ggoslds .slds-table--tree .slds-button {
-    -ms-flex-item-align: center;
-        align-self: center;
-    margin-top: 0; }
-  .ggoslds .slds-table_tree [aria-level="1"] > .slds-tree__item,
-  .ggoslds .slds-table--tree [aria-level="1"] > .slds-tree__item {
-    padding-left: 1.5rem; }
-  .ggoslds .slds-table_tree [aria-level="2"] > .slds-tree__item,
-  .ggoslds .slds-table--tree [aria-level="2"] > .slds-tree__item {
-    padding-left: 2.5rem; }
-  .ggoslds .slds-table_tree [aria-level="3"] > .slds-tree__item,
-  .ggoslds .slds-table--tree [aria-level="3"] > .slds-tree__item {
-    padding-left: 3.5rem; }
-  .ggoslds .slds-table_tree [aria-level="4"] > .slds-tree__item,
-  .ggoslds .slds-table--tree [aria-level="4"] > .slds-tree__item {
-    padding-left: 4.5rem; }
-  .ggoslds .slds-table_tree [aria-level="5"] > .slds-tree__item,
-  .ggoslds .slds-table--tree [aria-level="5"] > .slds-tree__item {
-    padding-left: 5.5rem; }
-  .ggoslds .slds-table_tree [aria-level="6"] > .slds-tree__item,
-  .ggoslds .slds-table--tree [aria-level="6"] > .slds-tree__item {
-    padding-left: 6.5rem; }
-  .ggoslds .slds-table_tree [aria-level="7"] > .slds-tree__item,
-  .ggoslds .slds-table--tree [aria-level="7"] > .slds-tree__item {
-    padding-left: 7.5rem; }
-  .ggoslds .slds-table_tree [aria-level="8"] > .slds-tree__item,
-  .ggoslds .slds-table--tree [aria-level="8"] > .slds-tree__item {
-    padding-left: 8.5rem; }
-  .ggoslds .slds-table_tree [aria-level="9"] > .slds-tree__item,
-  .ggoslds .slds-table--tree [aria-level="9"] > .slds-tree__item {
-    padding-left: 9.5rem; }
-  .ggoslds .slds-table_tree [aria-level="10"] > .slds-tree__item,
-  .ggoslds .slds-table--tree [aria-level="10"] > .slds-tree__item {
-    padding-left: 10.5rem; }
-  .ggoslds .slds-table_tree [aria-level="11"] > .slds-tree__item,
-  .ggoslds .slds-table--tree [aria-level="11"] > .slds-tree__item {
-    padding-left: 11.5rem; }
-  .ggoslds .slds-table_tree [aria-level="12"] > .slds-tree__item,
-  .ggoslds .slds-table--tree [aria-level="12"] > .slds-tree__item {
-    padding-left: 12.5rem; }
-  .ggoslds .slds-table_tree [aria-level="13"] > .slds-tree__item,
-  .ggoslds .slds-table--tree [aria-level="13"] > .slds-tree__item {
-    padding-left: 13.5rem; }
-  .ggoslds .slds-table_tree [aria-level="14"] > .slds-tree__item,
-  .ggoslds .slds-table--tree [aria-level="14"] > .slds-tree__item {
-    padding-left: 14.5rem; }
-  .ggoslds .slds-table_tree [aria-level="15"] > .slds-tree__item,
-  .ggoslds .slds-table--tree [aria-level="15"] > .slds-tree__item {
-    padding-left: 15.5rem; }
-  .ggoslds .slds-table_tree [aria-level="16"] > .slds-tree__item,
-  .ggoslds .slds-table--tree [aria-level="16"] > .slds-tree__item {
-    padding-left: 16.5rem; }
-  .ggoslds .slds-table_tree [aria-level="17"] > .slds-tree__item,
-  .ggoslds .slds-table--tree [aria-level="17"] > .slds-tree__item {
-    padding-left: 17.5rem; }
-  .ggoslds .slds-table_tree [aria-level="18"] > .slds-tree__item,
-  .ggoslds .slds-table--tree [aria-level="18"] > .slds-tree__item {
-    padding-left: 18.5rem; }
-  .ggoslds .slds-table_tree [aria-level="19"] > .slds-tree__item,
-  .ggoslds .slds-table--tree [aria-level="19"] > .slds-tree__item {
-    padding-left: 19.5rem; }
-  .ggoslds .slds-table_tree [aria-level="20"] > .slds-tree__item,
-  .ggoslds .slds-table--tree [aria-level="20"] > .slds-tree__item {
-    padding-left: 20.5rem; }
+  .ggoslds .slds-tree [role="treeitem"][aria-selected="true"] > .slds-tree__item {
+    background: rgba(21, 137, 238, 0.1);
+    box-shadow: #1589ee 4px 0 0 inset; }
+  .ggoslds .slds-tree [role="treeitem"] > [role="group"] {
+    display: none; }
+  .ggoslds .slds-tree [role="treeitem"][aria-expanded="true"] > [role="group"] {
+    display: block; }
+  .ggoslds [aria-expanded="false"] > .slds-tree__item .slds-button__icon {
+    transition: 0.2s transform ease-in-out;
+    transform: rotate(0deg); }
+  .ggoslds [aria-expanded="true"] > .slds-tree__item .slds-button__icon {
+    transition: 0.2s transform ease-in-out;
+    transform: rotate(90deg); }
+  .ggoslds [aria-level="1"] > .slds-tree__item {
+    padding-left: 1rem; }
+  .ggoslds [aria-level="2"] > .slds-tree__item {
+    padding-left: 2rem; }
+  .ggoslds [aria-level="3"] > .slds-tree__item {
+    padding-left: 3rem; }
+  .ggoslds [aria-level="4"] > .slds-tree__item {
+    padding-left: 4rem; }
+  .ggoslds [aria-level="5"] > .slds-tree__item {
+    padding-left: 5rem; }
+  .ggoslds [aria-level="6"] > .slds-tree__item {
+    padding-left: 6rem; }
+  .ggoslds [aria-level="7"] > .slds-tree__item {
+    padding-left: 7rem; }
+  .ggoslds [aria-level="8"] > .slds-tree__item {
+    padding-left: 8rem; }
+  .ggoslds [aria-level="9"] > .slds-tree__item {
+    padding-left: 9rem; }
+  .ggoslds [aria-level="10"] > .slds-tree__item {
+    padding-left: 10rem; }
+  .ggoslds [aria-level="11"] > .slds-tree__item {
+    padding-left: 11rem; }
+  .ggoslds [aria-level="12"] > .slds-tree__item {
+    padding-left: 12rem; }
+  .ggoslds [aria-level="13"] > .slds-tree__item {
+    padding-left: 13rem; }
+  .ggoslds [aria-level="14"] > .slds-tree__item {
+    padding-left: 14rem; }
+  .ggoslds [aria-level="15"] > .slds-tree__item {
+    padding-left: 15rem; }
+  .ggoslds [aria-level="16"] > .slds-tree__item {
+    padding-left: 16rem; }
+  .ggoslds [aria-level="17"] > .slds-tree__item {
+    padding-left: 17rem; }
+  .ggoslds [aria-level="18"] > .slds-tree__item {
+    padding-left: 18rem; }
+  .ggoslds [aria-level="19"] > .slds-tree__item {
+    padding-left: 19rem; }
+  .ggoslds [aria-level="20"] > .slds-tree__item {
+    padding-left: 20rem; }
+  .ggoslds .slds-tree__item-label {
+    display: block; }
+  .ggoslds .slds-tree__item-meta {
+    display: block;
+    color: #3e3e3c; }
+  .ggoslds .slds-tree__item .slds-button {
+    -ms-flex-item-align: start;
+        align-self: flex-start;
+    margin-top: 0.125rem; }
+  .ggoslds .slds-tree__item .slds-pill {
+    margin-left: 0.75rem; }
+  .ggoslds .slds-tree__group-header {
+    font-size: 0.875rem;
+    font-weight: 700; }
+  .ggoslds .slds-table_tree,
+  .ggoslds .slds-table--tree {
+    /**
+   * @summary Initializes a slds tree item
+   * @selector .slds-tree__item
+   * @restrict .slds-table_tree th
+   */ }
+    .ggoslds .slds-table_tree .slds-tree__item,
+    .ggoslds .slds-table--tree .slds-tree__item {
+      line-height: 1.5rem; }
+      .ggoslds .slds-table_tree .slds-tree__item a,
+      .ggoslds .slds-table--tree .slds-tree__item a {
+        color: #006dcc; }
+        .ggoslds .slds-table_tree .slds-tree__item a:hover,
+        .ggoslds .slds-table--tree .slds-tree__item a:hover {
+          text-decoration: underline; }
+    .ggoslds .slds-table_tree .slds-button,
+    .ggoslds .slds-table--tree .slds-button {
+      -ms-flex-item-align: center;
+          align-self: center;
+      margin-top: 0; }
+    .ggoslds .slds-table_tree [aria-level="1"] > .slds-tree__item,
+    .ggoslds .slds-table--tree [aria-level="1"] > .slds-tree__item {
+      padding-left: 1.5rem; }
+    .ggoslds .slds-table_tree [aria-level="2"] > .slds-tree__item,
+    .ggoslds .slds-table--tree [aria-level="2"] > .slds-tree__item {
+      padding-left: 2.5rem; }
+    .ggoslds .slds-table_tree [aria-level="3"] > .slds-tree__item,
+    .ggoslds .slds-table--tree [aria-level="3"] > .slds-tree__item {
+      padding-left: 3.5rem; }
+    .ggoslds .slds-table_tree [aria-level="4"] > .slds-tree__item,
+    .ggoslds .slds-table--tree [aria-level="4"] > .slds-tree__item {
+      padding-left: 4.5rem; }
+    .ggoslds .slds-table_tree [aria-level="5"] > .slds-tree__item,
+    .ggoslds .slds-table--tree [aria-level="5"] > .slds-tree__item {
+      padding-left: 5.5rem; }
+    .ggoslds .slds-table_tree [aria-level="6"] > .slds-tree__item,
+    .ggoslds .slds-table--tree [aria-level="6"] > .slds-tree__item {
+      padding-left: 6.5rem; }
+    .ggoslds .slds-table_tree [aria-level="7"] > .slds-tree__item,
+    .ggoslds .slds-table--tree [aria-level="7"] > .slds-tree__item {
+      padding-left: 7.5rem; }
+    .ggoslds .slds-table_tree [aria-level="8"] > .slds-tree__item,
+    .ggoslds .slds-table--tree [aria-level="8"] > .slds-tree__item {
+      padding-left: 8.5rem; }
+    .ggoslds .slds-table_tree [aria-level="9"] > .slds-tree__item,
+    .ggoslds .slds-table--tree [aria-level="9"] > .slds-tree__item {
+      padding-left: 9.5rem; }
+    .ggoslds .slds-table_tree [aria-level="10"] > .slds-tree__item,
+    .ggoslds .slds-table--tree [aria-level="10"] > .slds-tree__item {
+      padding-left: 10.5rem; }
+    .ggoslds .slds-table_tree [aria-level="11"] > .slds-tree__item,
+    .ggoslds .slds-table--tree [aria-level="11"] > .slds-tree__item {
+      padding-left: 11.5rem; }
+    .ggoslds .slds-table_tree [aria-level="12"] > .slds-tree__item,
+    .ggoslds .slds-table--tree [aria-level="12"] > .slds-tree__item {
+      padding-left: 12.5rem; }
+    .ggoslds .slds-table_tree [aria-level="13"] > .slds-tree__item,
+    .ggoslds .slds-table--tree [aria-level="13"] > .slds-tree__item {
+      padding-left: 13.5rem; }
+    .ggoslds .slds-table_tree [aria-level="14"] > .slds-tree__item,
+    .ggoslds .slds-table--tree [aria-level="14"] > .slds-tree__item {
+      padding-left: 14.5rem; }
+    .ggoslds .slds-table_tree [aria-level="15"] > .slds-tree__item,
+    .ggoslds .slds-table--tree [aria-level="15"] > .slds-tree__item {
+      padding-left: 15.5rem; }
+    .ggoslds .slds-table_tree [aria-level="16"] > .slds-tree__item,
+    .ggoslds .slds-table--tree [aria-level="16"] > .slds-tree__item {
+      padding-left: 16.5rem; }
+    .ggoslds .slds-table_tree [aria-level="17"] > .slds-tree__item,
+    .ggoslds .slds-table--tree [aria-level="17"] > .slds-tree__item {
+      padding-left: 17.5rem; }
+    .ggoslds .slds-table_tree [aria-level="18"] > .slds-tree__item,
+    .ggoslds .slds-table--tree [aria-level="18"] > .slds-tree__item {
+      padding-left: 18.5rem; }
+    .ggoslds .slds-table_tree [aria-level="19"] > .slds-tree__item,
+    .ggoslds .slds-table--tree [aria-level="19"] > .slds-tree__item {
+      padding-left: 19.5rem; }
+    .ggoslds .slds-table_tree [aria-level="20"] > .slds-tree__item,
+    .ggoslds .slds-table--tree [aria-level="20"] > .slds-tree__item {
+      padding-left: 20.5rem; }
   .ggoslds .slds-einstein-header {
     position: relative;
     background-color: #95cbfc;
@@ -20929,13 +22104,23 @@
     border-right: 1px solid #dddbda;
     background: #f3f2f2; }
   .ggoslds .slds-vertical-tabs__nav-item {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
     overflow: hidden;
     border-bottom: 1px solid #dddbda;
     color: #3e3e3c; }
     .ggoslds .slds-vertical-tabs__nav-item:last-child {
       margin-bottom: -1px; }
   .ggoslds .slds-vertical-tabs__link {
-    display: block;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex: 1 1 0%;
+        flex: 1 1 0%;
+    -ms-flex-align: center;
+        align-items: center;
+    min-width: 0;
     padding: 0.75rem;
     color: currentColor; }
     .ggoslds .slds-vertical-tabs__link:hover {
@@ -20944,6 +22129,12 @@
       text-decoration: none; }
     .ggoslds .slds-vertical-tabs__link:focus {
       outline: 0; }
+  .ggoslds .slds-vertical-tabs__left-icon {
+    margin-right: 0.5rem; }
+    .ggoslds .slds-vertical-tabs__left-icon:empty {
+      margin-right: 0; }
+  .ggoslds .slds-vertical-tabs__right-icon {
+    margin-left: auto; }
   .ggoslds .slds-vertical-tabs__content {
     -ms-flex: 1;
         flex: 1;
@@ -20959,25 +22150,34 @@
       color: currentColor; }
   .ggoslds .slds-vertical-tabs__nav-item.slds-has-focus {
     text-decoration: underline; }
-  .ggoslds .slds-welcome-mat .slds-modal__container {
-    width: 52.0625rem;
-    max-width: none; }
-  .ggoslds .slds-welcome-mat .slds-welcome-mat__tile {
-    margin: 1rem 0; }
-  .ggoslds .slds-welcome-mat .slds-welcome-mat__tile:not(.slds-welcome-mat__tile_complete) {
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05);
-    background: white; }
-    .ggoslds .slds-welcome-mat .slds-welcome-mat__tile:not(.slds-welcome-mat__tile_complete):hover {
-      box-shadow: 0 0 0 1px #1589ee inset, 0 2px 2px rgba(0, 0, 0, 0.05); }
-  .ggoslds .slds-welcome-mat .slds-progress-bar {
-    display: inline-block;
-    width: 12.5rem;
-    background: white; }
-  .ggoslds .slds-welcome-mat .slds-progress-bar__value {
-    background: #4bca81; }
+  .ggoslds .slds-welcome-mat {
+    /**
+      * Modal container sizing within Welcome Mat
+      *
+      * @selector .slds-modal__container
+      * @restrict .slds-welcome-mat
+      * @deprecated
+      */ }
+    .ggoslds .slds-welcome-mat .slds-modal__container {
+      width: 52.0625rem;
+      max-width: none; }
+  .ggoslds .slds-welcome-mat {
+    position: relative; }
   .ggoslds .slds-welcome-mat__content {
     min-height: 25rem;
-    max-height: 37.5rem; }
+    max-height: 37.5rem;
+    /**
+   * @summary Progress bar inside Welcome Mat
+   */
+    /**
+   * @summary Progress bar value inside Welcome Mat
+   */ }
+    .ggoslds .slds-welcome-mat__content .slds-progress-bar {
+      display: inline-block;
+      width: 12.5rem;
+      background: white; }
+    .ggoslds .slds-welcome-mat__content .slds-progress-bar__value {
+      background: #4bca81; }
   .ggoslds .slds-welcome-mat__info {
     display: -ms-flexbox;
     display: flex;
@@ -21003,15 +22203,31 @@
     margin-bottom: 1rem; }
   .ggoslds .slds-welcome-mat__tiles {
     background: #f3f2f2;
-    overflow: auto; }
-  .ggoslds .slds-welcome-mat__tile:not(.slds-welcome-mat__tile_complete) .slds-icon-action-check {
-    display: none; }
-  .ggoslds .slds-welcome-mat__tile:first-child {
-    margin-top: 0; }
-  .ggoslds .slds-welcome-mat__tile:last-child {
-    margin-bottom: 0; }
+    overflow: auto;
+    padding: 1rem; }
+  .ggoslds .slds-welcome-mat__tile {
+    margin: 1rem 0; }
+    .ggoslds .slds-welcome-mat__tile .slds-media {
+      padding: 0.5rem; }
+    .ggoslds .slds-welcome-mat__tile:not(.slds-welcome-mat__tile_complete):not(.slds-welcome-mat__tile_info-only) {
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05);
+      border-radius: 0.25rem;
+      background: white; }
+      .ggoslds .slds-welcome-mat__tile:not(.slds-welcome-mat__tile_complete):not(.slds-welcome-mat__tile_info-only):hover {
+        box-shadow: 0 0 0 1px #1589ee inset, 0 2px 2px rgba(0, 0, 0, 0.05); }
+    .ggoslds .slds-welcome-mat__tile:not(.slds-welcome-mat__tile_complete) .slds-icon-action-check {
+      display: none; }
+    .ggoslds .slds-welcome-mat__tile:first-child {
+      margin-top: 0; }
+    .ggoslds .slds-welcome-mat__tile:last-child {
+      margin-bottom: 0; }
+  .ggoslds .slds-welcome-mat__tile-figure {
+    margin-left: 0.25rem; }
   .ggoslds .slds-welcome-mat__tile-title {
     font-weight: 700; }
+  .ggoslds .slds-welcome-mat__tile-body {
+    padding: 0.75rem;
+    border-left: 1px solid #dddbda; }
   .ggoslds .slds-welcome-mat__tile-description {
     color: #3e3e3c;
     font-size: 0.75rem;
@@ -21041,6 +22257,20 @@
     background: #4bca81; }
     .ggoslds .slds-welcome-mat .slds-icon-action-check .slds-icon {
       fill: white; }
+  .ggoslds .slds-welcome-mat_splash .slds-welcome-mat__content {
+    height: 37.5rem; }
+  .ggoslds .slds-welcome-mat_splash .slds-welcome-mat__info-content {
+    max-width: 37.5rem; }
+  .ggoslds .slds-welcome-mat_splash .slds-welcome-mat__info-title {
+    font-size: 2rem; }
+  .ggoslds .slds-welcome-mat_info-only .slds-welcome-mat__content {
+    height: 37.5rem; }
+  .ggoslds .slds-welcome-mat_info-only .slds-welcome-mat__info-title {
+    font-size: 2rem; }
+  .ggoslds .slds-welcome-mat__tiles_info-only {
+    background-color: white; }
+  .ggoslds .slds-welcome-mat__tile_info-only .slds-welcome-mat__tile-body {
+    border-left: 0; }
   .ggoslds .slds-welcome-mat__info-badge-container {
     display: inline-block;
     position: relative; }
@@ -23059,7 +24289,7 @@
         .ggoslds .slds-theme_inverse a:not(.slds-button--neutral):link, .ggoslds .slds-theme_inverse a:not(.slds-button--neutral):visited, .ggoslds .slds-theme--inverse a:not(.slds-button--neutral):link, .ggoslds .slds-theme--inverse a:not(.slds-button--neutral):visited {
           color: white; }
         .ggoslds .slds-theme_inverse a:not(.slds-button--neutral):hover, .ggoslds .slds-theme_inverse a:not(.slds-button--neutral):focus, .ggoslds .slds-theme--inverse a:not(.slds-button--neutral):hover, .ggoslds .slds-theme--inverse a:not(.slds-button--neutral):focus {
-          color: rgba(255, 255, 255, 0.75); }
+          text-decoration: none; }
         .ggoslds .slds-theme_inverse a:not(.slds-button--neutral):active, .ggoslds .slds-theme--inverse a:not(.slds-button--neutral):active {
           color: rgba(255, 255, 255, 0.5); }
         .ggoslds .slds-theme_inverse a:not(.slds-button--neutral)[disabled], .ggoslds .slds-theme--inverse a:not(.slds-button--neutral)[disabled] {
@@ -23074,7 +24304,7 @@
         .ggoslds .slds-theme_alt-inverse a:not(.slds-button--neutral):link, .ggoslds .slds-theme_alt-inverse a:not(.slds-button--neutral):visited, .ggoslds .slds-theme--alt-inverse a:not(.slds-button--neutral):link, .ggoslds .slds-theme--alt-inverse a:not(.slds-button--neutral):visited {
           color: white; }
         .ggoslds .slds-theme_alt-inverse a:not(.slds-button--neutral):hover, .ggoslds .slds-theme_alt-inverse a:not(.slds-button--neutral):focus, .ggoslds .slds-theme--alt-inverse a:not(.slds-button--neutral):hover, .ggoslds .slds-theme--alt-inverse a:not(.slds-button--neutral):focus {
-          color: rgba(255, 255, 255, 0.75); }
+          text-decoration: none; }
         .ggoslds .slds-theme_alt-inverse a:not(.slds-button--neutral):active, .ggoslds .slds-theme--alt-inverse a:not(.slds-button--neutral):active {
           color: rgba(255, 255, 255, 0.5); }
         .ggoslds .slds-theme_alt-inverse a:not(.slds-button--neutral)[disabled], .ggoslds .slds-theme--alt-inverse a:not(.slds-button--neutral)[disabled] {
@@ -23088,7 +24318,7 @@
         .ggoslds .slds-theme_success a:not(.slds-button--neutral):link, .ggoslds .slds-theme_success a:not(.slds-button--neutral):visited, .ggoslds .slds-theme--success a:not(.slds-button--neutral):link, .ggoslds .slds-theme--success a:not(.slds-button--neutral):visited {
           color: white; }
         .ggoslds .slds-theme_success a:not(.slds-button--neutral):hover, .ggoslds .slds-theme_success a:not(.slds-button--neutral):focus, .ggoslds .slds-theme--success a:not(.slds-button--neutral):hover, .ggoslds .slds-theme--success a:not(.slds-button--neutral):focus {
-          color: rgba(255, 255, 255, 0.75); }
+          text-decoration: none; }
         .ggoslds .slds-theme_success a:not(.slds-button--neutral):active, .ggoslds .slds-theme--success a:not(.slds-button--neutral):active {
           color: rgba(255, 255, 255, 0.5); }
         .ggoslds .slds-theme_success a:not(.slds-button--neutral)[disabled], .ggoslds .slds-theme--success a:not(.slds-button--neutral)[disabled] {
@@ -23102,7 +24332,7 @@
         .ggoslds .slds-theme_info a:not(.slds-button--neutral):link, .ggoslds .slds-theme_info a:not(.slds-button--neutral):visited, .ggoslds .slds-theme--info a:not(.slds-button--neutral):link, .ggoslds .slds-theme--info a:not(.slds-button--neutral):visited {
           color: white; }
         .ggoslds .slds-theme_info a:not(.slds-button--neutral):hover, .ggoslds .slds-theme_info a:not(.slds-button--neutral):focus, .ggoslds .slds-theme--info a:not(.slds-button--neutral):hover, .ggoslds .slds-theme--info a:not(.slds-button--neutral):focus {
-          color: rgba(255, 255, 255, 0.75); }
+          text-decoration: none; }
         .ggoslds .slds-theme_info a:not(.slds-button--neutral):active, .ggoslds .slds-theme--info a:not(.slds-button--neutral):active {
           color: rgba(255, 255, 255, 0.5); }
         .ggoslds .slds-theme_info a:not(.slds-button--neutral)[disabled], .ggoslds .slds-theme--info a:not(.slds-button--neutral)[disabled] {
@@ -23110,15 +24340,35 @@
     .ggoslds .slds-theme_warning, .ggoslds .slds-theme--warning {
       background-color: #ffb75d;
       color: #080707; }
+      .ggoslds .slds-theme_warning a, .ggoslds .slds-theme--warning a {
+        color: #080707;
+        text-decoration: underline; }
+        .ggoslds .slds-theme_warning a:link, .ggoslds .slds-theme_warning a:visited, .ggoslds .slds-theme--warning a:link, .ggoslds .slds-theme--warning a:visited {
+          color: #080707; }
+        .ggoslds .slds-theme_warning a:hover, .ggoslds .slds-theme_warning a:focus, .ggoslds .slds-theme--warning a:hover, .ggoslds .slds-theme--warning a:focus {
+          text-decoration: none; }
+        .ggoslds .slds-theme_warning a:focus, .ggoslds .slds-theme--warning a:focus {
+          box-shadow: 0 0 3px #514f4d;
+          border: 1px solid #514f4d; }
+        .ggoslds .slds-theme_warning a:active, .ggoslds .slds-theme--warning a:active {
+          color: #514f4d; }
+        .ggoslds .slds-theme_warning a[disabled], .ggoslds .slds-theme--warning a[disabled] {
+          color: #514f4d; }
+      .ggoslds .slds-theme_warning button, .ggoslds .slds-theme--warning button {
+        color: #514f4d;
+        text-decoration: underline; }
+        .ggoslds .slds-theme_warning button:hover, .ggoslds .slds-theme--warning button:hover {
+          color: #706e6b; }
+        .ggoslds .slds-theme_warning button:focus, .ggoslds .slds-theme--warning button:focus {
+          color: #514f4d;
+          box-shadow: 0 0 3px #514f4d;
+          border: 1px solid #514f4d; }
+        .ggoslds .slds-theme_warning button:active, .ggoslds .slds-theme--warning button:active {
+          color: #706e6b; }
       .ggoslds .slds-theme_warning .slds-icon,
       .ggoslds .slds-theme_warning .slds-button__icon, .ggoslds .slds-theme--warning .slds-icon,
       .ggoslds .slds-theme--warning .slds-button__icon {
         fill: #514f4d; }
-      .ggoslds .slds-theme_warning a:not(.slds-button--neutral),
-      .ggoslds .slds-theme_warning button:not(.slds-button--neutral), .ggoslds .slds-theme--warning a:not(.slds-button--neutral),
-      .ggoslds .slds-theme--warning button:not(.slds-button--neutral) {
-        color: #080707;
-        text-decoration: underline; }
     .ggoslds .slds-theme_error, .ggoslds .slds-theme--error {
       color: white;
       background-color: #c23934; }
@@ -23128,7 +24378,7 @@
         .ggoslds .slds-theme_error a:not(.slds-button--neutral):link, .ggoslds .slds-theme_error a:not(.slds-button--neutral):visited, .ggoslds .slds-theme--error a:not(.slds-button--neutral):link, .ggoslds .slds-theme--error a:not(.slds-button--neutral):visited {
           color: white; }
         .ggoslds .slds-theme_error a:not(.slds-button--neutral):hover, .ggoslds .slds-theme_error a:not(.slds-button--neutral):focus, .ggoslds .slds-theme--error a:not(.slds-button--neutral):hover, .ggoslds .slds-theme--error a:not(.slds-button--neutral):focus {
-          color: rgba(255, 255, 255, 0.75); }
+          text-decoration: none; }
         .ggoslds .slds-theme_error a:not(.slds-button--neutral):active, .ggoslds .slds-theme--error a:not(.slds-button--neutral):active {
           color: rgba(255, 255, 255, 0.5); }
         .ggoslds .slds-theme_error a:not(.slds-button--neutral)[disabled], .ggoslds .slds-theme--error a:not(.slds-button--neutral)[disabled] {
@@ -23142,7 +24392,7 @@
         .ggoslds .slds-theme_offline a:not(.slds-button--neutral):link, .ggoslds .slds-theme_offline a:not(.slds-button--neutral):visited, .ggoslds .slds-theme--offline a:not(.slds-button--neutral):link, .ggoslds .slds-theme--offline a:not(.slds-button--neutral):visited {
           color: white; }
         .ggoslds .slds-theme_offline a:not(.slds-button--neutral):hover, .ggoslds .slds-theme_offline a:not(.slds-button--neutral):focus, .ggoslds .slds-theme--offline a:not(.slds-button--neutral):hover, .ggoslds .slds-theme--offline a:not(.slds-button--neutral):focus {
-          color: rgba(255, 255, 255, 0.75); }
+          text-decoration: none; }
         .ggoslds .slds-theme_offline a:not(.slds-button--neutral):active, .ggoslds .slds-theme--offline a:not(.slds-button--neutral):active {
           color: rgba(255, 255, 255, 0.5); }
         .ggoslds .slds-theme_offline a:not(.slds-button--neutral)[disabled], .ggoslds .slds-theme--offline a:not(.slds-button--neutral)[disabled] {
@@ -23158,7 +24408,7 @@
         .ggoslds .slds-theme_inverse-text a:not(.slds-button--neutral):link, .ggoslds .slds-theme_inverse-text a:not(.slds-button--neutral):visited, .ggoslds .slds-theme--inverse-text a:not(.slds-button--neutral):link, .ggoslds .slds-theme--inverse-text a:not(.slds-button--neutral):visited {
           color: white; }
         .ggoslds .slds-theme_inverse-text a:not(.slds-button--neutral):hover, .ggoslds .slds-theme_inverse-text a:not(.slds-button--neutral):focus, .ggoslds .slds-theme--inverse-text a:not(.slds-button--neutral):hover, .ggoslds .slds-theme--inverse-text a:not(.slds-button--neutral):focus {
-          color: rgba(255, 255, 255, 0.75); }
+          text-decoration: none; }
         .ggoslds .slds-theme_inverse-text a:not(.slds-button--neutral):active, .ggoslds .slds-theme--inverse-text a:not(.slds-button--neutral):active {
           color: rgba(255, 255, 255, 0.5); }
         .ggoslds .slds-theme_inverse-text a:not(.slds-button--neutral)[disabled], .ggoslds .slds-theme--inverse-text a:not(.slds-button--neutral)[disabled] {
@@ -23189,7 +24439,8 @@
     line-height: 1.25;
     color: #3e3e3c;
     text-transform: uppercase;
-    letter-spacing: 0.0625rem; }
+    letter-spacing: 0.0625rem;
+    font-weight: 400; }
   .ggoslds .slds-text-heading_label-normal,
   .ggoslds .slds-text-heading--label-normal {
     font-size: 0.75rem;
@@ -23204,12 +24455,12 @@
     font-size: 0.75rem;
     line-height: 1.25;
     color: #3e3e3c;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.0625rem; }
   .ggoslds .slds-text-title_bold {
     font-size: 0.875rem;
-    font-weight: 700;
-    line-height: 1; }
+    font-weight: 700; }
   .ggoslds .slds-line-height_reset,
   .ggoslds .slds-line-height--reset {
     line-height: 1; }

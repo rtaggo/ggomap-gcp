@@ -2,7 +2,8 @@
 	'use strict';
 	GGO.SireneExplorer = function(options){
 		this._options = options || {};
-		this._options.searchsireneurl = '/sirene/search'
+		this._options.searchsireneurl = '/sirene/search';
+		this._searchTerm = null;
 		this.init();
 	};
 
@@ -20,13 +21,14 @@
 		},
 		_doSearch: function(searchTerm) {
 			var self = this;
+			self._searchTerm = searchTerm;
 			var sUrl = self._options.searchsireneurl + '?searchTerm='+searchTerm;			
 			$.ajax({
 				type: 'GET',
 				url: sUrl,
 				success: function(data) {
 					console.log('SIRENE Search Response : ', data);
-					self._options.app.setSearchResponse(data);
+					self._options.app.setSearchResponse(data, self._searchTerm);
 				},
 				error:  function(jqXHR, textStatus, errorThrown) { 
 					if (textStatus === 'abort') {

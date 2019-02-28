@@ -6,9 +6,48 @@
 }
 
 #map {
-	left: 300px;
-	top:50px;
+	left: 0px;
+	top: 0px;
 }
+
+#mainUIDiv {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    bottom: 10px;
+}
+
+.ggo-vertical-tabs .slds-vertical-tabs__nav-item.slds-is-active svg {
+    fill: currentColor !important;
+}
+
+.ggo-vertical-tabs .slds-panel__header {
+    padding: 0.35rem !important;
+    border-bottom: none !important;
+}
+
+.ggo-vertical-tabs .slds-panel__header-title {
+    text-align: left !important;   
+}
+
+.ggo-vertical-tabs .slds-panel__close {
+    right: 0px !important;
+}
+
+.ggo-vertical-tabs .slds-panel__body {
+    padding: 0.25rem !important;
+    min-height: 400px !important;
+}
+
+.ggo-vertical-tabs__content {
+    padding: 0.2rem !important;
+}
+
+.ggo-available-layers .slds-card__header {
+    padding-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
 
 .smallmap {
 	bottom:350px !important;

@@ -32,6 +32,9 @@
 				self.changeMapSize(data.isExpanded);
 			});
 		},
+		getMap: function() {
+			return this._map;
+		},
 		changeMapSize(isExpanded) {
 			if (isExpanded) {
 				$('#'+this._options.mapDivId).addClass('smallmap');
@@ -55,13 +58,17 @@
 				attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 			});
 			*/
+			var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				maxZoom: 19,
+				attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+			});
 			var mapDivId = this._options.mapDivId || 'map';
 			this._map = L.map(mapDivId, {
 				preferCanvas: true,
 				zoomControl: false,
 				contextmenu: true,
 				contextmenuWidth: 140,						
-				layers: [stamen_tonerLite]
+				layers: [OpenStreetMap_Mapnik]
 			}).setView([0, 0], 2);
 			
 			new L.control.zoom({
@@ -77,6 +84,7 @@
 				$.each(self.searched.geojson.features, function(idx, val){
 					val.properties['isVisible'] = true;
 					val.properties['marker-size'] = 'small';
+					val.properties['marker-color'] = '#0070d2';
 					var desc = '<span class="ttip-title">' + val.properties.name + '</span><br />';
 					var tbl = '<table>';
 					tbl += '<tr><td class="infowindow-field">SIRET : </td><td>' + val.properties.siret +'</td></tr>';
@@ -125,7 +133,17 @@
 			var panToRecordAction = $('<li class="slds-dropdown__item" role="presentation"><a href="javascript:void(0);" role="menuitem" tabindex="0"><span class="slds-truncate">Analyses</span></a></li>');
 			panToRecordAction.click(function(e) {
 				$('#recordsContent .slds-dropdown-trigger').removeClass('slds-is-open');
-				alert('TODO: Analyse avec Google Places API via un worker');
+				//alert('TODO: Analyse avec Google Places API via un worker');
+				var layers = self.searched.layer.getLayers();
+				var _sirets = [];
+				$.each(layers, function(idxL, valL) { 
+					_sirets.push(valL.feature.properties.siret);
+				});
+				var data2Send = {
+					sirets: _sirets.join(',')
+				};				
+				GGO.EventBus.dispatch(GGO.EVENTS.DOPOSANALYZER, data2Send);
+				$(this).attr('disabled', true);
 			});
 			moreBtn.click(function(){
 				var thisParent = $(this).parent();
@@ -227,7 +245,7 @@
 				.append($('<thead></thead>')
 					.append($('<tr class="slds-line-height_reset"></tr>')
 						.append($('<th class="slds-cell-shrink" scope="col"></th>'))
-						.append($('<th class="slds-text-title_caps" scope="col" style="width:140px;">SIRET</th>'))
+						.append($('<th class="slds-text-title_caps" scope="col" style="width:160px;">SIRET</th>'))
 						.append($('<th class="slds-text-title_caps" scope="col" style="width:200px;">NOM</th>'))
 						.append($('<th class="slds-text-title_caps" scope="col">Adresse</th>'))
 						.append($('<th class="slds-text-title_caps" scope="col" style="width:70px;">CP</th>'))
@@ -243,6 +261,10 @@
 
 			self.buildDataTableBody(tblBody, pdvs);
 			ctnr.append(tbl.append(tblBody));
+
+			$('#recordsDocker-heading-01').text('Données');
+			$('#jobAnalysisContent').addClass('slds-hide');
+			$('#recordsContent').removeClass('slds-hide');
 
 			$('#data-composer').removeClass('slds-hide');
 			self.changeMapSize(true);

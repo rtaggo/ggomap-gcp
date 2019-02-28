@@ -19,6 +19,8 @@
 		<link rel="stylesheet" type="text/css" href="/scripts/vendors/mapbox/plugins/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.min.css" />
 
 		<script src='/scripts/vendors/turfjs/turf.min.js'></script>
+		<script src='/scripts/vendors/momentjs/moment-with-locales.min.js'></script>
+		<script src='/scripts/vendors/momentjs/moment-duration-format.js'></script>
 
 		<script type="module" src="/scripts/galigeo/sirene/sirene.js"></script>
 		
@@ -42,6 +44,7 @@
 				</div>
 			</header>
 			<div class="slds-panel slds-size_medium slds-panel_docked slds-panel_docked-left slds-is-open" aria-hidden="false" style="z-index:2000;">
+				<!--
 				<div class="slds-panel__header">
 					<h2 class="slds-panel__header-title slds-text-heading_small slds-truncate" title="Panel Header">SIRENE Explorer</h2>					
 				</div>
@@ -72,6 +75,55 @@
 							<div style="display: inline-block; margin-left: 2rem; vertical-align: middle; line-height: 32px;">Recherche en cours</div>
 						</div>
 						<div id="search-infos" class="slds-hide" style="position: relative;">
+						</div>
+					</div>
+				</div>
+				-->
+				<div class="slds-panel__body" id="left-panel-div__body">
+					<div class="slds-tabs_default">
+						<ul class="slds-tabs_default__nav" role="tablist">
+							<li class="slds-tabs_default__item slds-is-active" title="Explorer" role="presentation">
+								<a class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="0" aria-selected="true" aria-controls="sirene-explorer__content" id="sirene-explorer__item">Explorer</a>
+							</li>
+							<li class="slds-tabs_default__item" title="Analysis" role="presentation">
+								<a class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="sirene-analysis__content" id="sirene-analysis__item">Analyses</a>
+							</li>
+						</ul>
+						<div id="sirene-explorer__content" class="slds-tabs_default__content slds-show" role="tabpanel" aria-labelledby="sirene-explorer__item">
+							<div class="slds-form slds-form_stacked">
+								<div class="slds-form-element">
+									<label class="slds-form-element__label" for="search_term"> <abbr class="slds-required" title="required">* </abbr> Rechercher des points de vente</label>
+									<div class="slds-form-element__control">
+										<input type="text" id="search_term" class="slds-input" required="" aria-describedby="search_term_form-error"/>
+									</div>
+									<div class="slds-form-element__help slds-hide" id="search_term_form-error">La recherche de chaîne vide est interdite.</div>
+								</div>
+								<div class="slds-form-element" style="text-align: center;">
+									<button id="search_btn" class="slds-button slds-button_neutral">Rechercher
+										<svg class="slds-button__icon slds-button__icon_right" aria-hidden="true">
+											<use xlink:href="/styles/slds/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
+										</svg>
+									</button>
+								</div>
+							</div>
+							<div id="search-infos-panel">
+								<div id="search-spinner" class="slds-hide" style="position: relative;">
+									<div role="status" class="slds-spinner slds-spinner_x-small" style="position: absolute;top: 16px; left: 0.5rem;">
+										<span class="slds-assistive-text">Loading</span>
+										<div class="slds-spinner__dot-a"></div>
+										<div class="slds-spinner__dot-b"></div>
+									</div>
+									<div style="display: inline-block; margin-left: 2rem; vertical-align: middle; line-height: 32px;">Recherche en cours</div>
+								</div>
+								<div id="search-infos" class="slds-hide" style="position: relative;">
+								</div>
+							</div>
+
+						</div>
+						<div id="sirene-analysis__content" class="slds-tabs_default__content slds-hide" role="tabpanel" aria-labelledby="sirene-analysis__item">
+							<div id="jobs-list-panel">
+
+							</div>
 						</div>
 					</div>
 				</div>
@@ -112,6 +164,13 @@
 						<div class="slds-docked-composer__body" id="recordsDocker-content-01" style="background-color: #f7f9fb;">
 							<div id="recordsContent" class="slds-scrollable--y" style="padding: 5px; max-height: 310px;height:310px;">
 
+							</div>
+							<div id="jobAnalysisContent" class="slds-hide"  style="padding: 5px; max-height: 310px;height:310px;">
+								<div id="jobAnalysis-chart" style="width:250px; float: left;">
+
+								</div>
+								<div id="jobAnalysis-list" class="slds-scrollable--y">
+								</div>
 							</div>
 						</div>
 					</div>

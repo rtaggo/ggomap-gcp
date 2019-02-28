@@ -13,4 +13,12 @@
 
 # [START app_yaml]
 runtime: nodejs10
+
+env_variables:
+  SQL_USER: "root"
+  SQL_PASSWORD: "G@L1ge02018"
+  SQL_DATABASE: "pdvanalyzerdb"
+  # e.g. my-awesome-project:us-central1:my-cloud-sql-instance
+  INSTANCE_CONNECTION_NAME: ggo-background:europe-west1:ggobgpdvanalyzer
+
 # [END app_yaml]

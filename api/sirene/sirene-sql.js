@@ -12,6 +12,37 @@ const pubsub = new Pubsub({
 
 const Buffer = require('safe-buffer').Buffer;
 
+async function _findSireneSIRET(sirets) {
+	console.log(`[SIRENE-SQL Module] _findSireneSIRET`);
+	const {BigQuery} = require('@google-cloud/bigquery');
+	let siretList =  sirets.map(e=> '\'' + e + '\'').join(',');
+
+	const searchquery = `SELECT siret, 
+	adresseetablissement, codepostaletablissement, 
+	libellecommuneetablissement,
+	departementetablissement, 
+	longitude, latitude,
+	CASE WHEN  (enseigne1etablissement IS NOT NULL) AND (LENGTH(LTRIM(enseigne1etablissement)) > 0) THEN enseigne1etablissement
+	  WHEN  (denominationusuelleetablissement IS NOT NULL) AND (LENGTH(LTRIM(denominationusuelleetablissement)) > 0) THEN denominationusuelleetablissement
+	  WHEN  (denominationusuelle1unitelegale IS NOT NULL) AND (LENGTH(LTRIM(denominationusuelle1unitelegale)) > 0) THEN denominationusuelle1unitelegale
+		ELSE 'INCONNU' END name 
+	FROM \`ggo-bq-gis.SIRENE.sirene_v3\`
+	WHERE siret in (${siretList})`;
+
+	const bigquery = new BigQuery();
+	const options = {
+	    query: searchquery,
+	    // Location must match that of the dataset(s) referenced in the query.
+	    location: 'EU',
+	};
+	const [job] = await bigquery.createQueryJob(options);
+	console.log(`Job ${job.id} started.`);
+
+	// Waits for the query to finish
+	const [rows] = await job.getQueryResults();
+	console.log('return ' + rows.length);
+	return rows;
+}
 
 async function _search(searchTerm) {
 	console.log(`[SIRENE-SQL Module] _search: : '${searchTerm}'`);
@@ -86,12 +117,13 @@ async function _search(searchTerm) {
 	*/
 };
 
-function insertNewJob(messageid) {
+function insertNewJob(messageid, searchTerm) {
+	console.log(`insertNewJob for searchTerm = ${searchTerm}`);
 	const extend = require('lodash').assign;
 	const mysql = require('mysql');
 	const config = require('../../config');
 
-	const dbconfig = {
+	let dbconfig = {
 		"GCLOUD_PROJECT": "ggo-background",
 		"MYSQL_USER": "root",
 		"MYSQL_PASSWORD": "G@L1ge02018",
@@ -99,6 +131,11 @@ function insertNewJob(messageid) {
 		"DATABASE_NAME": "pdvanalyzerdb"
 	};
 
+	dbconfig = {
+		MYSQL_USER: process.env.SQL_USER,
+		MYSQL_PASSWORD: process.env.SQL_PASSWORD,
+		DATABASE_NAME: process.env.SQL_DATABASE,
+	};
 	const options = {
 	  user: dbconfig.MYSQL_USER,
 	  password: dbconfig.MYSQL_PASSWORD,
@@ -119,8 +156,9 @@ function insertNewJob(messageid) {
 		options.socketPath = `/cloudsql/${dbconfig['INSTANCE_CONNECTION_NAME']}`;
 	}
 
-	const connection = mysql.createConnection(options);
-	let insertJob = `INSERT INTO jobs(messageid, status) VALUES ('${messageid}', 'waiting')`;
+	//const connection = mysql.createConnection(options);
+	const connection = getConnection();
+	let insertJob = `INSERT INTO jobs(messageid, searchText, status) VALUES ('${messageid}', '${searchTerm}', 'waiting')`;
 
 	connection.query(insertJob, (err, res) => {
 		if (err) {
@@ -149,7 +187,7 @@ function getTopic(cb) {
  * @param {string} req.body.message Message to publish.
  * @param {object} res Cloud Function response context.
  */
-async function _publish (sirets, res) {
+async function _publish (sirets, searchTerm, res) {
 	const dbTable = 'pdvanalyzer_' + Date.now();
 	const message = {
 		sirets: sirets
@@ -188,13 +226,133 @@ async function _publish (sirets, res) {
 		.publish(dataBuffer);
 	logging.info(`Message ${msgId} published.`);
 
-	insertNewJob(msgId);
+	insertNewJob(msgId, searchTerm);
 	logging.info(`New Job ${msgId} inserted in database.`);
 
-	return { table: dbTable, messageId: msgId};
+	return { jobId: msgId};
 };
+
+function getConnection() {
+	const mysql = require('mysql');
+	const config = require('../../config');
+
+	let dbconfig = {
+		"GCLOUD_PROJECT": "ggo-background",
+		"MYSQL_USER": "root",
+		"MYSQL_PASSWORD": "G@L1ge02018",
+		"INSTANCE_CONNECTION_NAME": "ggo-background:europe-west1:ggobgpdvanalyzer",
+		"DATABASE_NAME": "pdvanalyzerdb"
+	};
+	/*
+	dbconfig = {
+		"MYSQL_USER": process.env.SQL_USER,
+		"MYSQL_PASSWORD": process.env.SQL_PASSWORD,
+		"DATABASE_NAME": process.env.SQL_DATABASE,
+	};
+	*/
+	console.log(`dbconfig: ${JSON.stringify(dbconfig)}`);
+	const options = {
+		user: dbconfig.MYSQL_USER,
+		password: dbconfig.MYSQL_PASSWORD,
+		database: dbconfig.DATABASE_NAME,
+	};
+
+
+	/*
+	if (
+	  config.get('INSTANCE_CONNECTION_NAME') &&
+	  config.get('NODE_ENV') === 'production'
+	) {
+	  options.socketPath = `/cloudsql/${config.get('INSTANCE_CONNECTION_NAME')}`;
+	}
+	*/
+	//options.socketPath = `/cloudsql/${config.get('INSTANCE_CONNECTION_NAME')}`;
+	if ( process.env.NODE_ENV === 'production') {
+		options.socketPath = `/cloudsql/${dbconfig['INSTANCE_CONNECTION_NAME']}`;
+	}
+
+	const connection = mysql.createConnection(options);
+
+	return connection;
+}
+
+function getJobStatus(jobid, callback) {
+	const extend = require('lodash').assign;
+	const mysql = require('mysql');
+	const config = require('../../config');
+
+	const dbconfig = {
+		"GCLOUD_PROJECT": "ggo-background",
+		"MYSQL_USER": "root",
+		"MYSQL_PASSWORD": "G@L1ge02018",
+		"INSTANCE_CONNECTION_NAME": "ggo-background:europe-west1:ggobgpdvanalyzer",
+		"DATABASE_NAME": "pdvanalyzerdb"
+	};
+
+	const options = {
+	  user: dbconfig.MYSQL_USER,
+	  password: dbconfig.MYSQL_PASSWORD,
+	  database: dbconfig.DATABASE_NAME,
+	};
+
+
+	/*
+	if (
+	  config.get('INSTANCE_CONNECTION_NAME') &&
+	  config.get('NODE_ENV') === 'production'
+	) {
+	  options.socketPath = `/cloudsql/${config.get('INSTANCE_CONNECTION_NAME')}`;
+	}
+	*/
+	//options.socketPath = `/cloudsql/${config.get('INSTANCE_CONNECTION_NAME')}`;
+	if ( process.env.NODE_ENV === 'production') {
+		options.socketPath = `/cloudsql/${dbconfig['INSTANCE_CONNECTION_NAME']}`;
+	}
+
+	const connection = mysql.createConnection(options);
+	//let selectJobStatus = 'SELECT * FROM `jobs` WHERE `messageid`= ?';
+
+	connection.query(
+		'SELECT * FROM `jobs` WHERE `messageid` = ?',
+	    jobid,
+	    (err, results) => {
+	    	logging.info(`query res= ${JSON.stringify(results)}`);
+			connection.end();
+			if (err) {
+				logging.error(`Failed to get status for job  ${jobid}. ${err}`);
+				if (callback) {
+					callback({error: err});
+				}
+				return {error: err};
+			}
+			if (callback) {
+				callback(results[0]);
+			}
+			return results[0];
+		}
+	);
+};
+
+async function _jobstatus(jobid) {
+	logging.info(`>> _jobstatus`);
+	/*
+	getJobStatus(jobid, (res) => {
+		logging.info(`>> _jobstatus. getJobStatus callback`);
+    	logging.info(`getJobStatus  res= ${JSON.stringify(res)}`);
+		return res;
+	});
+	*/
+
+	let res = await getJobStatus(jobid);
+	logging.info(`getJobStatus res= ${JSON.stringify(res)}`);
+	
+	return res;
+}
 
 module.exports = {
 	search: _search,
-	publish: _publish
+	findSireneSIRET : _findSireneSIRET,
+	publish: _publish,
+	jobstatus: _jobstatus,
+	getConnection: getConnection
 };

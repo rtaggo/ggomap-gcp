@@ -1,2 +1,2 @@
-Version: Winter '19 (SLDS 2.7.5) 
+Version: Spring '19 (SLDS 2.8.0) 
 scope: ggoslds
