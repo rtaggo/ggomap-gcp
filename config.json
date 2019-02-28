@@ -1,7 +1,7 @@
 {
-	"GCLOUD_PROJECT": "ggo-background",
-	"MYSQL_USER": "root",
-	"MYSQL_PASSWORD": "G@L1ge02018",
-	"INSTANCE_CONNECTION_NAME": "ggo-background:europe-west1:ggobgpdvanalyzer",
-	"DATABASE_NAME": "pdvanalyzerdb"
+	"GCLOUD_PROJECT": "",
+	"MYSQL_USER": "",
+	"MYSQL_PASSWORD": "",
+	"INSTANCE_CONNECTION_NAME": "",
+	"DATABASE_NAME": ""
 }
